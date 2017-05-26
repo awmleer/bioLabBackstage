@@ -1,5 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
+.label{
+  background-color: #9b4dca;
+  border-radius: .4rem;
+  color: #fff;
+  height: 2.2rem;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: normal;
+  width: 5rem;
+  display: inline-block;
+  margin-right: 5px;
+}
+.label-black{
+  background-color: black;
+  border-color: black;
+}
+
+
+
 .button-black {
   background-color: black;
   border-color: black;
