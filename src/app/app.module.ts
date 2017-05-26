@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PapersComponent } from './papers/papers.component';
 import {RouterModule} from "@angular/router";
+import { LabelsComponent } from './labels/labels.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PapersComponent
+    PapersComponent,
+    LabelsComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +22,9 @@ import {RouterModule} from "@angular/router";
       {
         path: 'papers',
         component: PapersComponent
+      },{
+        path: 'labels',
+        component: LabelsComponent
       }
     ])
   ],
