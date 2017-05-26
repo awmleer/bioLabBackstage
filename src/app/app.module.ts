@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { PapersComponent } from './papers/papers.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule} from '@angular/router';
 import { LabelsComponent } from './labels/labels.component';
 
 @NgModule({
