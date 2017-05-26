@@ -1,14 +1,19 @@
 <nav class="header">
   <div class="content">
-    <h1>后台管理</h1>
+    <h1>bioLab后台管理</h1>
+    <div class="links">
+      <a routerLink="/papers">论文</a>
+      <a routerLink="/labels">标签</a>
+      <a href="#">试剂</a>
+    </div>
+
   </div>
 </nav>
 
 <div class="container">
   <h1>
-    {{title}}
-    <button class="button">12</button>
-    <a routerLink="/papers">Papers</a>
+    <!--{{title}}-->
+    <!--<button class="button">12</button>-->
     <router-outlet></router-outlet>
   </h1>
 </div>
