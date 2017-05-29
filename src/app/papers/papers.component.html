@@ -1,5 +1,5 @@
-<div class="paper">
-  <h3><a href="#">论文标题</a></h3>
+<div class="paper" *ngFor="let paper of papers">
+  <h3><a href="#">{{paper.title}}</a></h3>
   <p>
     <label class="label label-black">标签1</label>
     <label class="label label-black">标签2</label>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Http} from "@angular/http";
+
+import 'rxjs/add/operator/toPromise';
+
 
 @Component({
   selector: 'app-papers',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PapersComponent implements OnInit {
 
-  constructor() { }
+  papers;
+  constructor(
+    private http:Http
+  ) { }
 
   ngOnInit() {
+    this.http.get('/api/paper/list/').toPromise().then(response=>{
+      this.papers=response.json();
+    });
+  }
+
+  some(){
   }
 
 }
