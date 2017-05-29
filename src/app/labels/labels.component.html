@@ -1,26 +1,3 @@
-<table>
-  <thead>
-  <tr>
-    <th>标签ID</th>
-    <th>标签名</th>
-    <th>上一级标签</th>
-    <th>操作</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Stephen Curry</td>
-    <td>27</td>
-    <td>1,91</td>
-    <td><button class="button button-black button-sm">删除</button></td>
-  </tr>
-  <tr>
-    <td>Klay Thompson</td>
-    <td>25</td>
-    <td>2,01</td>
-    <td><button class="button button-black button-sm">删除</button></td>
-  </tr>
-  </tbody>
-</table>
-
-<tree-root [nodes]="nodes"></tree-root>
+<div style="padding: 20px 0 100px;" *ngIf="labelTree">
+  <tree-root [nodes]="labelTree"></tree-root>
+</div>

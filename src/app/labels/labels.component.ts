@@ -1,5 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
+import {Http} from "@angular/http";
+
+import 'rxjs/add/operator/toPromise';
+import {CONFIG} from "../config";
 
 @Component({
   selector: 'app-labels',
@@ -7,35 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./labels.component.scss']
 })
 export class LabelsComponent implements OnInit {
+  labelTree;
 
-  nodes = [
-    {
-      id: 1,
-      name: 'root1',
-      children: [
-        { id: 2, name: 'child1' },
-        { id: 3, name: 'child2' }
-      ]
-    },
-    {
-      id: 4,
-      name: 'root2',
-      children: [
-        { id: 5, name: 'child2.1' },
-        {
-          id: 6,
-          name: 'child2.2',
-          children: [
-            { id: 7, name: 'subsub' }
-          ]
-        }
-      ]
-    }
-  ];
-
-  constructor() { }
+  constructor(
+    private http:Http
+  ) { }
 
   ngOnInit() {
+    this.http.get(`${CONFIG.apiUrl}/paper/label/tree/`).toPromise().then(response=>{
+      this.labelTree=response.json();
+    });
   }
 
 }
