@@ -1,11 +1,23 @@
 .header-buttons{
   width:100%;
-  height: 50px;
-  padding-top: 10px;
+  height: 60px;
+  position: relative;
   #btn-go-back{
-    float: left;
+    position: absolute;
+    left:0;
+    top:10px;
   }
   #btn-submit{
-    float: right;
+    position: absolute;
+    right:0;
+    top:10px;
+  }
+}
+
+.schema{
+  p{
+    background-color: #f4f5f6;
+    border-left: .3rem solid #9b4dca;
+    padding:15px;
   }
 }

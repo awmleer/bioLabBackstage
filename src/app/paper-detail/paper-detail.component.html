@@ -2,3 +2,8 @@
   <button id="btn-go-back" (click)="goBack()" class="button button-black">返回</button>
   <button id="btn-submit" class="button">提交</button>
 </div>
+
+<div *ngIf="schema" class="schema">
+  <h3>Schema文档</h3>
+  <p>{{schema}}</p>
+</div>
