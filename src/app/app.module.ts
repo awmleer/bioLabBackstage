@@ -5,11 +5,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { PapersComponent } from './papers/papers.component';
-import {RouterModule} from '@angular/router';
 import { LabelsComponent } from './labels/labels.component';
 import { PaperDetailComponent } from './paper-detail/paper-detail.component';
 import {LabelService} from "./services/label.service";
 import {TreeModule} from "angular-tree-component";
+import {Router} from "./app.router";
 
 @NgModule({
   declarations: [
@@ -23,18 +23,7 @@ import {TreeModule} from "angular-tree-component";
     FormsModule,
     HttpModule,
     TreeModule,
-    RouterModule.forRoot([
-      {
-        path: 'papers',
-        component: PapersComponent
-      },{
-        path: 'labels',
-        component: LabelsComponent
-      },{
-        path: 'paper/:id',
-        component: PaperDetailComponent
-      }
-    ])
+    Router
   ],
   providers: [LabelService],
   bootstrap: [AppComponent]
