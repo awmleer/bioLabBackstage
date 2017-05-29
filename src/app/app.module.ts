@@ -8,6 +8,7 @@ import { PapersComponent } from './papers/papers.component';
 import {RouterModule} from '@angular/router';
 import { LabelsComponent } from './labels/labels.component';
 import { PaperDetailComponent } from './paper-detail/paper-detail.component';
+import {LabelService} from "./services/label.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { PaperDetailComponent } from './paper-detail/paper-detail.component';
       }
     ])
   ],
-  providers: [],
+  providers: [LabelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
