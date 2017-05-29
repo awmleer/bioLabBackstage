@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 
 // import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
+import {LabelService} from "../services/label.service";
+import * as _ from "lodash"
 
 
 @Component({
@@ -18,10 +20,14 @@ export class PaperDetailComponent implements OnInit {
 
   schema;
 
+  labelSearchText:string;
+  filteredLabels=[];
+
   constructor(
     private http:Http,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private labelService: LabelService
   ) { }
 
   ngOnInit() {
@@ -35,6 +41,34 @@ export class PaperDetailComponent implements OnInit {
         });
       });
   }
+
+
+  removeLabel(id:number){
+    _.remove(this.paper.labels,{
+      id:id
+    });
+  }
+
+  addLabel(){
+
+  }
+
+  filterLabels(){
+    if (this.labelSearchText == '') {
+      this.filteredLabels=[];
+      return;
+    }
+    this.filteredLabels=_.filter(this.labelService.labels,(label)=>{
+      return label.name.indexOf(this.labelSearchText)!=-1
+    });
+  }
+
+  labelSearchTextChanged(newValue){
+    // this.labelSearchText=$event.target.value;
+    this.labelSearchText=newValue;
+    this.filterLabels();
+  }
+
 
   goBack(){
     this.location.back();

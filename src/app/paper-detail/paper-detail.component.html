@@ -21,3 +21,14 @@
   <h3>Schema文档</h3>
   <p>{{schema}}</p>
 </div>
+
+<div *ngIf="paper" class="labels">
+  <h3>标签管理</h3>
+  <div>
+    <button *ngFor="let label of paper.labels" (click)="removeLabel(label.id)" class="button button-sm button-black">{{label.name}}</button>
+  </div>
+  <div>
+    <input type="text" placeholder="搜索标签…" [ngModel]="labelSearchText" (ngModelChange)="labelSearchTextChanged($event)">
+    <span *ngFor="let label of filteredLabels">{{label.name}}</span>
+  </div>
+</div>
