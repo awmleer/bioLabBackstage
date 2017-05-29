@@ -1,6 +1,20 @@
-<div class="header-buttons">
+<div class="header">
   <button id="btn-go-back" (click)="goBack()" class="button button-black">返回</button>
+  <h2>{{paper?.title}}</h2>
   <button id="btn-submit" class="button">提交</button>
+</div>
+
+<div *ngIf="paper">
+  <h3>基本信息</h3>
+  <p>
+    id：{{paper.id}}<br>
+    标题：{{paper.title}}<br>
+    主题：{{paper.subject}}<br>
+    关键词：{{paper.keyword}}<br>
+    摘要：{{paper.abstract}}<br>
+    指导教师：<span *ngFor="let teacher of paper.teachers">{{teacher.name}}</span><br>
+    发表年份：{{paper.publishYear}}
+  </p>
 </div>
 
 <div *ngIf="schema" class="schema">
