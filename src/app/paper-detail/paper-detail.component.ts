@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import {ActivatedRoute, Params} from "@angular/router";
+import { Location } from '@angular/common';
 
 // import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
@@ -34,5 +35,10 @@ export class PaperDetailComponent implements OnInit {
         });
       });
   }
+
+  goBack(){
+    this.location.back();
+  }
+
 
 }

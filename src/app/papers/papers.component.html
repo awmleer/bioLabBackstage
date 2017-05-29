@@ -1,5 +1,5 @@
 <div class="paper" *ngFor="let paper of papers">
-  <h3><a href="#">{{paper.title}}</a></h3>
+  <h3><a [routerLink]="['/paper',paper.id]">{{paper.title}}</a></h3>
   <p>
     <label *ngFor="let label of paper.labels" class="label label-black">{{label.name}}</label>
     <span *ngIf="paper?.labels.length==0">暂无标签</span>
