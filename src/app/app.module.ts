@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { PapersComponent } from './papers/papers.component';
 import {RouterModule} from '@angular/router';
 import { LabelsComponent } from './labels/labels.component';
+import { PaperDetailComponent } from './paper-detail/paper-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PapersComponent,
-    LabelsComponent
+    LabelsComponent,
+    PaperDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,9 @@ import { LabelsComponent } from './labels/labels.component';
       },{
         path: 'labels',
         component: LabelsComponent
+      },{
+        path: 'paper/:id',
+        component: PaperDetailComponent
       }
     ])
   ],
