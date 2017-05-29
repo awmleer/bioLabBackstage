@@ -9,6 +9,7 @@ import {RouterModule} from '@angular/router';
 import { LabelsComponent } from './labels/labels.component';
 import { PaperDetailComponent } from './paper-detail/paper-detail.component';
 import {LabelService} from "./services/label.service";
+import {TreeModule} from "angular-tree-component";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {LabelService} from "./services/label.service";
     BrowserModule,
     FormsModule,
     HttpModule,
+    TreeModule,
     RouterModule.forRoot([
       {
         path: 'papers',
