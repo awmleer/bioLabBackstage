@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
+import {CONFIG} from "../config";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class PapersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.get('/api/paper/list/').toPromise().then(response=>{
+    this.http.get(`${CONFIG.apiUrl}/paper/list/`).toPromise().then(response=>{
       this.papers=response.json();
     });
   }

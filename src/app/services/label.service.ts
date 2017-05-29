@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
+import {CONFIG} from "../config";
 
 @Injectable()
 export class LabelService {
@@ -11,7 +12,7 @@ export class LabelService {
   constructor(
     private http: Http
   ) {
-    this.http.get('/api/paper/label/list/').toPromise().then(response=>{
+    this.http.get(`${CONFIG.apiUrl}/paper/label/list/`).toPromise().then(response=>{
       this.labels=response.json();
     })
   }

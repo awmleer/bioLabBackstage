@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/toPromise';
 import {LabelService} from "../services/label.service";
 import * as _ from "lodash"
+import {CONFIG} from "../config";
 
 
 @Component({
@@ -33,10 +34,10 @@ export class PaperDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .subscribe((params: Params)=>{
-        this.http.get(`/api/paper/${params['id']}/detail/`).toPromise().then(response=>{
+        this.http.get(`${CONFIG.apiUrl}/paper/${params['id']}/detail/`).toPromise().then(response=>{
           this.paper=response.json();
         });
-        this.http.get(`/api/paper/${params['id']}/schema/`).toPromise().then(response=>{
+        this.http.get(`${CONFIG.apiUrl}/paper/${params['id']}/schema/`).toPromise().then(response=>{
           this.schema=response.json().schema;
         });
       });
@@ -44,13 +45,25 @@ export class PaperDetailComponent implements OnInit {
 
 
   removeLabel(id:number){
-    _.remove(this.paper.labels,{
-      id:id
+    this.http.get(`${CONFIG.apiUrl}/paper/${this.paper.id}/label/remove/${id}/`).toPromise().then(response=>{
+      if (response.text() == 'success') {
+        _.remove(this.paper.labels,{
+          id:id
+        });
+      }
     });
   }
 
-  addLabel(){
-
+  addLabel(label){
+    this.http.get(`${CONFIG.apiUrl}/paper/${this.paper.id}/label/add/${label.id}/`).toPromise().then(response=>{
+      if (response.text() == 'success') {
+        if (_.isUndefined(_.find(this.paper.labels,{id:label.id}))) {
+          this.paper.labels.push(label);
+        }
+      }
+      this.labelSearchText='';
+      this.filteredLabels=[];
+    });
   }
 
   filterLabels(){
