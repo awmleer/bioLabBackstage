@@ -16,7 +16,7 @@ import {CONFIG} from "../config";
   templateUrl: './paper-detail.component.html',
   styleUrls: ['./paper-detail.component.scss']
 })
-export class PaperDetailComponent {
+export class PaperDetailComponent implements OnInit {
   public uploader:FileUploader;
   paper;
 
