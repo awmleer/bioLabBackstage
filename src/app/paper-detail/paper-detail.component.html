@@ -1,7 +1,7 @@
 <div class="header">
   <button id="btn-go-back" (click)="goBack()" class="button button-black">返回</button>
   <h2>{{paper?.title}}</h2>
-  <button id="btn-submit" class="button">提交</button>
+  <!--<button id="btn-submit" class="button">提交</button>-->
 </div>
 
 <div *ngIf="paper">
@@ -15,6 +15,21 @@
     指导教师：<span *ngFor="let teacher of paper.teachers">{{teacher.name}}</span><br>
     发表年份：{{paper.publishYear}}
   </p>
+</div>
+
+<div>
+  <h3>上传文件</h3>
+  <div>
+    <!--<form action="/api/test/" method="post">-->
+      <input type="file" ng2FileSelect [uploader]="uploader" />
+      <!--<input type="file" name="paperFile" ng2FileSelect [uploader]="uploader" />-->
+      <!--<button type="submit" class="button">-->
+        <button class="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+        上传
+      </button>
+      <span *ngIf="uploader.progress==100">{{uploader?.queue[0]?.isSuccess?'上传成功':'上传失败'}}</span>
+    <!--</form>-->
+  </div>
 </div>
 
 <div *ngIf="schema" class="schema">

@@ -11,12 +11,15 @@ import {LabelService} from "./services/label.service";
 import {TreeModule} from "angular-tree-component";
 import {Router} from "./app.router";
 
+import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
+
 @NgModule({
   declarations: [
     AppComponent,
     PapersComponent,
     LabelsComponent,
-    PaperDetailComponent
+    PaperDetailComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

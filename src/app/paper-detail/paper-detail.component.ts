@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import {ActivatedRoute, Params} from "@angular/router";
 import { Location } from '@angular/common';
+import { FileUploader } from 'ng2-file-upload';
 
 // import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
@@ -16,7 +17,7 @@ import {CONFIG} from "../config";
   styleUrls: ['./paper-detail.component.scss']
 })
 export class PaperDetailComponent implements OnInit {
-
+  public uploader:FileUploader = new FileUploader({url: '/api/paper/1/upload/'});
   paper;
 
   schema;
