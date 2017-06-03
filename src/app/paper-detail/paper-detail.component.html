@@ -21,7 +21,7 @@
   <h3>上传文件</h3>
   <div>
     <!--<form action="/api/test/" method="post">-->
-      <input type="file" ng2FileSelect [uploader]="uploader" />
+      <input type="file" ng2FileSelect [uploader]="uploader"/>
       <!--<input type="file" name="paperFile" ng2FileSelect [uploader]="uploader" />-->
       <!--<button type="submit" class="button">-->
         <button class="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">

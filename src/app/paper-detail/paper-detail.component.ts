@@ -16,8 +16,8 @@ import {CONFIG} from "../config";
   templateUrl: './paper-detail.component.html',
   styleUrls: ['./paper-detail.component.scss']
 })
-export class PaperDetailComponent implements OnInit {
-  public uploader:FileUploader = new FileUploader({url: CONFIG.apiUrl+'/paper/1/upload/'});
+export class PaperDetailComponent {
+  public uploader:FileUploader;
   paper;
 
   schema;
@@ -37,6 +37,7 @@ export class PaperDetailComponent implements OnInit {
       .subscribe((params: Params)=>{
         this.http.get(`${CONFIG.apiUrl}/paper/${params['id']}/detail/`).toPromise().then(response=>{
           this.paper=response.json();
+          this.uploader=new FileUploader({url: `${CONFIG.apiUrl}/paper/${this.paper.id}/upload/`});
         });
         this.http.get(`${CONFIG.apiUrl}/paper/${params['id']}/schema/`).toPromise().then(response=>{
           this.schema=response.json().schema;
