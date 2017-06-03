@@ -17,7 +17,7 @@ import {CONFIG} from "../config";
   styleUrls: ['./paper-detail.component.scss']
 })
 export class PaperDetailComponent implements OnInit {
-  public uploader:FileUploader = new FileUploader({url: '/api/paper/1/upload/'});
+  public uploader:FileUploader = new FileUploader({url: CONFIG.apiUrl+'/paper/1/upload/'});
   paper;
 
   schema;
