@@ -12,6 +12,7 @@ import {TreeModule} from "angular-tree-component";
 import {Router} from "./app.router";
 
 import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-uplo
     PapersComponent,
     LabelsComponent,
     PaperDetailComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    PaperEditComponent
   ],
   imports: [
     BrowserModule,

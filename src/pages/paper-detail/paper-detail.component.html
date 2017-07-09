@@ -1,7 +1,7 @@
 <div class="header">
   <button id="btn-go-back" (click)="goBack()" class="button button-black">返回</button>
   <h2>{{paper?.title}}</h2>
-  <!--<button id="btn-submit" class="button">提交</button>-->
+  <a id="btn-edit" class="button" [routerLink]="['/paper',paper.id,'edit']">修改</a>
 </div>
 
 <div *ngIf="paper">
