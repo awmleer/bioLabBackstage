@@ -1,7 +1,7 @@
 import {RouterModule} from "@angular/router";
-import {PapersComponent} from "./papers/papers.component";
-import {LabelsComponent} from "./labels/labels.component";
-import {PaperDetailComponent} from "./paper-detail/paper-detail.component";
+import {PapersComponent} from "../pages/papers/papers.component";
+import {LabelsComponent} from "../pages/labels/labels.component";
+import {PaperDetailComponent} from "../pages/paper-detail/paper-detail.component";
 
 export const Router=RouterModule.forRoot([
   {

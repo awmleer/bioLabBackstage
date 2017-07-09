@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { PapersComponent } from './papers/papers.component';
-import { LabelsComponent } from './labels/labels.component';
-import { PaperDetailComponent } from './paper-detail/paper-detail.component';
-import {LabelService} from "./services/label.service";
+import { PapersComponent } from '../pages/papers/papers.component';
+import { LabelsComponent } from '../pages/labels/labels.component';
+import { PaperDetailComponent } from '../pages/paper-detail/paper-detail.component';
+import {LabelService} from "../services/label.service";
 import {TreeModule} from "angular-tree-component";
 import {Router} from "./app.router";
 

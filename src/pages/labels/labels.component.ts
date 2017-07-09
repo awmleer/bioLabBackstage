@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
-import {CONFIG} from "../config";
+import {CONFIG} from "../../app/config";
 
 @Component({
   selector: 'app-labels',

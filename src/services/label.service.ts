@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
-import {CONFIG} from "../config";
+import {CONFIG} from "../app/config";
 
 @Injectable()
 export class LabelService {

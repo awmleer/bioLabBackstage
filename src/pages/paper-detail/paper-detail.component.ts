@@ -6,9 +6,9 @@ import { FileUploader } from 'ng2-file-upload';
 
 // import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
-import {LabelService} from "../services/label.service";
+import {LabelService} from "../../services/label.service";
 import * as _ from "lodash"
-import {CONFIG} from "../config";
+import {CONFIG} from "../../app/config";
 
 
 @Component({
