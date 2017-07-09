@@ -1,5 +1,5 @@
 <div class="header">
-  <button id="btn-go-back" (click)="goBack()" class="button button-black">返回</button>
+  <button id="btn-go-back" (click)="location.back();" class="button button-black">返回</button>
   <h2>{{paper?.title}}</h2>
   <a id="btn-edit" class="button" [routerLink]="['/paper',paper.id,'edit']">修改</a>
 </div>

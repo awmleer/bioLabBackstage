@@ -85,9 +85,4 @@ export class PaperDetailComponent implements OnInit {
   }
 
 
-  goBack(){
-    this.location.back();
-  }
-
-
 }

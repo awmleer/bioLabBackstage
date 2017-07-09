@@ -1,28 +1,3 @@
-.header{
-  width:100%;
-  height: 60px;
-  position: relative;
-  h2{
-    width:100%;
-    text-align: center;
-    padding:8px 100px 0;
-    margin:0;
-    white-space:nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  #btn-go-back{
-    position: absolute;
-    left:0;
-    top:10px;
-  }
-  #btn-edit{
-    position: absolute;
-    right:0;
-    top:10px;
-  }
-}
-
 .schema{
   p{
     background-color: #f4f5f6;

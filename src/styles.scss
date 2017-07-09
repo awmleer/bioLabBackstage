@@ -1,4 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+
+.header{
+  width:100%;
+  height: 60px;
+  position: relative;
+  h2{
+    width:100%;
+    text-align: center;
+    padding:8px 100px 0;
+    margin:0;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  #btn-go-back{
+    position: absolute;
+    left:0;
+    top:10px;
+  }
+  #btn-edit{
+    position: absolute;
+    right:0;
+    top:10px;
+  }
+}
+
+
+button, input, optgroup, select, textarea{
+  font-size: 100%;
+}
+
 
 h3{
   margin-bottom: 10px;
