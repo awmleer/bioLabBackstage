@@ -1,7 +1,7 @@
 <div class="header">
   <button id="btn-go-back" (click)="location.back();" class="button button-black">返回</button>
   <h2>{{paper?.title}}</h2>
-  <a id="btn-edit" class="button" [routerLink]="['/paper',paper.id,'edit']">修改</a>
+  <a *ngIf="paper" id="btn-edit" class="button" [routerLink]="['/paper',paper.id,'edit']">修改</a>
 </div>
 
 <div *ngIf="paper">
@@ -9,6 +9,7 @@
   <p>
     id：{{paper.id}}<br>
     标题：{{paper.title}}<br>
+    作者专业：{{paper.major}}<br>
     主题：{{paper.subject}}<br>
     关键词：{{paper.keyword}}<br>
     摘要：{{paper.abstract}}<br>

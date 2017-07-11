@@ -28,4 +28,23 @@ export class PaperEditComponent implements OnInit {
       });
   }
 
+  submit(){
+    this.http.post(CONFIG.apiUrl+`/paper/${this.paper.id}/edit/`,{
+      title:this.paper.title,
+      subject:this.paper.subject,
+      keyword:this.paper.keyword,
+      publishYear:this.paper.publishYear,
+      abstract:this.paper.abstract,
+      major:this.paper.major
+    }).toPromise().then(response=>{
+      let data = response.json();
+      if (data['status']=='success') {
+        alert('修改成功');
+        this.location.back();
+      }else{
+        alert(data['payload']);
+      }
+    });
+  }
+
 }
