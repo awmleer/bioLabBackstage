@@ -11,8 +11,9 @@ import {LabelService} from "../services/label.service";
 import {TreeModule} from "angular-tree-component";
 import {Router} from "./app.router";
 
-import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
+// import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
+import {FileUploadModule} from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,6 @@ import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
     PapersComponent,
     LabelsComponent,
     PaperDetailComponent,
-    FileSelectDirective,
     PaperEditComponent
   ],
   imports: [
@@ -28,6 +28,7 @@ import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
     FormsModule,
     HttpModule,
     TreeModule,
+    FileUploadModule,
     Router
   ],
   providers: [LabelService],

@@ -28,7 +28,7 @@ export class PaperDetailComponent implements OnInit {
   constructor(
     private http:Http,
     private route: ActivatedRoute,
-    private location: Location,
+    public location: Location,
     private labelService: LabelService
   ) { }
 

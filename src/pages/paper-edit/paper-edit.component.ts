@@ -15,7 +15,7 @@ export class PaperEditComponent implements OnInit {
 
   constructor(
     private http: Http,
-    private location: Location,
+    public location: Location,
     private route: ActivatedRoute,
   ) { }
 
