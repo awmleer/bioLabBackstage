@@ -8,6 +8,8 @@ script:
 cache:
   directories:
     - "node_modules"
+addons:
+  ssh_known_hosts: 118.89.186.130
 deploy:
   provider: script
   skip_cleanup: true
