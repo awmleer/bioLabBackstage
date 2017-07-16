@@ -1,3 +1,10 @@
 <div style="padding: 20px 0 100px;" *ngIf="labelTree">
-  <tree-root [nodes]="labelTree"></tree-root>
+  <tree-root [nodes]="labelTree">
+    <ng-template #treeNodeTemplate let-node>
+      <span>{{node.data.name}}</span>
+      <a (click)="addLabelNode(node)">[增加子标签]</a>
+      <a (click)="editLabel(node)">[修改]</a>
+      <a (click)="removeLabel(node)">[删除]</a>
+    </ng-template>
+  </tree-root>
 </div>
