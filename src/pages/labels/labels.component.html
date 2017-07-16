@@ -1,5 +1,5 @@
 <div style="padding: 20px 0 100px;" *ngIf="labelTree">
-  <tree-root [nodes]="labelTree">
+  <tree-root [nodes]="labelTree" #tree>
     <ng-template #treeNodeTemplate let-node>
       <span>{{node.data.name}}</span>
       <a (click)="addLabelNode(node)">[增加子标签]</a>

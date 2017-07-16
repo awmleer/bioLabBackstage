@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
 import {CONFIG} from "../../app/config";
+import {TreeComponent} from "angular-tree-component";
 
 @Component({
   selector: 'app-labels',
@@ -28,6 +29,7 @@ export class LabelsComponent implements OnInit {
   }
 
   addLabelNode(parentLabel){
+    console.log(parentLabel);
     let name = prompt('请输入新标签的名字');
     this.http.post(CONFIG.apiUrl+'/paper/label/add/',{
       parentId: parentLabel.id,
@@ -35,12 +37,7 @@ export class LabelsComponent implements OnInit {
     }).toPromise().then(response=>{
       let data = response.json();
       if (data['status']=='success') {
-        parentLabel.children.push({
-          id:data['payload'].newLabelId,
-          name: name,
-          children: []
-        });
-        this.labelTree.treeModel.update();
+        this.initLabelTree();
       }else if (data['status']=='error') {
         alert(data['payload']);
       }
@@ -69,8 +66,7 @@ export class LabelsComponent implements OnInit {
     }).toPromise().then(response=>{
       let data = response.json();
       if (data['status'] == 'success') {
-        label.name=name;
-        this.labelTree.treeModel.update();
+        this.initLabelTree();
       }else{
         alert(data['payload']);
       }
