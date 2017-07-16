@@ -13,7 +13,7 @@ addons:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -avz $TRAVIS_BUILD_DIR/dist root@118.89.186.130:/var/www/bioLab/backstage/
+  script: rsync -avz $TRAVIS_BUILD_DIR/dist/* root@118.89.186.130:/var/www/bioLab/backstage/
   on:
     branch: master
 notifications:
