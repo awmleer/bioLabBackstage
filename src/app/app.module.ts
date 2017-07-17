@@ -14,6 +14,7 @@ import {Router} from "./app.router";
 // import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
 import {FileUploadModule} from "ng2-file-upload";
+import {PaperAddComponent} from "../pages/paper-add/paper-add.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {FileUploadModule} from "ng2-file-upload";
     PapersComponent,
     LabelsComponent,
     PaperDetailComponent,
-    PaperEditComponent
+    PaperEditComponent,
+    PaperAddComponent
   ],
   imports: [
     BrowserModule,
