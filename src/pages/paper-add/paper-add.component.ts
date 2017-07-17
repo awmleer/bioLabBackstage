@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Params, ActivatedRoute} from "@angular/router";
+import {Params, ActivatedRoute, Router} from "@angular/router";
 import {CONFIG} from "../../app/config";
 import {Http} from "@angular/http";
 import { Location } from '@angular/common';
@@ -22,7 +22,7 @@ export class PaperAddComponent implements OnInit {
 
   constructor(
     private http: Http,
-    public location: Location
+    private router: Router
   ) { }
 
   ngOnInit(){}
@@ -38,8 +38,8 @@ export class PaperAddComponent implements OnInit {
     }).toPromise().then(response=>{
       let data = response.json();
       if (data['status']=='success') {
-        alert('修改成功');
-        this.location.go(`#/paper/${data['payload'].paperId}`);
+        alert('创建成功');
+        this.router.navigate(['/paper',data['payload'].paperId]);
       }else{
         alert(data['payload']);
       }
