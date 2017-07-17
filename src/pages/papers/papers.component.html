@@ -1,3 +1,4 @@
+<a style="margin-top: 15px" class="button" [routerLink]="['/paper/add']">增加论文</a>
 <div class="paper" *ngFor="let paper of papers">
   <h3><a [routerLink]="['/paper',paper.id]">{{paper.title}}</a></h3>
   <p>
