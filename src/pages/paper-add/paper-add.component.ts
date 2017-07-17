@@ -22,6 +22,7 @@ export class PaperAddComponent implements OnInit {
 
   constructor(
     private http: Http,
+    private location: Location,
     private router: Router
   ) { }
 
