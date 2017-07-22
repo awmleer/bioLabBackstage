@@ -16,8 +16,10 @@ export class PaperAddComponent implements OnInit {
     keyword:'',
     publishYear:'',
     abstract:'',
-    major:''
+    major:'',
+    author:''
   };
+  teachersText:string='';
 
 
   constructor(
@@ -29,13 +31,22 @@ export class PaperAddComponent implements OnInit {
   ngOnInit(){}
 
   submit(){
+    let teachers = this.teachersText.split(' ');
+    for (let i = 0; i < teachers.length; i++) {
+      if(teachers[i]==''){
+        teachers.splice(i,1);
+        i--;
+      }
+    }
     this.http.post(CONFIG.apiUrl+`/paper/add/`,{
       title:this.paper.title,
       subject:this.paper.subject,
       keyword:this.paper.keyword,
       publishYear:this.paper.publishYear,
       abstract:this.paper.abstract,
-      major:this.paper.major
+      author:this.paper.author,
+      major:this.paper.major,
+      teachers:teachers
     }).toPromise().then(response=>{
       let data = response.json();
       if (data['status']=='success') {

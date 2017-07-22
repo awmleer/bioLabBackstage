@@ -21,11 +21,14 @@
     <label for="abstractField">摘要</label>
     <textarea id="abstractField" [(ngModel)]="paper.abstract" style="height: 15em;" name="abstract"></textarea>
 
+    <label for="authorField">作者</label>
+    <input type="text" id="authorField" [(ngModel)]="paper.author" name="author">
+
     <label for="majorField">作者专业</label>
     <input type="text" id="majorField" [(ngModel)]="paper.major" name="major">
 
-    <label for="teachersText">导师（请以空格分隔）</label>
-    <input type="text" id="teachersText" [(ngModel)]="teachersText" name="teachersText">
+    <label for="teachersTextField">导师（请以空格分隔）</label>
+    <input type="text" id="teachersTextField" [(ngModel)]="teachersText" name="teachersText">
   </fieldset>
   <button class="button" (click)="submit()">提交</button>
 </form>

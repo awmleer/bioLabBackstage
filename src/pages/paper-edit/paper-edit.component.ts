@@ -48,6 +48,7 @@ export class PaperEditComponent implements OnInit {
       keyword:this.paper.keyword,
       publishYear:this.paper.publishYear,
       abstract:this.paper.abstract,
+      author:this.paper.author,
       major:this.paper.major,
       teachers: teachers
     }).toPromise().then(response=>{
