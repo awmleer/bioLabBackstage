@@ -23,6 +23,9 @@
 
     <label for="majorField">作者专业</label>
     <input type="text" id="majorField" [(ngModel)]="paper.major" name="major">
+
+    <label for="teachersText">导师（请以空格分隔）</label>
+    <input type="text" id="teachersText" [(ngModel)]="teachersText" name="teachersText">
   </fieldset>
   <button class="button" (click)="submit()">提交</button>
 </form>
