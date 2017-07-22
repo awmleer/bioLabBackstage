@@ -13,7 +13,7 @@ export const Router=RouterModule.forRoot([
     path: 'paper/add',
     component: PaperAddComponent,
   },{
-    path: 'labels',
+    path: 'labels/:type',
     component: LabelsComponent
   },{
     path: 'paper/:id',

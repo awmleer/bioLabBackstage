@@ -42,8 +42,6 @@ export class PaperEditComponent implements OnInit {
         i--;
       }
     }
-
-    console.log(teachers);
     this.http.post(CONFIG.apiUrl+`/paper/${this.paper.id}/edit/`,{
       title:this.paper.title,
       subject:this.paper.subject,
