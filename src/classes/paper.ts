@@ -1,0 +1,19 @@
+export interface PaperDetail {
+  id:number;
+  title:string;
+  subject:string;
+  keyword:string;
+  abstract:string;
+  major:string;
+  teachers:{
+    id:number;
+    name:string;
+  }[];
+  labels:{
+    id:number;
+    name:string;
+  }[];
+  publishYear:number;
+  downloadCount:number;
+  author:string;
+}
