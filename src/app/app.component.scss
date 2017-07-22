@@ -16,6 +16,9 @@ nav.header{
   .links{
     display: inline-block;
     float: right;
+    .router-active{
+      font-weight: bold;
+    }
   }
   h1,a{
     font-size: 30px;
