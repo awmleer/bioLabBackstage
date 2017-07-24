@@ -1,21 +1,21 @@
 import {html, uri} from "./types";
 
-export interface ReagentEntry {
+export class ReagentEntry {
   id: number;
-  chineseName: string;
+  chineseName: string='';
 }
 
-export interface ReagentBrief extends ReagentEntry {
-  englishName: string;
-  molecularFormula: string;
-  molecularFormulaParsed: html;
-  molecularWeight: number;
-  dangerous: null | string;
-  labels: ReagentLabel[];
+export class ReagentBrief extends ReagentEntry {
+  englishName: string='';
+  molecularFormula: string='';
+  molecularFormulaParsed: html='';
+  molecularWeight: number=0;
+  dangerous: null | string='';
+  labels: ReagentLabel[]=[];
 }
 
-export interface ReagentDetail extends ReagentBrief {
-  pictures: ReagentPicture[];
+export class ReagentDetail extends ReagentBrief {
+  pictures: ReagentPicture[]=[];
 }
 
 export interface ReagentPicture {

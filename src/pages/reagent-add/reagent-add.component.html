@@ -1,0 +1,26 @@
+<div class="header">
+  <button id="btn-go-back" (click)="location.back();" class="button button-black">返回</button>
+  <h2>增加试剂</h2>
+</div>
+
+
+<form *ngIf="reagent">
+  <fieldset>
+    <label for="chineseNameField">中文名</label>
+    <input type="text" id="chineseNameField" [(ngModel)]="reagent.chineseName" name="chineseName">
+
+    <label for="englishNameField">英文名</label>
+    <input type="text" id="englishNameField" [(ngModel)]="reagent.englishName" name="englishName">
+
+    <label for="molecularFormulaField">分子式</label>
+    <input type="text" id="molecularFormulaField" [(ngModel)]="reagent.molecularFormula" name="molecularFormula">
+
+    <label for="molecularWeightField">分子量</label>
+    <input type="number" id="molecularWeightField" [(ngModel)]="reagent.molecularWeight" name="molecularWeight">
+
+    <label for="dangerousField">危化品类型（如果不是危化品请留空）</label>
+    <input type="text" id="dangerousField" [(ngModel)]="reagent.dangerous" name="dangerous">
+  </fieldset>
+  <button class="button" (click)="submit()">提交</button>
+</form>
+

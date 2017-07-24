@@ -17,6 +17,7 @@ import {FileUploadModule} from "ng2-file-upload";
 import {PaperAddComponent} from "../pages/paper-add/paper-add.component";
 import { ReagentsComponent } from '../pages/reagents/reagents.component';
 import {ApiService} from "../services/api.service";
+import { ReagentAddComponent } from '../pages/reagent-add/reagent-add.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ApiService} from "../services/api.service";
     PaperDetailComponent,
     PaperEditComponent,
     PaperAddComponent,
-    ReagentsComponent
+    ReagentsComponent,
+    ReagentAddComponent
   ],
   imports: [
     BrowserModule,
