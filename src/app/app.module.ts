@@ -15,6 +15,7 @@ import {Router} from "./app.router";
 import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {PaperAddComponent} from "../pages/paper-add/paper-add.component";
+import { ReagentsComponent } from '../pages/reagents/reagents.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {PaperAddComponent} from "../pages/paper-add/paper-add.component";
     LabelsComponent,
     PaperDetailComponent,
     PaperEditComponent,
-    PaperAddComponent
+    PaperAddComponent,
+    ReagentsComponent
   ],
   imports: [
     BrowserModule,
