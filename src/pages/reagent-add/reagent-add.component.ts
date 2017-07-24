@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ReagentBrief} from "../../classes/reagent";
 import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-reagent-add',
@@ -11,6 +12,7 @@ import {Router} from "@angular/router";
 export class ReagentAddComponent implements OnInit {
   reagent:ReagentBrief=new ReagentBrief;
   constructor(
+    public location: Location,
     private api: ApiService,
     private router: Router
   ) { }
