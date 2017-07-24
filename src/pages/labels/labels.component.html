@@ -1,8 +1,9 @@
 <div style="padding: 20px 0 100px;" *ngIf="labelTree">
+  <a (click)="addLabelNode(null)">[增加一个顶级标签]</a>
   <tree-root [nodes]="labelTree" #tree>
     <ng-template #treeNodeTemplate let-node>
       <span>{{node.data.name}}</span>
-      <a (click)="addLabelNode(node)">[增加子标签]</a>
+      <a (click)="addLabelNode(node.id)">[增加子标签]</a>
       <a (click)="editLabel(node)">[修改]</a>
       <a (click)="removeLabel(node)">[删除]</a>
     </ng-template>

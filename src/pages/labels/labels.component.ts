@@ -35,11 +35,11 @@ export class LabelsComponent implements OnInit {
     });
   }
 
-  addLabelNode(parentLabel){
-    console.log(parentLabel);
+  addLabelNode(parentLabelId){
+    console.log(parentLabelId);
     let name = prompt('请输入新标签的名字');
     this.http.post(`${CONFIG.apiUrl}/${this.type}/label/add/`,{
-      parentId: parentLabel.id,
+      parentId: parentLabelId,
       name: name
     }).toPromise().then(response=>{
       let data = response.json();
