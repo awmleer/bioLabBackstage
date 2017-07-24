@@ -16,6 +16,7 @@ import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {PaperAddComponent} from "../pages/paper-add/paper-add.component";
 import { ReagentsComponent } from '../pages/reagents/reagents.component';
+import {ApiService} from "../services/api.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,10 @@ import { ReagentsComponent } from '../pages/reagents/reagents.component';
     FileUploadModule,
     Router
   ],
-  providers: [LabelService],
+  providers: [
+    LabelService,
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

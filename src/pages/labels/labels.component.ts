@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {CONFIG} from "../../app/config";
 import {ActivatedRoute, Params} from "@angular/router";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-labels',
@@ -16,6 +17,7 @@ export class LabelsComponent implements OnInit {
 
   constructor(
     private http:Http,
+    private api: ApiService,
     private route: ActivatedRoute
   ) { }
 
@@ -28,9 +30,8 @@ export class LabelsComponent implements OnInit {
   }
 
   initLabelTree(){
-    this.http.get(`${CONFIG.apiUrl}/${this.type}/label/tree/`).toPromise().then(response=>{
-      this.labelTree=response.json();
-      console.log(this.labelTree);
+    this.api.get(`/${this.type}/label/tree/`).then(data=>{
+      this.labelTree=data;
     });
   }
 
