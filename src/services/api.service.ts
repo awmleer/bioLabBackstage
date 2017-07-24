@@ -11,6 +11,7 @@ export class ApiService {
   ) {}
 
   get(url:string, params:object={}):Promise<any>{
+    console.log(CONFIG.apiUrl + url);
     return this.http.get(CONFIG.apiUrl+url,{
       params:params
     }).toPromise().then((response:Response)=>{
