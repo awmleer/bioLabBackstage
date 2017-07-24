@@ -7,7 +7,8 @@ export interface ReagentEntry {
 
 export interface ReagentBrief extends ReagentEntry {
   englishName: string;
-  molecularFormula: html;
+  molecularFormula: string;
+  molecularFormulaParsed: html;
   molecularWeight: number;
   dangerous: null | string;
   labels: ReagentLabel[];
