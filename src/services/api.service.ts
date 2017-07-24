@@ -18,6 +18,7 @@ export class ApiService {
       if (data['status']=='success') {
         return data['payload'];
       }else{
+        alert(data['payload']);//TODO change to toast
         throw new Error(data['payload']);
       }
     });

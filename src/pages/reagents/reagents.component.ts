@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from "@angular/http";
-import {CONFIG} from "../../app/config";
 import {ReagentEntry} from "../../classes/reagent";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-reagents',
@@ -11,12 +10,12 @@ import {ReagentEntry} from "../../classes/reagent";
 export class ReagentsComponent implements OnInit {
   reagents:ReagentEntry;
   constructor(
-    private http:Http
+    private api:ApiService
   ) { }
 
   ngOnInit() {
-    this.http.get(`${CONFIG.apiUrl}/reagent/list/`).toPromise().then(response=>{
-      this.reagents=response.json()['payload'];
+    this.api.get(`/reagent/list/`).then(data=>{
+      this.reagents=data;
     });
   }
 
