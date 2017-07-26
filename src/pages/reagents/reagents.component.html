@@ -1,10 +1,13 @@
 <a style="margin-top: 15px" class="button" [routerLink]="['/reagent/add']">增加试剂</a>
 
-<div class="paper" *ngFor="let reagent of reagents">
-  <h3><a [routerLink]="['/reagent',reagent.id]">{{reagent.chineseName}} {{reagent.englishName}}</a></h3>
+<div class="reagent" *ngFor="let reagent of reagents">
+  <h3>
+    <a [routerLink]="['/reagent',reagent.id]">{{reagent.englishName}} {{reagent.chineseName}}</a>
+    <span *ngIf="reagent.alias">&nbsp;({{reagent.alias}})</span>
+  </h3>
   <!--TODO 危化品显示-->
-  <p>
-    <label *ngFor="let label of reagent.labels" class="label label-gray">{{label.name}}</label>
-    <span *ngIf="paper?.labels.length==0">暂无标签</span>
-  </p>
+  <!--<p>-->
+    <!--<label *ngFor="let label of reagent.labels" class="label label-gray">{{label.name}}</label>-->
+    <!--<span *ngIf="reagent?.labels.length==0">暂无标签</span>-->
+  <!--</p>-->
 </div>

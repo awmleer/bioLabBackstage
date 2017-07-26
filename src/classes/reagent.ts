@@ -2,20 +2,22 @@ import {html, uri} from "./types";
 
 export class ReagentEntry {
   id: number;
-  chineseName: string='';
+  chineseName: string;
+  englishName: string;
+  alias: string;
 }
 
 export class ReagentBrief extends ReagentEntry {
-  englishName: string='';
-  molecularFormula: string='';
-  molecularFormulaParsed: html='';
-  molecularWeight: number=0;
-  dangerous: null | string='';
-  labels: ReagentLabel[]=[];
+  molecularFormula: string;
+  molecularFormulaParsed: html;
+  molecularWeight: number;
+  dangerous: null | string;
+  labels: ReagentLabel[];
 }
 
 export class ReagentDetail extends ReagentBrief {
-  pictures: ReagentPicture[]=[];
+  pictures: ReagentPicture[];
+  description: string;
 }
 
 export interface ReagentPicture {

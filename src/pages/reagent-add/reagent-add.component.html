@@ -12,6 +12,9 @@
     <label for="englishNameField">英文名</label>
     <input type="text" id="englishNameField" [(ngModel)]="reagent.englishName" name="englishName">
 
+    <label for="aliasField">别名（多个别名请用空格分隔）</label>
+    <input type="text" id="aliasField" [(ngModel)]="reagent.alias" name="alias">
+
     <label for="molecularFormulaField">分子式</label>
     <input type="text" id="molecularFormulaField" [(ngModel)]="reagent.molecularFormula" name="molecularFormula">
 
@@ -20,6 +23,9 @@
 
     <label for="dangerousField">危化品类型（如果不是危化品请留空）</label>
     <input type="text" id="dangerousField" [(ngModel)]="reagent.dangerous" name="dangerous">
+
+    <label for="descriptionField">简介</label>
+    <textarea id="descriptionField" [(ngModel)]="reagent.description" style="height: 15em;" name="description"></textarea>
   </fieldset>
   <button class="button" (click)="submit()">提交</button>
 </form>

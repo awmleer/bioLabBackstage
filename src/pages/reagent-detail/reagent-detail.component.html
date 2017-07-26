@@ -8,8 +8,10 @@
   <h3>基本信息</h3>
   <p>
     id：{{reagent.id}}<br>
-    中文名：{{reagent.chineseName}}<br>
     英文名：{{reagent.englishName}}<br>
+    中文名：{{reagent.chineseName}}<br>
+    别名：{{reagent.alias}}<br>
+    简介：{{reagent.description}}<br>
     分子式：<span [innerHtml]="reagent.molecularFormulaParsed"></span><br>
     分子量：{{reagent.molecularWeight}}<br>
     危化品：{{reagent.dangerous}}<br>

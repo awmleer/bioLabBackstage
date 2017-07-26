@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ReagentBrief} from "../../classes/reagent";
+import {ReagentDetail} from "../../classes/reagent";
 import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
@@ -10,7 +10,7 @@ import {Location} from "@angular/common";
   styleUrls: ['./reagent-add.component.scss']
 })
 export class ReagentAddComponent implements OnInit {
-  reagent:ReagentBrief=new ReagentBrief;
+  reagent:ReagentDetail=new ReagentDetail();
   constructor(
     public location: Location,
     private api: ApiService,
