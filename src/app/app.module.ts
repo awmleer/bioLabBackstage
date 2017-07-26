@@ -19,6 +19,7 @@ import { ReagentsComponent } from '../pages/reagents/reagents.component';
 import {ApiService} from "../services/api.service";
 import { ReagentAddComponent } from '../pages/reagent-add/reagent-add.component';
 import { ReagentDetailComponent } from '../pages/reagent-detail/reagent-detail.component';
+import { ReagentEditComponent } from '../pages/reagent-edit/reagent-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ReagentDetailComponent } from '../pages/reagent-detail/reagent-detail.c
     PaperAddComponent,
     ReagentsComponent,
     ReagentAddComponent,
-    ReagentDetailComponent
+    ReagentDetailComponent,
+    ReagentEditComponent
   ],
   imports: [
     BrowserModule,

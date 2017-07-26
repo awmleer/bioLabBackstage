@@ -7,6 +7,7 @@ import {PaperAddComponent} from "../pages/paper-add/paper-add.component";
 import {ReagentsComponent} from "../pages/reagents/reagents.component";
 import {ReagentAddComponent} from "../pages/reagent-add/reagent-add.component";
 import {ReagentDetailComponent} from "../pages/reagent-detail/reagent-detail.component";
+import {ReagentEditComponent} from "../pages/reagent-edit/reagent-edit.component";
 
 export const Router=RouterModule.forRoot([
   {
@@ -33,6 +34,9 @@ export const Router=RouterModule.forRoot([
   },{
     path: 'paper/:id/edit',
     component: PaperEditComponent
+  },{
+    path: 'reagent/:id/edit',
+    component: ReagentEditComponent
   }
 ],{
   useHash: true
