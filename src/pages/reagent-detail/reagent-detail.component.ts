@@ -5,6 +5,9 @@ import {ReagentDetail, ReagentLabel} from "../../classes/reagent";
 import {LabelService} from "../../services/label.service";
 import * as _ from "lodash"
 import {Location} from "@angular/common";
+import { FileUploader } from 'ng2-file-upload';
+import {CONFIG} from "../../app/config";
+
 
 @Component({
   selector: 'app-reagent-detail',
@@ -12,6 +15,7 @@ import {Location} from "@angular/common";
   styleUrls: ['./reagent-detail.component.scss']
 })
 export class ReagentDetailComponent implements OnInit {
+  public uploader:FileUploader;
   reagent: ReagentDetail;
   labelSearchText:string='';
   filteredLabels:ReagentLabel[]=[];
@@ -28,6 +32,7 @@ export class ReagentDetailComponent implements OnInit {
       .subscribe((params: Params)=>{
         this.api.get(`/reagent/${params['id']}/detail/`).then(data=>{
           this.reagent=data;
+          this.uploader=new FileUploader({url: `${CONFIG.apiUrl}/reagent/${this.reagent.id}/picture/add/`});
         });
       });
   }

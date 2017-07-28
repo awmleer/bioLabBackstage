@@ -5,33 +5,49 @@
 </div>
 
 <div *ngIf="reagent">
-  <h3>基本信息</h3>
-  <p>
-    id：{{reagent.id}}<br>
-    英文名：{{reagent.englishName}}<br>
-    中文名：{{reagent.chineseName}}<br>
-    别名：{{reagent.alias}}<br>
-    简介：{{reagent.description}}<br>
-    分子式：<span [innerHtml]="reagent.molecularFormulaParsed"></span><br>
-    分子量：{{reagent.molecularWeight}}<br>
-    危化品：{{reagent.dangerous}}<br>
-    <!--TODO 图片的显示-->
-  </p>
-</div>
-
-<div *ngIf="reagent" class="labels">
-  <h3>标签管理</h3>
-  <div style="border-bottom: solid 1px #d1d1d1;margin-bottom: 10px;padding-bottom: 5px">
-    <button *ngFor="let label of reagent.labels" (click)="removeLabel(label.id)" class="button button-sm button-black" style="margin-right: 10px">{{label.name}}</button>
-    <span *ngIf="reagent.labels.length==0">暂无标签</span>
+  <div>
+    <h3>基本信息</h3>
+    <p>
+      id：{{reagent.id}}<br>
+      英文名：{{reagent.englishName}}<br>
+      中文名：{{reagent.chineseName}}<br>
+      别名：{{reagent.alias}}<br>
+      简介：{{reagent.description}}<br>
+      分子式：<span [innerHtml]="reagent.molecularFormulaParsed"></span><br>
+      分子量：{{reagent.molecularWeight}}<br>
+      危化品：{{reagent.dangerous}}<br>
+    </p>
   </div>
   <div>
-    <input type="text" placeholder="搜索标签…" [ngModel]="labelSearchText" (ngModelChange)="labelSearchTextChanged($event)">
-    <div *ngFor="let label of filteredLabels" class="filteredLabel">
-      <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;"></span></span>
-      <!--TODO 上级标签的显示-->
-      <button (click)="addLabel(label)" class="button button-sm" style="float: right;">添加</button>
-    </div>
+    <h3>图片</h3>
+    <div *ngIf="uploader">
+      <input type="file" ng2FileSelect [uploader]="uploader"/>
+      <button class="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+        上传
+      </button>
+      <span *ngIf="uploader.queue.length>0">
+        <span *ngIf="uploader.queue[uploader.queue.length-1]?.isUploading">上传中</span>
+        <span *ngIf="uploader.queue[uploader.queue.length-1]?.isSuccess">上传成功</span>
+        <span *ngIf="uploader.queue[uploader.queue.length-1]?.isError">上传失败</span>
+      </span>
 
+      <!--<span *ngIf="uploader.progress==100">{{uploader.queue[0]?.isSuccess?'上传成功':'上传失败'}}</span>-->
+    </div>
+  </div>
+  <div class="labels">
+    <h3>标签管理</h3>
+    <div style="border-bottom: solid 1px #d1d1d1;margin-bottom: 10px;padding-bottom: 5px">
+      <button *ngFor="let label of reagent.labels" (click)="removeLabel(label.id)" class="button button-sm button-black" style="margin-right: 10px">{{label.name}}</button>
+      <span *ngIf="reagent.labels.length==0">暂无标签</span>
+    </div>
+    <div>
+      <input type="text" placeholder="搜索标签…" [ngModel]="labelSearchText" (ngModelChange)="labelSearchTextChanged($event)">
+      <div *ngFor="let label of filteredLabels" class="filteredLabel">
+        <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;"></span></span>
+        <!--TODO 上级标签的显示-->
+        <button (click)="addLabel(label)" class="button button-sm" style="float: right;">添加</button>
+      </div>
+
+    </div>
   </div>
 </div>

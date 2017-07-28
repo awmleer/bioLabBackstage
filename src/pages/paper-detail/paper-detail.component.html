@@ -22,13 +22,17 @@
   <h3>上传文件</h3>
   <div>
     <!--<form action="/api/test/" method="post">-->
-      <input type="file" ng2FileSelect [uploader]="uploader"/>
-      <!--<input type="file" name="paperFile" ng2FileSelect [uploader]="uploader" />-->
-      <!--<button type="submit" class="button">-->
-        <button class="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-        上传
-      </button>
-      <span *ngIf="uploader.progress==100">{{uploader.queue[0]?.isSuccess?'上传成功':'上传失败'}}</span>
+    <input type="file" ng2FileSelect [uploader]="uploader"/>
+    <!--<input type="file" name="paperFile" ng2FileSelect [uploader]="uploader" />-->
+    <!--<button type="submit" class="button">-->
+    <button class="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+      上传
+    </button>
+    <span *ngIf="uploader.queue.length>0">
+        <span *ngIf="uploader.queue[uploader.queue.length-1]?.isUploading">上传中</span>
+        <span *ngIf="uploader.queue[uploader.queue.length-1]?.isSuccess">上传成功</span>
+        <span *ngIf="uploader.queue[uploader.queue.length-1]?.isError">上传失败</span>
+      </span>
     <!--</form>-->
   </div>
 </div>
