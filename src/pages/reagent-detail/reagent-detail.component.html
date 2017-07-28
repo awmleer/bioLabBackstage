@@ -30,7 +30,7 @@
       </a>
       <div class="right">
         <p>{{picture.description}}</p>
-        <button>修改图片描述</button><br>
+        <button (click)="editPictureDescription(picture.id)">修改图片描述</button><br>
         <button (click)="removePicture(picture.id)">删除</button><br>
       </div>
     </div>

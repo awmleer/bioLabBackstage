@@ -36,7 +36,7 @@ export class ReagentDetailComponent implements OnInit {
       });
   }
 
-  freshReagent(reagentId){
+  freshReagent(reagentId=this.reagent.id){
     return this.api.get(`/reagent/${reagentId}/detail/`).then(data=>{
       this.reagent=data;
       return;
@@ -83,9 +83,18 @@ export class ReagentDetailComponent implements OnInit {
   removePicture(pictureId){
     if (confirm('确定要删除这张图片吗？')) {
       this.api.get(`/reagent/picture/${pictureId}/remove/`).then(()=>{
-        this.freshReagent(this.reagent.id);
+        this.freshReagent();
       });
     }
+  }
+
+  editPictureDescription(pictureId){
+    let description=prompt('请输入对这张图片的描述');
+    this.api.post(`/reagent/picture/${pictureId}/editDescription/`,{
+      description: description
+    }).then(()=>{
+      this.freshReagent();
+    });
   }
 
 }
