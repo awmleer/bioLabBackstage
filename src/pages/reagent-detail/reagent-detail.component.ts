@@ -30,11 +30,17 @@ export class ReagentDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .subscribe((params: Params)=>{
-        this.api.get(`/reagent/${params['id']}/detail/`).then(data=>{
-          this.reagent=data;
+        this.freshReagent(params['id']).then(()=>{
           this.uploader=new FileUploader({url: `${CONFIG.apiUrl}/reagent/${this.reagent.id}/picture/add/`});
         });
       });
+  }
+
+  freshReagent(reagentId){
+    return this.api.get(`/reagent/${reagentId}/detail/`).then(data=>{
+      this.reagent=data;
+      return;
+    });
   }
 
 
@@ -71,6 +77,15 @@ export class ReagentDetailComponent implements OnInit {
     // this.labelSearchText=$event.target.value;
     this.labelSearchText=newValue;
     this.filterLabels();
+  }
+
+
+  removePicture(pictureId){
+    if (confirm('确定要删除这张图片吗？')) {
+      this.api.get(`/reagent/picture/${pictureId}/remove/`).then(()=>{
+        this.freshReagent(this.reagent.id);
+      });
+    }
   }
 
 }

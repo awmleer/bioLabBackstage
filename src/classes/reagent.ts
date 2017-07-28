@@ -21,6 +21,7 @@ export class ReagentDetail extends ReagentBrief {
 }
 
 export interface ReagentPicture {
+  id: number;
   description: string;
   url: url;
 }
