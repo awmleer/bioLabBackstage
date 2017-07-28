@@ -20,6 +20,16 @@
   </div>
   <div>
     <h3>图片</h3>
+    <p><b>点击图片可以查看大图</b></p>
+    <div *ngFor="let picture of reagent.pictures" class="reagent-picture">
+      <a [href]="picture.url" target="_blank">
+        <img [src]="picture.url+'?imageMogr2/thumbnail/300x'">
+      </a>
+      <div class="right">
+        <p>{{picture.description}}</p>
+      </div>
+    </div>
+    <hr>
     <div *ngIf="uploader">
       <input type="file" ng2FileSelect [uploader]="uploader"/>
       <button class="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">

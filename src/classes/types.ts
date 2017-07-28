@@ -1,2 +1,3 @@
 export type html = string;
-export type uri = string;
+export type url = string;
+

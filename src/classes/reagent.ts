@@ -1,4 +1,4 @@
-import {html, uri} from "./types";
+import {html, url} from "./types";
 
 export class ReagentEntry {
   id: number;
@@ -22,7 +22,7 @@ export class ReagentDetail extends ReagentBrief {
 
 export interface ReagentPicture {
   description: string;
-  uri: uri;
+  url: url;
 }
 
 export interface ReagentLabel {
