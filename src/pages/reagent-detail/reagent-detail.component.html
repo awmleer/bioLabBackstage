@@ -24,7 +24,7 @@
     <div *ngIf="reagent.pictures.length==0">
       <p align="center">暂无图片</p>
     </div>
-    <div *ngFor="let picture of reagent.pictures" class="reagent-picture">
+    <div *ngFor="let picture of reagent.pictures; let i = index" class="reagent-picture">
       <a [href]="picture.url" target="_blank">
         <img [src]="picture.url+'?imageMogr2/thumbnail/300x'">
       </a>
@@ -32,6 +32,8 @@
         <p>{{picture.description}}</p>
         <button (click)="editPictureDescription(picture.id)">修改图片描述</button><br>
         <button (click)="removePicture(picture.id)">删除</button><br>
+        <button [disabled]="i==0" (click)="movePicture(picture.id,'up')">↑上移</button>
+        <button [disabled]="i==reagent.pictures.length-1" (click)="movePicture(picture.id,'down')">↓下移</button>
       </div>
     </div>
     <div *ngIf="uploader" class="uploader">

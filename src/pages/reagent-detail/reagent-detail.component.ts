@@ -88,6 +88,14 @@ export class ReagentDetailComponent implements OnInit {
     }
   }
 
+  movePicture(pictureId,direction:'up'|'down'){
+    this.api.get(`/reagent/picture/${pictureId}/move/`,{
+      direction:direction
+    }).then(()=>{
+      this.freshReagent();
+    });
+  }
+
   editPictureDescription(pictureId){
     let description=prompt('请输入对这张图片的描述');
     this.api.post(`/reagent/picture/${pictureId}/editDescription/`,{
