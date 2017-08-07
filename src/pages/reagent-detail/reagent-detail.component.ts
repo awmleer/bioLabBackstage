@@ -7,6 +7,9 @@ import * as _ from "lodash"
 import {Location} from "@angular/common";
 import { FileUploader } from 'ng2-file-upload';
 import {CONFIG} from "../../app/config";
+import {Subject} from "rxjs/Subject";
+import 'rxjs/add/operator/debounceTime';
+
 
 
 @Component({
@@ -18,13 +21,18 @@ export class ReagentDetailComponent implements OnInit {
   public uploader:FileUploader;
   reagent: ReagentDetail;
   labelSearchText:string='';
+  labelSearchTextSubject: Subject<string> = new Subject<string>();
 
   constructor(
     public location: Location,
     private route: ActivatedRoute,
     public labelService: LabelService,
     private api: ApiService
-  ) { }
+  ) {
+    this.labelSearchTextSubject
+      .debounceTime(500) // wait 300ms after the last event before emitting last event
+      .subscribe(val => this.labelSearchText = val);
+  }
 
   ngOnInit() {
     this.route.params
@@ -72,8 +80,7 @@ export class ReagentDetailComponent implements OnInit {
   }
 
   labelSearchTextChanged(newValue){
-    // this.labelSearchText=$event.target.value;
-    this.labelSearchText=newValue;
+    this.labelSearchTextSubject.next(newValue);
   }
 
 

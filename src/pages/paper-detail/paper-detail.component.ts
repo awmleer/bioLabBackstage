@@ -9,6 +9,8 @@ import 'rxjs/add/operator/toPromise';
 import {LabelService} from "../../services/label.service";
 import * as _ from "lodash"
 import {CONFIG} from "../../app/config";
+import {Subject} from "rxjs/Subject";
+import 'rxjs/add/operator/debounceTime';
 
 
 @Component({
@@ -23,13 +25,18 @@ export class PaperDetailComponent implements OnInit {
   schema;
 
   labelSearchText:string;
+  labelSearchTextSubject: Subject<string> = new Subject<string>();
 
   constructor(
     private http:Http,
     private route: ActivatedRoute,
     public location: Location,
     public labelService: LabelService
-  ) { }
+  ) {
+    this.labelSearchTextSubject
+      .debounceTime(500) // wait 300ms after the last event before emitting last event
+      .subscribe(val => this.labelSearchText = val);
+  }
 
   ngOnInit() {
     this.route.params
@@ -78,8 +85,7 @@ export class PaperDetailComponent implements OnInit {
   }
 
   labelSearchTextChanged(newValue){
-    // this.labelSearchText=$event.target.value;
-    this.labelSearchText=newValue;
+    this.labelSearchTextSubject.next(newValue);
   }
 
 
