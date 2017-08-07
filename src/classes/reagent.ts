@@ -1,4 +1,4 @@
-import {html, url} from "./types";
+import {html, Label, url} from "./types";
 
 export class ReagentEntry {
   id: number;
@@ -26,11 +26,8 @@ export interface ReagentPicture {
   url: url;
 }
 
-export interface ReagentLabel {
-  id: number;
-  name: string;
-  parentId: number;
-}
+export interface ReagentLabel extends Label{}
+
 export interface ReagentLabelTreeNode extends ReagentLabel {
   children: ReagentLabelTreeNode[];
 }

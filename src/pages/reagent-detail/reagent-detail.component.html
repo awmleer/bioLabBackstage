@@ -59,7 +59,7 @@
     <div>
       <input type="text" placeholder="搜索标签…" [ngModel]="labelSearchText" (ngModelChange)="labelSearchTextChanged($event)">
       <div *ngFor="let label of filteredLabels" class="filteredLabel">
-        <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;"></span></span>
+        <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;">{{label | labelParent: labelService.labels}}</span></span>
         <!--TODO 上级标签的显示-->
         <button (click)="addLabel(label)" class="button button-sm" style="float: right;">添加</button>
       </div>

@@ -22,7 +22,7 @@ export class ReagentDetailComponent implements OnInit {
   constructor(
     public location: Location,
     private route: ActivatedRoute,
-    private labelService: LabelService,
+    public labelService: LabelService,
     private api: ApiService
   ) { }
 

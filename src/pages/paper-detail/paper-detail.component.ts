@@ -28,7 +28,7 @@ export class PaperDetailComponent implements OnInit {
     private http:Http,
     private route: ActivatedRoute,
     public location: Location,
-    private labelService: LabelService
+    public labelService: LabelService
   ) { }
 
   ngOnInit() {

@@ -20,6 +20,7 @@ import {ApiService} from "../services/api.service";
 import { ReagentAddComponent } from '../pages/reagent-add/reagent-add.component';
 import { ReagentDetailComponent } from '../pages/reagent-detail/reagent-detail.component';
 import { ReagentEditComponent } from '../pages/reagent-edit/reagent-edit.component';
+import { LabelParentPipe } from '../pipes/label-parent.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ReagentEditComponent } from '../pages/reagent-edit/reagent-edit.compone
     ReagentsComponent,
     ReagentAddComponent,
     ReagentDetailComponent,
-    ReagentEditComponent
+    ReagentEditComponent,
+    LabelParentPipe
   ],
   imports: [
     BrowserModule,
