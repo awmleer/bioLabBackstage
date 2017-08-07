@@ -23,7 +23,6 @@ export class PaperDetailComponent implements OnInit {
   schema;
 
   labelSearchText:string;
-  filteredLabels=[];
 
   constructor(
     private http:Http,
@@ -64,24 +63,23 @@ export class PaperDetailComponent implements OnInit {
         }
       }
       this.labelSearchText='';
-      this.filteredLabels=[];
     });
   }
 
-  filterLabels(){
+
+  get filteredLabels(){ //TODO type definition
     if (this.labelSearchText == '') {
-      this.filteredLabels=[];
-      return;
+      return [];
+    }else{
+      return _.filter(this.labelService.labels,(label)=>{
+        return label.name.indexOf(this.labelSearchText)!=-1
+      });
     }
-    this.filteredLabels=_.filter(this.labelService.labels,(label)=>{
-      return label.name.indexOf(this.labelSearchText)!=-1
-    });
   }
 
   labelSearchTextChanged(newValue){
     // this.labelSearchText=$event.target.value;
     this.labelSearchText=newValue;
-    this.filterLabels();
   }
 
 

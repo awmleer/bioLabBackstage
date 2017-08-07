@@ -18,7 +18,6 @@ export class ReagentDetailComponent implements OnInit {
   public uploader:FileUploader;
   reagent: ReagentDetail;
   labelSearchText:string='';
-  filteredLabels:ReagentLabel[]=[];
 
   constructor(
     public location: Location,
@@ -59,24 +58,22 @@ export class ReagentDetailComponent implements OnInit {
         this.reagent.labels.push(label);
       }
       this.labelSearchText='';
-      this.filteredLabels=[];
     });
   }
 
-  filterLabels(){
+  get filteredLabels():ReagentLabel[]{
     if (this.labelSearchText == '') {
-      this.filteredLabels=[];
-      return;
+      return [];
+    }else{
+      return _.filter(this.labelService.labels,(label)=>{
+        return label.name.indexOf(this.labelSearchText)!=-1
+      });
     }
-    this.filteredLabels=_.filter(this.labelService.reagentLabels,(label)=>{
-      return label.name.indexOf(this.labelSearchText)!=-1
-    });
   }
 
   labelSearchTextChanged(newValue){
     // this.labelSearchText=$event.target.value;
     this.labelSearchText=newValue;
-    this.filterLabels();
   }
 
 
