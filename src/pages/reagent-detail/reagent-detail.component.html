@@ -61,7 +61,7 @@
       <div *ngFor="let label of filteredLabels" class="filteredLabel">
         <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;">{{label | labelParent: labelService.labels}}</span></span>
         <!--TODO 上级标签的显示-->
-        <button (click)="addLabel(label)" class="button button-sm" style="float: right;">添加</button>
+        <button (click)="addLabel(label)" class="button button-sm">添加</button>
       </div>
 
     </div>
