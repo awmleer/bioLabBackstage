@@ -6,7 +6,7 @@
 
 <form *ngIf="paper">
   <fieldset>
-    <label for="titleField">标题</label>
+    <label for="titleField">篇名</label>
     <input type="text" id="titleField" [(ngModel)]="paper.title" name="title">
 
     <label for="subjectField">主题</label>
@@ -15,7 +15,7 @@
     <label for="keywordField">关键词</label>
     <input type="text" id="keywordField" [(ngModel)]="paper.keyword" name="keyword">
 
-    <label for="publishYearField">发表年份</label>
+    <label for="publishYearField">年度</label>
     <input type="text" id="publishYearField" [(ngModel)]="paper.publishYear" name="publishYear">
 
     <label for="abstractField">摘要</label>
