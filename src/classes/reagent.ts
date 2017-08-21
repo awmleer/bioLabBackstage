@@ -10,7 +10,7 @@ export class ReagentEntry {
 export class ReagentBrief extends ReagentEntry {
   molecularFormula: string='';
   molecularFormulaParsed: html;
-  molecularWeight: string;
+  molecularWeight: string='';
   dangerous: null | string='';
   labels: ReagentLabel[];
 }

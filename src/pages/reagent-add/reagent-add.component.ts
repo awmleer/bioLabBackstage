@@ -27,6 +27,8 @@ export class ReagentAddComponent implements OnInit {
     this.api.post('/reagent/add/',this.reagent).then((data)=>{
       alert('添加成功');
       this.router.navigate(['/reagent',data.reagentId]);
+    }).catch(()=>{
+      alert('添加失败');
     });
   }
 

@@ -30,6 +30,8 @@ export class ReagentEditComponent implements OnInit {
   submit(){
     this.api.post(`/reagent/${this.reagent.id}/edit/`,this.reagent).then(()=>{
       this.location.back();
+    }).catch(()=>{
+      alert('修改失败');
     });
   }
 
