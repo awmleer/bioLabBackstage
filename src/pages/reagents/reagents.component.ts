@@ -9,6 +9,8 @@ import {ApiService} from "../../services/api.service";
 })
 export class ReagentsComponent implements OnInit {
   reagents:ReagentEntry;
+  searchText:string;
+
   constructor(
     private api:ApiService
   ) { }
@@ -16,6 +18,18 @@ export class ReagentsComponent implements OnInit {
   ngOnInit() {
     this.api.get(`/reagent/list/`).then(data=>{
       this.reagents=data;
+    });
+  }
+  search(){
+    if (!this.searchText) {
+      return;
+    }
+    this.api.post(`/reagent/search/1/`,[{
+      "field": "name",
+      "value": this.searchText
+    }]).then(data=>{
+      this.reagents=data['reagents'];
+      console.log(this.reagents);
     });
   }
 

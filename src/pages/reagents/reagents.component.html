@@ -1,4 +1,8 @@
 <a style="margin-top: 15px" class="button" [routerLink]="['/reagent/add']">增加试剂</a>
+<div class="search-box" style="float: right;padding-top: 15px">
+  <input [(ngModel)]="searchText" type="text" title="搜索" placeholder="搜索">
+  <button (click)="search()">搜索</button>
+</div>
 
 <div class="reagent" *ngFor="let reagent of reagents">
   <h3>

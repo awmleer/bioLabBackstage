@@ -96,3 +96,15 @@ h3{
   line-height: 4.5rem;
   padding: 0 2rem;
 }
+
+
+div.search-box{
+  display: inline-block;
+  input{
+    width:250px;
+    display: inline-block;
+  }
+  button{
+    display: inline-block;
+  }
+}
