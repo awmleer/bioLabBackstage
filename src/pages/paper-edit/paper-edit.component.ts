@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Params, ActivatedRoute} from "@angular/router";
-import {CONFIG} from "../../app/config";
-import {Http} from "@angular/http";
 import { Location } from '@angular/common';
 import {PaperDetail} from "../../classes/paper";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-paper-edit',
@@ -16,16 +15,16 @@ export class PaperEditComponent implements OnInit {
 
 
   constructor(
-    private http: Http,
     public location: Location,
     private route: ActivatedRoute,
+    private api: ApiService,
   ) {}
 
   ngOnInit() {
     this.route.params
       .subscribe((params: Params)=>{
-        this.http.get(`${CONFIG.apiUrl}/paper/${params['id']}/detail/`).toPromise().then(response=>{
-          this.paper=response.json();
+        this.api.get(`/paper/${params['id']}/detail/`).then(data=>{
+          this.paper=data;
           this.teachersText='';
           for (let i in this.paper.teachers) {
             this.teachersText+=this.paper.teachers[i].name+' ';
@@ -42,7 +41,7 @@ export class PaperEditComponent implements OnInit {
         i--;
       }
     }
-    this.http.post(CONFIG.apiUrl+`/paper/${this.paper.id}/edit/`,{
+    this.api.post(`/paper/${this.paper.id}/edit/`,{
       title:this.paper.title,
       subject:this.paper.subject,
       keyword:this.paper.keyword,
@@ -51,14 +50,9 @@ export class PaperEditComponent implements OnInit {
       author:this.paper.author,
       major:this.paper.major,
       teachers: teachers
-    }).toPromise().then(response=>{
-      let data = response.json();
-      if (data['status']=='success') {
-        alert('修改成功');
-        this.location.back();
-      }else{
-        alert(data['payload']);
-      }
+    }).then(()=>{
+      alert('修改成功');
+      this.location.back();
     });
   }
 
