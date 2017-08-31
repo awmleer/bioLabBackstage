@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
-import {CONFIG} from "../app/config";
 import {ApiService} from "./api.service";
-import {Http} from "@angular/http";
+
 
 @Injectable()
 export class LabelService {
@@ -13,10 +12,9 @@ export class LabelService {
 
   constructor(
     private api: ApiService,
-    private http: Http
   ) {
-    this.http.get(`${CONFIG.apiUrl}/paper/label/list/`).toPromise().then(response=>{
-      this.labels=response.json();
+    this.api.get(`/paper/label/list/`).then(data=>{
+      this.labels=data;
     });
     this.api.get(`/reagent/label/list/`).then(data=>{
       this.reagentLabels=data;

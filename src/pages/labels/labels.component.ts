@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
 import {CONFIG} from "../../app/config";
@@ -16,7 +15,6 @@ export class LabelsComponent implements OnInit {
   labelTree;
 
   constructor(
-    private http:Http,
     private api: ApiService,
     private route: ActivatedRoute
   ) { }
@@ -38,45 +36,30 @@ export class LabelsComponent implements OnInit {
   addLabelNode(parentLabelId){
     console.log(parentLabelId);
     let name = prompt('请输入新标签的名字');
-    this.http.post(`${CONFIG.apiUrl}/${this.type}/label/add/`,{
+    this.api.post(`/${this.type}/label/add/`,{
       parentId: parentLabelId,
       name: name
-    }).toPromise().then(response=>{
-      let data = response.json();
-      if (data['status']=='success') {
-        this.initLabelTree();
-      }else if (data['status']=='error') {
-        alert(data['payload']);
-      }
+    }).then(response=>{
+      this.initLabelTree();
     });
   }
 
   removeLabel(label){
     if(!confirm('确定要删除这个标签吗？'))return;
-    this.http.post(`${CONFIG.apiUrl}/${this.type}/label/remove/`,{
+    this.api.post(`/${this.type}/label/remove/`,{
       id: label.id
-    }).toPromise().then(response=>{
-      let data = response.json();
-      if (data['status']=='success') {
-        this.initLabelTree();
-      }else{
-        alert(data['payload']);
-      }
+    }).then(response=>{
+      this.initLabelTree();
     });
   }
 
   editLabel(label){
     let name = prompt('请输入新的标签名');
-    this.http.post(`${CONFIG.apiUrl}/${this.type}/label/edit/`,{
+    this.api.post(`/${this.type}/label/edit/`,{
       id: label.id,
       name: name
-    }).toPromise().then(response=>{
-      let data = response.json();
-      if (data['status'] == 'success') {
-        this.initLabelTree();
-      }else{
-        alert(data['payload']);
-      }
+    }).then(response=>{
+      this.initLabelTree();
     });
   }
 
