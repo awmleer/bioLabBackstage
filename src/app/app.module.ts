@@ -21,6 +21,8 @@ import { ReagentAddComponent } from '../pages/reagent-add/reagent-add.component'
 import { ReagentDetailComponent } from '../pages/reagent-detail/reagent-detail.component';
 import { ReagentEditComponent } from '../pages/reagent-edit/reagent-edit.component';
 import { LabelParentPipe } from '../pipes/label-parent.pipe';
+import {NgZorroAntdModule} from "ng-zorro-antd/src/release/ng-zorro-antd.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { LabelParentPipe } from '../pipes/label-parent.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule.forRoot(),
     TreeModule,
     FileUploadModule,
     Router
