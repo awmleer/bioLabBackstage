@@ -1,35 +1,37 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" class="button button-black">返回</button>
+  <button id="btn-go-back" (click)="location.back();" class="btn btn-primary">返回</button>
   <h2>增加论文</h2>
 </div>
 
 
-<form *ngIf="paper">
-  <fieldset>
-    <label for="titleField">篇名</label>
-    <input type="text" id="titleField" [(ngModel)]="paper.title" name="title">
+<form *ngIf="paper" class="form-group">
+  <label for="titleField">篇名</label>
+  <input class="form-control" type="text" id="titleField" [(ngModel)]="paper.title" name="title">
 
-    <label for="subjectField">主题</label>
-    <textarea id="subjectField" [(ngModel)]="paper.subject" style="height: 8em;" name="subject"></textarea>
+  <label for="subjectField">主题</label>
+  <textarea class="form-control" id="subjectField" [(ngModel)]="paper.subject" style="height: 8em;" name="subject"></textarea>
 
-    <label for="keywordField">关键词</label>
-    <input type="text" id="keywordField" [(ngModel)]="paper.keyword" name="keyword">
+  <label for="keywordField">关键词</label>
+  <input class="form-control" type="text" id="keywordField" [(ngModel)]="paper.keyword" name="keyword">
 
-    <label for="publishYearField">年度</label>
-    <input type="text" id="publishYearField" [(ngModel)]="paper.publishYear" name="publishYear">
+  <label for="publishYearField">年度</label>
+  <input class="form-control" type="text" id="publishYearField" [(ngModel)]="paper.publishYear" name="publishYear">
 
-    <label for="abstractField">摘要</label>
-    <textarea id="abstractField" [(ngModel)]="paper.abstract" style="height: 15em;" name="abstract"></textarea>
+  <label for="abstractField">摘要</label>
+  <textarea class="form-control" id="abstractField" [(ngModel)]="paper.abstract" style="height: 15em;" name="abstract"></textarea>
 
-    <label for="authorField">作者</label>
-    <input type="text" id="authorField" [(ngModel)]="paper.author" name="author">
+  <label for="authorField">作者</label>
+  <input class="form-control" type="text" id="authorField" [(ngModel)]="paper.author" name="author">
 
-    <label for="majorField">作者专业</label>
-    <input type="text" id="majorField" [(ngModel)]="paper.major" name="major">
+  <label for="majorField">作者专业</label>
+  <input class="form-control" type="text" id="majorField" [(ngModel)]="paper.major" name="major">
 
-    <label for="teachersTextField">导师（请以空格分隔）</label>
-    <input type="text" id="teachersTextField" [(ngModel)]="teachersText" name="teachersText">
-  </fieldset>
-  <button class="button" (click)="submit()">提交</button>
+  <label for="teachersTextField">导师（请以空格分隔）</label>
+  <input class="form-control" type="text" id="teachersTextField" [(ngModel)]="teachersText" name="teachersText">
+
+  <div style="padding-top: 20px; text-align: center">
+    <button class="btn btn-primary" (click)="submit()">提交</button>
+  </div>
+
 </form>
 
