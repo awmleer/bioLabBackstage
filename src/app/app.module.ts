@@ -22,7 +22,7 @@ import { ReagentDetailComponent } from '../pages/reagent-detail/reagent-detail.c
 import { ReagentEditComponent } from '../pages/reagent-edit/reagent-edit.component';
 import { LabelParentPipe } from '../pipes/label-parent.pipe';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {NgZorroAntdModule} from "ng-zorro-antd";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -44,7 +44,7 @@ import {NgZorroAntdModule} from "ng-zorro-antd";
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule.forRoot(),
+    NgbModule.forRoot(),
     TreeModule,
     FileUploadModule,
     Router
