@@ -3,9 +3,9 @@
   <tree-root [nodes]="labelTree" #tree>
     <ng-template #treeNodeTemplate let-node>
       <span>{{node.data.name}}</span>
-      <button class="btn btn-link" (click)="addLabelNode(node.id)">[增加子标签]</button>
-      <button class="btn btn-link" (click)="editLabel(node)">[修改]</button>
-      <button class="btn btn-link" (click)="removeLabel(node)">[删除]</button>
+      <button class="btn btn-in-tree-node btn-link" (click)="addLabelNode(node.id)">[增加子标签]</button>
+      <button class="btn btn-in-tree-node btn-link" (click)="editLabel(node)">[修改]</button>
+      <button class="btn btn-in-tree-node btn-link" (click)="removeLabel(node)">[删除]</button>
     </ng-template>
   </tree-root>
 </div>
