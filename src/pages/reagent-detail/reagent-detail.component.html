@@ -1,10 +1,11 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" class="button button-black">返回</button>
+  <button id="btn-go-back" (click)="location.back();" class="btn btn-primary">返回</button>
   <h2>{{reagent?.englishName}}</h2>
-  <a *ngIf="reagent" id="btn-edit" class="button" [routerLink]="['/reagent',reagent.id,'edit']">修改</a>
+  <a *ngIf="reagent" id="btn-edit" class="btn btn-primary" [routerLink]="['/reagent',reagent.id,'edit']">修改</a>
 </div>
 
 <div *ngIf="reagent">
+
   <div>
     <h3>基本信息</h3>
     <p>
@@ -18,6 +19,7 @@
       危化品：{{reagent.dangerous}}<br>
     </p>
   </div>
+
   <div>
     <h3>图片</h3>
     <p>点击图片可以查看大图</p>
@@ -30,15 +32,15 @@
       </a>
       <div class="right">
         <p>{{picture.description}}</p>
-        <button (click)="editPictureDescription(picture.id)">修改图片描述</button><br>
-        <button (click)="removePicture(picture.id)">删除</button><br>
-        <button [disabled]="i==0" (click)="movePicture(picture.id,'up')">↑上移</button>
-        <button [disabled]="i==reagent.pictures.length-1" (click)="movePicture(picture.id,'down')">↓下移</button>
+        <button class="btn btn-primary" (click)="editPictureDescription(picture.id)">修改图片描述</button><br>
+        <button class="btn btn-primary" (click)="removePicture(picture.id)">删除</button><br>
+        <button class="btn btn-primary" [disabled]="i==0" (click)="movePicture(picture.id,'up')">↑上移</button>
+        <button class="btn btn-primary" [disabled]="i==reagent.pictures.length-1" (click)="movePicture(picture.id,'down')">↓下移</button>
       </div>
     </div>
     <div *ngIf="uploader" class="uploader">
       <input type="file" ng2FileSelect [uploader]="uploader"/>
-      <button class="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+      <button class="btn btn-primary" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
         上传
       </button>
       <span *ngIf="uploader.queue.length>0">
@@ -46,24 +48,22 @@
         <span *ngIf="uploader.queue[uploader.queue.length-1]?.isSuccess">上传成功</span>
         <span *ngIf="uploader.queue[uploader.queue.length-1]?.isError">上传失败</span>
       </span>
-
-      <!--<span *ngIf="uploader.progress==100">{{uploader.queue[0]?.isSuccess?'上传成功':'上传失败'}}</span>-->
     </div>
   </div>
+
   <div class="labels">
     <h3>标签管理</h3>
     <div style="border-bottom: solid 1px #d1d1d1;margin-bottom: 10px;padding-bottom: 5px">
-      <button *ngFor="let label of reagent.labels" (click)="removeLabel(label.id)" class="button button-sm button-black" style="margin-right: 10px">{{label.name}}</button>
+      <button *ngFor="let label of reagent.labels" (click)="removeLabel(label.id)" class="btn btn-sm btn-primary" style="margin-right: 10px">{{label.name}}</button>
       <span *ngIf="reagent.labels.length==0">暂无标签</span>
     </div>
     <div>
-      <input type="text" placeholder="搜索标签…" [ngModel]="labelSearchText" (ngModelChange)="labelSearchTextChanged($event)">
+      <input class="form-control" type="text" placeholder="搜索标签…" style="margin-bottom: 0.3rem" [ngModel]="labelSearchText" (ngModelChange)="labelSearchTextChanged($event)">
       <div *ngFor="let label of filteredLabels" class="filteredLabel">
         <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;">{{label | labelParent: labelService.labels}}</span></span>
-        <!--TODO 上级标签的显示-->
-        <button (click)="addLabel(label)" class="button button-sm">添加</button>
+        <button (click)="addLabel(label)" class="btn btn-sm btn-primary">添加</button>
       </div>
-
     </div>
   </div>
+
 </div>
