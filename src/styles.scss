@@ -48,6 +48,16 @@ h3{
 
 .badge{
   margin-right: 0.5em;
+  margin-bottom: 0.3em;
+  font-weight: normal;
+  font-size: 0.9rem;
+}
+.badge.badge-secondary{
+  background-color: #6a7178;
+}
+
+input.form-control, textarea.form-control {
+  color: #000;
 }
 
 
