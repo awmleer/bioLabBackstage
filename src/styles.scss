@@ -56,7 +56,7 @@ h3{
   background-color: #6a7178;
 }
 
-input.form-control, textarea.form-control {
+input.form-control, textarea.form-control, input.form-control:focus, textarea.form-control:focus {
   color: #000;
 }
 
