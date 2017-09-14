@@ -21,7 +21,7 @@ export class PaperDetailComponent implements OnInit {
   public uploader:FileUploader;
   paper;
   private modal:NgbModalRef;
-  private newPdfContent:string;
+  private newPdfContent:string='';
 
   labelSearchText:string;
   labelSearchTextSubject: Subject<string> = new Subject<string>();
@@ -88,6 +88,7 @@ export class PaperDetailComponent implements OnInit {
   updatePdfContent(){
     this.api.post(`/paper/${this.paper.id}/updatePDFContent/`,this.newPdfContent).then(() => {
       //TODO toast 提交成功
+      this.newPdfContent='';
       this.modal.close();
     });
   }
