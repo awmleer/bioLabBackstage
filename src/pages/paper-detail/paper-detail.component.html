@@ -36,6 +36,9 @@
       </span>
     <!--</form>-->
   </div>
+  <div style="margin: 10px 0 20px;">
+    <button class="btn btn-primary" (click)="openModal(modalContent)">更新PDF内容文字</button>
+  </div>
 </div>
 
 <div *ngIf="paper" class="labels">
@@ -50,6 +53,22 @@
       <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;">{{label | labelParent: labelService.labels}}</span></span>
       <button (click)="addLabel(label)" class="btn btn-sm btn-primary">添加</button>
     </div>
-
   </div>
 </div>
+
+
+
+<ng-template #modalContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">更新PDF中的文字</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <textarea [(ngModel)]="newPdfContent" class="form-control" style="width: 100%; height: 15em;"></textarea>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="updatePdfContent()">提交</button>
+  </div>
+</ng-template>

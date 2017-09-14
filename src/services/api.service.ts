@@ -25,7 +25,7 @@ export class ApiService {
     });
   }
 
-  post(url:string, body:object={}):Promise<any>{
+  post(url:string, body:object|string={}):Promise<any>{
     return this.http.post(CONFIG.apiUrl+url, body).toPromise().then((response:Response)=>{
       let data = response.json();
       if (data['status']=='success') {

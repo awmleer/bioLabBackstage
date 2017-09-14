@@ -9,6 +9,7 @@ import {CONFIG} from "../../app/config";
 import {Subject} from "rxjs/Subject";
 import 'rxjs/add/operator/debounceTime';
 import {ApiService} from "../../services/api.service";
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -19,6 +20,8 @@ import {ApiService} from "../../services/api.service";
 export class PaperDetailComponent implements OnInit {
   public uploader:FileUploader;
   paper;
+  private modal:NgbModalRef;
+  private newPdfContent:string;
 
   labelSearchText:string;
   labelSearchTextSubject: Subject<string> = new Subject<string>();
@@ -27,6 +30,7 @@ export class PaperDetailComponent implements OnInit {
     private api: ApiService,
     private route: ActivatedRoute,
     public location: Location,
+    private modalCtrl: NgbModal,
     public labelService: LabelService
   ) {
     this.labelSearchTextSubject
@@ -77,5 +81,15 @@ export class PaperDetailComponent implements OnInit {
     this.labelSearchTextSubject.next(newValue);
   }
 
+  openModal(content) {
+    this.modal=this.modalCtrl.open(content);
+  }
+
+  updatePdfContent(){
+    this.api.post(`/paper/${this.paper.id}/updatePDFContent/`,this.newPdfContent).then(() => {
+      //TODO toast 提交成功
+      this.modal.close();
+    });
+  }
 
 }
