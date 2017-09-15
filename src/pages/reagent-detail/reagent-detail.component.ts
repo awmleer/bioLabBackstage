@@ -61,7 +61,7 @@ export class ReagentDetailComponent implements OnInit {
   }
 
   addLabel(label){
-    this.api.get(`/paper/${this.reagent.id}/label/add/${label.id}/`).then(data=>{
+    this.api.get(`/reagent/${this.reagent.id}/label/add/${label.id}/`).then(data=>{
       if (_.isUndefined(_.find(this.reagent.labels,{id:label.id}))) {
         this.reagent.labels.push(label);
       }
