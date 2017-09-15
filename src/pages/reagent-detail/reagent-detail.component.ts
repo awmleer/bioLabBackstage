@@ -73,7 +73,7 @@ export class ReagentDetailComponent implements OnInit {
     if (this.labelSearchText == '') {
       return [];
     }else{
-      return _.filter(this.labelService.labels,(label)=>{
+      return _.filter(this.labelService.reagentLabels,(label)=>{
         return label.name.indexOf(this.labelSearchText)!=-1
       });
     }
