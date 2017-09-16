@@ -60,7 +60,7 @@
     <div>
       <input class="form-control" type="text" placeholder="搜索标签…" style="margin-bottom: 0.3rem" [ngModel]="labelSearchText" (ngModelChange)="labelSearchTextChanged($event)">
       <div *ngFor="let label of filteredLabels" class="filteredLabel">
-        <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;">{{label | labelParent: labelService.labels}}</span></span>
+        <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;">{{label | labelParent: labelService.reagentLabels}}</span></span>
         <button (click)="addLabel(label)" class="btn btn-sm btn-primary">添加</button>
       </div>
     </div>
