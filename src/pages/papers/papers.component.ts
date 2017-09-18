@@ -44,7 +44,7 @@ export class PapersComponent implements OnInit {
   fetchList(){
     if (this.searchText) {
       this.api.post(`/paper/search/${this.pageNumber}/`,[{
-        "field": "name",
+        "field": "title",
         "value": this.searchText
       }]).then(data=>{
         this.papers=data['papers'];
