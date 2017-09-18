@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ReagentsComponent implements OnInit {
   reagents:ReagentEntry;
   searchText:string;
+  searchTextInputed:string='';
   pageNumber:number;
   totalPageCount:number=1;
 
@@ -23,11 +24,13 @@ export class ReagentsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.pageNumber = parseInt(params['pageNumber']);
-      this.api.get(`/reagent/list/${this.pageNumber}/`).then(data=>{
-        this.reagents=data['reagents'];
-        this.totalPageCount=data['totalPageCount'];
-      });
-      console.log(this.route);
+      if(params['searchText']){
+        this.searchText=params['searchText'];
+        this.searchTextInputed=this.searchText;
+      }else{
+        this.searchText=null;
+      }
+      this.fetchList();
     });
   }
 
@@ -35,18 +38,25 @@ export class ReagentsComponent implements OnInit {
     this.router.navigate([`../${pageNumber}`], {relativeTo: this.route});
   }
 
-  search(){
-    if (!this.searchText) {
-      return;
+  fetchList(){
+    if (this.searchText) {
+      this.api.post(`/reagent/search/${this.pageNumber}/`,[{
+        "field": "name",
+        "value": this.searchText
+      }]).then(data=>{
+        this.reagents=data['reagents'];
+        this.totalPageCount=data['totalPageCount'];
+      });
+    }else{
+      this.api.get(`/reagent/list/${this.pageNumber}/`).then(data=>{
+        this.reagents=data['reagents'];
+        this.totalPageCount=data['totalPageCount'];
+      });
     }
-    this.api.post(`/reagent/search/${this.pageNumber}/`,[{
-      "field": "name",
-      "value": this.searchText
-    }]).then(data=>{
-      this.reagents=data['reagents'];
-      this.totalPageCount=data['totalPageCount'];
-      console.log(this.reagents);
-    });
+  }
+
+  search(){
+    this.router.navigateByUrl(`/reagent/search/${this.searchTextInputed}/${this.pageNumber}`);
   }
 
 }
