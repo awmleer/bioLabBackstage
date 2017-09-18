@@ -14,7 +14,10 @@ export const Router=RouterModule.forRoot([
     path: 'papers',
     component: PapersComponent
   },{
-    path: 'reagents',
+    path: 'reagent/list/:pageNumber',
+    component: ReagentsComponent,
+  },{
+    path: 'reagent/search/:searchText/:pageNumber',
     component: ReagentsComponent,
   },{
     path: 'paper/add',

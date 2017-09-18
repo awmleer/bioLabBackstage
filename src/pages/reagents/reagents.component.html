@@ -16,3 +16,7 @@
     <!--<span *ngIf="reagent?.labels.length==0">暂无标签</span>-->
   <!--</p>-->
 </div>
+
+<div>
+  <ngb-pagination [pageSize]="1" [collectionSize]="totalPageCount" [page]="pageNumber" (pageChange)="pageChange($event)" [boundaryLinks]="true"></ngb-pagination>
+</div>
