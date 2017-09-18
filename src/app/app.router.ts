@@ -11,8 +11,11 @@ import {ReagentEditComponent} from "../pages/reagent-edit/reagent-edit.component
 
 export const Router=RouterModule.forRoot([
   {
-    path: 'papers',
+    path: 'paper/list/:pageNumber',
     component: PapersComponent
+  },{
+    path: 'paper/search/:searchText/:pageNumber',
+    component: PapersComponent,
   },{
     path: 'reagent/list/:pageNumber',
     component: ReagentsComponent,

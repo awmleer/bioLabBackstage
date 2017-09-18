@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./reagents.component.scss']
 })
 export class ReagentsComponent implements OnInit {
-  reagents:ReagentEntry;
+  reagents:ReagentEntry[];
   searchText:string;
   searchTextInputed:string='';
   pageNumber:number;
