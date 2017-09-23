@@ -5,6 +5,7 @@ export class ReagentEntry {
   chineseName: string='';
   englishName: string='';
   alias: string='';
+  labels: ReagentLabel[];
 }
 
 export class ReagentBrief extends ReagentEntry {
@@ -12,7 +13,6 @@ export class ReagentBrief extends ReagentEntry {
   molecularFormulaParsed: html;
   molecularWeight: string='';
   dangerous: null | string='';
-  labels: ReagentLabel[];
 }
 
 export class ReagentDetail extends ReagentBrief {

@@ -11,6 +11,10 @@
     <br>
     <span *ngIf="reagent.alias">&nbsp;({{reagent.alias}})</span>
   </h3>
+  <p *ngIf="reagent.labels">
+    <span *ngFor="let label of reagent.labels" class="badge badge-secondary">{{label.name}}</span>
+    <span *ngIf="reagent?.labels.length==0">暂无标签</span>
+  </p>
   <!--TODO 危化品显示-->
   <!--<p>-->
     <!--<label *ngFor="let label of reagent.labels" class="label label-gray">{{label.name}}</label>-->
