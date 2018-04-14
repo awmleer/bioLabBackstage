@@ -23,7 +23,7 @@
     "@angular/router": "5.x",
     "@angular/cdk": "5.x",
     "angular-tree-component": "7.x",
-    "ng-zorro-antd": "0.6.x",
+    "ng-zorro-antd": "0.7.0-beta.4",
     "moment":"2.x",
     "core-js": "^2.5.1",
     "lodash": "^4.17.4",

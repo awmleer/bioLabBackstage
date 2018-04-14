@@ -1,16 +1,23 @@
-.reagent{
-  padding:10px 0 5px;
-  h3{
-    margin-bottom: 5px;
-    font-size: 22px;
-    span{
-      font-weight: lighter;
-      font-size: 1rem;
+div.reagent-list{
+  div.reagent{
+    padding:10px 0 5px;
+    h3{
+      margin-bottom: 5px;
+      font-size: 22px;
+      span{
+        font-weight: lighter;
+        font-size: 1rem;
+      }
     }
+    p{
+      margin-bottom: 5px;
+    }
+    border-bottom:solid 1px #d1d1d1;
+    border-collapse: collapse;
   }
-  p{
-    margin-bottom: 5px;
+  div:last-of-type{
+    border-bottom: none!important;
+    margin-bottom: 16px!important;
   }
-  border-bottom:solid 1px #d1d1d1;
-  border-collapse: collapse;
 }
+

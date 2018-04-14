@@ -1,28 +1,30 @@
-<a style="margin-top: 15px" class="btn btn-primary" [routerLink]="['/reagent/add']">增加试剂</a>
+<a nz-button nzType="primary" [routerLink]="['/reagent/add']">增加试剂</a>
 
-<div class="search-box" style="float: right;padding-top: 15px">
-  <input [(ngModel)]="searchTextInputed" type="text" title="搜索" placeholder="搜索" class="form-control">
-  <button class="btn btn-primary" (click)="search()" style="vertical-align: inherit">搜索</button>
+<div class="search-box" style="float: right">
+  <input nz-input [(ngModel)]="searchTextInputed" type="text" title="搜索" placeholder="搜索">
+  <button nz-button nzType="primary" (click)="search()">搜索</button>
 </div>
 
-<div class="reagent" *ngFor="let reagent of reagents">
-  <h3>
-    <a [routerLink]="['/reagent',reagent.id]">{{reagent.englishName}} {{reagent.chineseName}}</a>
-    <br>
-    <span *ngIf="reagent.alias">&nbsp;({{reagent.alias}})</span>
-  </h3>
-  <p *ngIf="reagent.labels">
-    <span *ngFor="let label of reagent.labels" class="badge badge-secondary">{{label.name}}</span>
-    <span *ngIf="reagent?.labels.length==0">暂无标签</span>
-  </p>
-  <!--TODO 危化品显示-->
-  <!--<p>-->
+<div class="reagent-list">
+  <div class="reagent" *ngFor="let reagent of reagents">
+    <h3>
+      <a [routerLink]="['/reagent',reagent.id]">{{reagent.englishName}} {{reagent.chineseName}}</a>
+      <br>
+      <span *ngIf="reagent.alias">{{reagent.alias}}</span>
+    </h3>
+    <p *ngIf="reagent.labels">
+      <nz-tag *ngFor="let label of reagent.labels">{{label.name}}</nz-tag>
+      <nz-tag *ngIf="reagent?.labels.length==0">暂无标签</nz-tag>
+    </p>
+    <!--TODO 危化品显示-->
+    <!--<p>-->
     <!--<label *ngFor="let label of reagent.labels" class="label label-gray">{{label.name}}</label>-->
     <!--<span *ngIf="reagent?.labels.length==0">暂无标签</span>-->
-  <!--</p>-->
+    <!--</p>-->
+  </div>
 </div>
+
 
 <div>
   <nz-pagination [nzPageSize]="1" [nzTotal]="totalPageCount" [nzPageIndex]="pageNumber" (nzPageIndexChange)="pageChange($event)"></nz-pagination>
-  <!--<ngb-pagination [pageSize]="1" [collectionSize]="totalPageCount" [page]="pageNumber" (pageChange)="pageChange($event)" [boundaryLinks]="true"></ngb-pagination>-->
 </div>

@@ -8,8 +8,8 @@ import * as _ from 'lodash';
 import {Subject} from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 import {ApiService} from '../../services/api.service';
-import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {CONST} from '../../app/const';
+import {NzModalService} from 'ng-zorro-antd';
 
 
 @Component({
@@ -20,7 +20,6 @@ import {CONST} from '../../app/const';
 export class PaperDetailComponent implements OnInit {
   public uploader:FileUploader;
   paper;
-  private modal:NgbModalRef;
   private newPdfContent:string='';
 
   labelSearchText:string;
@@ -30,8 +29,8 @@ export class PaperDetailComponent implements OnInit {
     private apiSvc: ApiService,
     private route: ActivatedRoute,
     public location: Location,
-    private modalCtrl: NgbModal,
-    public labelService: LabelService
+    public labelService: LabelService,
+    private modalSvc: NzModalService,
   ) {
     this.labelSearchTextSubject
       .debounceTime(500) // wait 300ms after the last event before emitting last event
@@ -81,15 +80,23 @@ export class PaperDetailComponent implements OnInit {
     this.labelSearchTextSubject.next(newValue);
   }
 
-  openModal(content) {
-    this.modal=this.modalCtrl.open(content);
+  openModal(contentTpl) {
+    this.modalSvc.create({
+      nzTitle: '更新PDF中的文字',
+      nzContent: contentTpl,
+      // nzFooter: tplFooter,
+      nzMaskClosable: true,
+      nzClosable: true,
+      nzOnOk: () => {
+        this.updatePdfContent();
+      }
+    });
+    // this.modal=this.modalCtrl.open(content);
   }
 
   updatePdfContent(){
     this.apiSvc.post(`/paper/${this.paper.id}/updatePDFContent/`, this.newPdfContent).then(() => {
       //TODO toast 提交成功
-      this.newPdfContent='';
-      this.modal.close();
     });
   }
 

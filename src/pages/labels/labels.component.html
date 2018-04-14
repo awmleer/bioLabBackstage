@@ -1,11 +1,11 @@
 <div style="padding: 20px 0 100px;" *ngIf="labelTree">
-  <button class="btn btn-link" (click)="addLabelNode(null)">[增加一个顶级标签]</button>
+  <a (click)="addLabelNode(null)">[增加一个顶级标签]</a>
   <tree-root [nodes]="labelTree" #tree>
     <ng-template #treeNodeTemplate let-node>
       <span>{{node.data.name}}</span>
-      <button class="btn btn-in-tree-node btn-link" (click)="addLabelNode(node.id)">[增加子标签]</button>
-      <button class="btn btn-in-tree-node btn-link" (click)="editLabel(node)">[修改]</button>
-      <button class="btn btn-in-tree-node btn-link" (click)="removeLabel(node)">[删除]</button>
+      <a (click)="addLabelNode(node.id)">[增加子标签]</a>
+      <a (click)="editLabel(node)">[修改]</a>
+      <a (click)="removeLabel(node)">[删除]</a>
     </ng-template>
   </tree-root>
 </div>

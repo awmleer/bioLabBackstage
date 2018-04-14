@@ -161,10 +161,6 @@
   dependencies:
     tslib "^1.7.1"
 
-"@ng-bootstrap/ng-bootstrap@^1.0.0-beta.3":
-  version "1.1.2"
-  resolved "http://registry.npm.taobao.org/@ng-bootstrap/ng-bootstrap/download/@ng-bootstrap/ng-bootstrap-1.1.2.tgz#276b1c488687ca3e53d1694b63835fd57ca552ca"
-
 "@ngtools/json-schema@1.2.0":
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/@ngtools/json-schema/download/@ngtools/json-schema-1.2.0.tgz#06e5ecd29e9a37d260a447dd873ea2becd228c4f"
@@ -1344,6 +1340,10 @@ dashdash@^1.12.0:
   resolved "http://registry.npm.taobao.org/dashdash/download/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^1.29.0:
+  version "1.29.0"
+  resolved "http://registry.npm.taobao.org/date-fns/download/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -3401,7 +3401,7 @@ mobx@^3.6.2:
   version "3.6.2"
   resolved "http://registry.npm.taobao.org/mobx/download/mobx-3.6.2.tgz#fb9f5ff5090539a1ad54e75dc4c098b602693320"
 
-moment@2.x, moment@^2.18.1:
+moment@2.x:
   version "2.22.0"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.22.0.tgz#7921ade01017dd45186e7fee5f424f0b8663a730"
 
@@ -3464,13 +3464,12 @@ next-tick@1:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/next-tick/download/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
-ng-zorro-antd@0.6.x:
-  version "0.6.15"
-  resolved "http://registry.npm.taobao.org/ng-zorro-antd/download/ng-zorro-antd-0.6.15.tgz#acef41a30febce835b871d52cd47d042ac2ed443"
+ng-zorro-antd@0.7.0-beta.4:
+  version "0.7.0-beta.4"
+  resolved "http://registry.npm.taobao.org/ng-zorro-antd/download/ng-zorro-antd-0.7.0-beta.4.tgz#e9c790f0f826f974ed1a29d748a1f28c1dc9cced"
   dependencies:
     "@angular/cdk" "^5.0.0"
-    moment "^2.18.1"
-    tslib "^1.7.1"
+    date-fns "^1.29.0"
 
 ng2-file-upload@^1.2.1:
   version "1.3.0"

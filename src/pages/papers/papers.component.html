@@ -1,16 +1,18 @@
-<a style="margin-top: 15px" class="btn btn-primary" [routerLink]="['/paper/add']">增加论文</a>
+<a nz-button nzType="primary" [routerLink]="['/paper/add']">增加论文</a>
 
-<div class="search-box" style="float: right;padding-top: 15px">
-  <input [(ngModel)]="searchTextInputed" type="text" title="搜索" placeholder="搜索" class="form-control">
-  <button class="btn btn-primary" (click)="search()" style="vertical-align: inherit">搜索</button>
+<div class="search-box" style="float: right">
+  <input nz-input [(ngModel)]="searchTextInputed" type="text" title="搜索" placeholder="搜索">
+  <button nz-button nzType="primary" (click)="search()">搜索</button>
 </div>
 
-<div class="paper" *ngFor="let paper of papers">
-  <h3><a [routerLink]="['/paper',paper.id]">{{paper.title}}</a></h3>
-  <p *ngIf="paper.labels">
-    <span *ngFor="let label of paper.labels" class="badge badge-secondary">{{label.name}}</span>
-    <span *ngIf="paper?.labels.length==0">暂无标签</span>
-  </p>
+<div class="paper-list">
+  <div class="paper" *ngFor="let paper of papers">
+    <h3><a [routerLink]="['/paper',paper.id]">{{paper.title}}</a></h3>
+    <p *ngIf="paper.labels">
+      <nz-tag *ngFor="let label of paper.labels">{{label.name}}</nz-tag>
+      <nz-tag *ngIf="paper?.labels.length==0">暂无标签</nz-tag>
+    </p>
+  </div>
 </div>
 
 <div>
