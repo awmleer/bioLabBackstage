@@ -14,5 +14,6 @@
 </div>
 
 <div>
-  <ngb-pagination [pageSize]="1" [collectionSize]="totalPageCount" [page]="pageNumber" (pageChange)="pageChange($event)" [boundaryLinks]="true"></ngb-pagination>
+  <nz-pagination [nzPageSize]="1" [nzTotal]="totalPageCount" [nzPageIndex]="pageNumber" (nzPageIndexChange)="pageChange($event)"></nz-pagination>
+  <!--<ngb-pagination [pageSize]="1" [collectionSize]="totalPageCount" [page]="pageNumber" (pageChange)="pageChange($event)" [boundaryLinks]="true"></ngb-pagination>-->
 </div>

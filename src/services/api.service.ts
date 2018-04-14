@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/toPromise';
-import {CONST} from '../const';
+import {CONST} from '../app/const';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {NzMessageService} from 'ng-zorro-antd';
 import {Observable} from 'rxjs/Observable';
@@ -51,7 +51,7 @@ export class ApiService {
     return this.handleHttp(request,messageOnError);
   }
 
-  post(url:string, body:object=null, messageOnError:boolean=true):Promise<any>{
+  post(url:string, body:any=null, messageOnError:boolean=true):Promise<any>{
     const request=this.http.post(CONST.apiUrl+url, body,{
       withCredentials:true
     });

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Params, ActivatedRoute, Router} from "@angular/router";
-import {CONFIG} from "../../app/config";
-import {Http} from "@angular/http";
+import {Params, ActivatedRoute, Router} from '@angular/router';
+import {Http} from '@angular/http';
 import { Location } from '@angular/common';
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-paper-add',
@@ -23,7 +23,7 @@ export class PaperAddComponent implements OnInit {
 
 
   constructor(
-    private http: Http,
+    private apiSvc: ApiService,
     public location: Location,
     private router: Router
   ) { }
@@ -31,14 +31,14 @@ export class PaperAddComponent implements OnInit {
   ngOnInit(){}
 
   submit(){
-    let teachers = this.teachersText.split(' ');
+    const teachers = this.teachersText.split(' ');
     for (let i = 0; i < teachers.length; i++) {
-      if(teachers[i]==''){
+      if(teachers[i]===''){
         teachers.splice(i,1);
         i--;
       }
     }
-    this.http.post(CONFIG.apiUrl+`/paper/add/`,{
+    this.apiSvc.post('/paper/add/',{
       title:this.paper.title,
       subject:this.paper.subject,
       keyword:this.paper.keyword,
@@ -47,14 +47,9 @@ export class PaperAddComponent implements OnInit {
       author:this.paper.author,
       major:this.paper.major,
       teachers:teachers
-    }).toPromise().then(response=>{
-      let data = response.json();
-      if (data['status']=='success') {
-        alert('创建成功');
-        this.router.navigate(['/paper',data['payload'].paperId]);
-      }else{
-        alert(data['payload']);
-      }
+    }).then(data=>{
+      alert('创建成功');//TODO use notification service
+      this.router.navigate(['/paper',data['payload'].paperId]);
     });
   }
 

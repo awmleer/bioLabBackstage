@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {ApiService} from "../../services/api.service";
-import {PaperEntry} from "../../classes/paper";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ApiService} from '../../services/api.service';
+import {PaperEntry} from '../../classes/paper';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class PapersComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.pageNumber = parseInt(params['pageNumber']);
+      this.pageNumber = parseInt(params['pageNumber'], 10);
       if(params['searchText']){
         this.searchText=params['searchText'];
         this.searchTextInputed=this.searchText;
@@ -44,8 +44,8 @@ export class PapersComponent implements OnInit {
   fetchList(){
     if (this.searchText) {
       this.api.post(`/paper/search/${this.pageNumber}/`,[{
-        "field": "title",
-        "value": this.searchText
+        'field': 'title',
+        'value': this.searchText
       }]).then(data=>{
         this.papers=data['papers'];
         console.log(this.papers);

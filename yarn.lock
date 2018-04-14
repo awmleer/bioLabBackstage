@@ -305,13 +305,13 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/amdefine/download/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-tree-component@^3.9.0:
-  version "3.9.0"
-  resolved "http://registry.npm.taobao.org/angular-tree-component/download/angular-tree-component-3.9.0.tgz#509867a97a57401da90e37bc5ecd3c5eb95c9e4d"
+angular-tree-component@7.x:
+  version "7.1.0"
+  resolved "http://registry.npm.taobao.org/angular-tree-component/download/angular-tree-component-7.1.0.tgz#53674ea944f7147647c7e48931f5fad66237a632"
   dependencies:
-    lodash "4.17.4"
-    mobx "3.1.11"
-    mobx-angular "1.5.0"
+    lodash "^4.17.5"
+    mobx "^3.6.2"
+    mobx-angular "2.1.1"
 
 ansi-html@0.0.7:
   version "0.0.7"
@@ -3154,10 +3154,6 @@ lodash.tail@^4.1.1:
   version "4.1.1"
   resolved "http://registry.npm.taobao.org/lodash.tail/download/lodash.tail-4.1.1.tgz#d2333a36d9e7717c8ad2f7cacafec7c32b444664"
 
-lodash@4.17.4:
-  version "4.17.4"
-  resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
-
 lodash@^4.0.0, lodash@^4.11.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@~4.17.4:
   version "4.17.5"
   resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
@@ -3397,19 +3393,15 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   dependencies:
     minimist "0.0.8"
 
-mobx-angular@1.5.0:
-  version "1.5.0"
-  resolved "http://registry.npm.taobao.org/mobx-angular/download/mobx-angular-1.5.0.tgz#6c806483ebf7d161e5b5f5048edc300f8521c80c"
+mobx-angular@2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/mobx-angular/download/mobx-angular-2.1.1.tgz#d5e36539acb200186dd5a1170806b4776b9a8b88"
 
-mobx@3.1.11:
-  version "3.1.11"
-  resolved "http://registry.npm.taobao.org/mobx/download/mobx-3.1.11.tgz#400b1e3c00a4249dfe36e9bca28ef36f057d4a28"
+mobx@^3.6.2:
+  version "3.6.2"
+  resolved "http://registry.npm.taobao.org/mobx/download/mobx-3.6.2.tgz#fb9f5ff5090539a1ad54e75dc4c098b602693320"
 
-moment@2.18.x:
-  version "2.18.1"
-  resolved "http://registry.npm.taobao.org/moment/download/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
-
-moment@^2.18.1:
+moment@2.x, moment@^2.18.1:
   version "2.22.0"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.22.0.tgz#7921ade01017dd45186e7fee5f424f0b8663a730"
 

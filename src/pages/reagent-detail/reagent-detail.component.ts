@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
-import {ApiService} from "../../services/api.service";
-import {ReagentDetail, ReagentLabel} from "../../classes/reagent";
-import {LabelService} from "../../services/label.service";
-import * as _ from "lodash"
-import {Location} from "@angular/common";
+import {ActivatedRoute, Params} from '@angular/router';
+import {ApiService} from '../../services/api.service';
+import {ReagentDetail, ReagentLabel} from '../../classes/reagent';
+import {LabelService} from '../../services/label.service';
+import * as _ from 'lodash';
+import {Location} from '@angular/common';
 import { FileUploader } from 'ng2-file-upload';
-import {CONFIG} from "../../app/config";
-import {Subject} from "rxjs/Subject";
+import {Subject} from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
+import {CONST} from '../../app/const';
 
 
 
@@ -38,7 +38,7 @@ export class ReagentDetailComponent implements OnInit {
     this.route.params
       .subscribe((params: Params)=>{
         this.freshReagent(params['id']).then(()=>{
-          this.uploader=new FileUploader({url: `${CONFIG.apiUrl}/reagent/${this.reagent.id}/picture/add/`});
+          this.uploader=new FileUploader({url: `${CONST.apiUrl}/reagent/${this.reagent.id}/picture/add/`});
         });
       });
   }
@@ -70,11 +70,11 @@ export class ReagentDetailComponent implements OnInit {
   }
 
   get filteredLabels():ReagentLabel[]{
-    if (this.labelSearchText == '') {
+    if (this.labelSearchText === '') {
       return [];
     }else{
       return _.filter(this.labelService.reagentLabels,(label)=>{
-        return label.name.indexOf(this.labelSearchText)!=-1
+        return label.name.indexOf(this.labelSearchText)!==-1;
       });
     }
   }
@@ -101,7 +101,7 @@ export class ReagentDetailComponent implements OnInit {
   }
 
   editPictureDescription(pictureId){
-    let description=prompt('请输入对这张图片的描述');
+    const description=prompt('请输入对这张图片的描述');
     this.api.post(`/reagent/picture/${pictureId}/editDescription/`,{
       description: description
     }).then(()=>{

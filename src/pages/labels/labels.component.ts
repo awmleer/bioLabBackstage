@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
-import {CONFIG} from "../../app/config";
-import {ActivatedRoute, Params} from "@angular/router";
-import {ApiService} from "../../services/api.service";
+import {ActivatedRoute, Params} from '@angular/router';
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-labels',
@@ -35,7 +34,7 @@ export class LabelsComponent implements OnInit {
 
   addLabelNode(parentLabelId){
     console.log(parentLabelId);
-    let name = prompt('请输入新标签的名字');
+    const name = prompt('请输入新标签的名字');
     this.api.post(`/${this.type}/label/add/`,{
       parentId: parentLabelId,
       name: name
@@ -45,7 +44,7 @@ export class LabelsComponent implements OnInit {
   }
 
   removeLabel(label){
-    if(!confirm('确定要删除这个标签吗？'))return;
+    if(!confirm('确定要删除这个标签吗？')) {return; }
     this.api.post(`/${this.type}/label/remove/`,{
       id: label.id
     }).then(response=>{
@@ -54,7 +53,7 @@ export class LabelsComponent implements OnInit {
   }
 
   editLabel(label){
-    let name = prompt('请输入新的标签名');
+    const name = prompt('请输入新的标签名');
     this.api.post(`/${this.type}/label/edit/`,{
       id: label.id,
       name: name
