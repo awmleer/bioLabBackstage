@@ -1,40 +1,61 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import {CONFIG} from "../app/config";
+import {CONST} from '../const';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {NzMessageService} from 'ng-zorro-antd';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ApiService {
 
   constructor(
-    private http: Http
+    private http: HttpClient,
+    private messageSvc: NzMessageService,
   ) {}
 
-  get(url:string, params:object={}):Promise<any>{
-    console.log(CONFIG.apiUrl + url);
-    return this.http.get(CONFIG.apiUrl+url,{
-      params:params
-    }).toPromise().then((response:Response)=>{
-      let data = response.json();
-      if (data['status']=='success') {
+  private handleHttp(request:Observable<Object>,messageOnError:boolean){
+    return request.toPromise().catch((error:HttpErrorResponse) => {
+      if (messageOnError) {
+        let messageText;
+        if (error.status === 403) {
+          messageText='您没有权限进行该操作';
+        }else{
+          messageText='出错了';
+        }
+        this.messageSvc.create('error', messageText);
+      }
+      throw new Error('出错了');
+    }).then((data)=>{
+      if (data['status']==='success') {
         return data['payload'];
       }else{
-        alert(data['payload']);//TODO change to toast
+        if (messageOnError) {
+          this.messageSvc.create('error', data['payload']);
+        }
         throw new Error(data['payload']);
       }
     });
   }
 
-  post(url:string, body:object|string={}):Promise<any>{
-    return this.http.post(CONFIG.apiUrl+url, body).toPromise().then((response:Response)=>{
-      let data = response.json();
-      if (data['status']=='success') {
-        return data['payload'];
-      }else{
-        throw new Error(data['payload']);
-      }
+  get(
+    url:string,
+    params:{
+      [param: string]: any;
+    }=null,
+    messageOnError:boolean=true
+  ):Promise<any>{
+    const request=this.http.get(CONST.apiUrl+url,{
+      params:params,
+      withCredentials:true
     });
+    return this.handleHttp(request,messageOnError);
   }
 
+  post(url:string, body:object=null, messageOnError:boolean=true):Promise<any>{
+    const request=this.http.post(CONST.apiUrl+url, body,{
+      withCredentials:true
+    });
+    return this.handleHttp(request,messageOnError);
+  }
 
 }
