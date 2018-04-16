@@ -17,7 +17,11 @@ div.reagent-list{
   }
   div:last-of-type{
     border-bottom: none!important;
-    margin-bottom: 16px!important;
   }
 }
 
+
+nz-pagination{
+  display: block;
+  margin-top: 16px;
+}
