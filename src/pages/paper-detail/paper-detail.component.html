@@ -49,16 +49,5 @@
 
 
 <ng-template #modalContent let-c="close" let-d="dismiss">
-  <!--<div class="modal-header">-->
-    <!--<h4 class="modal-title">更新PDF中的文字</h4>-->
-    <!--<button type="button" class="close" aria-label="Close" (click)="d()">-->
-      <!--<span aria-hidden="true">&times;</span>-->
-    <!--</button>-->
-  <!--</div>-->
-  <!--<div class="modal-body">-->
-  <textarea row="8" nz-input [(ngModel)]="newPdfContent"></textarea>
-  <!--</div>-->
-  <!--<div class="modal-footer">-->
-    <!--<button type="button" class="btn btn-outline-dark" (click)="updatePdfContent()">提交</button>-->
-  <!--</div>-->
+  <textarea rows="8" nz-input [(ngModel)]="newPdfContent"></textarea>
 </ng-template>

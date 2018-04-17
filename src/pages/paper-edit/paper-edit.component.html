@@ -1,36 +1,60 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" class="btn btn-primary">返回</button>
+  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
   <h2>{{paper?.title}}</h2>
 </div>
 
 
-<form *ngIf="paper" class="form-group">
-  <label for="titleField">篇名</label>
-  <input class="form-control" type="text" id="titleField" [(ngModel)]="paper.title" name="title">
-
-  <label for="subjectField">主题</label>
-  <textarea class="form-control" id="subjectField" [(ngModel)]="paper.subject" style="height: 8em;" name="subject"></textarea>
-
-  <label for="keywordField">关键词</label>
-  <input class="form-control" type="text" id="keywordField" [(ngModel)]="paper.keyword" name="keyword">
-
-  <label for="publishYearField">年度</label>
-  <input class="form-control" type="text" id="publishYearField" [(ngModel)]="paper.publishYear" name="publishYear">
-
-  <label for="abstractField">摘要</label>
-  <textarea class="form-control" id="abstractField" [(ngModel)]="paper.abstract" style="height: 15em;" name="abstract"></textarea>
-
-  <label for="authorField">作者</label>
-  <input class="form-control" type="text" id="authorField" [(ngModel)]="paper.author" name="author">
-
-  <label for="majorField">作者专业</label>
-  <input class="form-control" type="text" id="majorField" [(ngModel)]="paper.major" name="major">
-
-  <label for="teachersTextField">导师（请以空格分隔）</label>
-  <input class="form-control" type="text" id="teachersTextField" [(ngModel)]="teachersText" name="teachersText">
-
+<form *ngIf="paper">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="titleField">篇名</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="titleField" [(ngModel)]="paper.title" name="title">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="subjectField">主题</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <textarea nz-input id="subjectField" [(ngModel)]="paper.subject" style="height: 8em;" name="subject"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="keywordField">关键词</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="keywordField" [(ngModel)]="paper.keyword" name="keyword">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="publishYearField">年度</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="publishYearField" [(ngModel)]="paper.publishYear" name="publishYear">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="abstractField">摘要</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <textarea nz-input id="abstractField" [(ngModel)]="paper.abstract" style="height: 15em;" name="abstract"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="authorField">作者</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="authorField" [(ngModel)]="paper.author" name="author">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="majorField">作者专业</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="majorField" [(ngModel)]="paper.major" name="major">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="teachersTextField">导师（请以空格分隔）</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="teachersTextField" [(ngModel)]="teachersText" name="teachersText">
+    </nz-form-control>
+  </nz-form-item>
   <div style="padding-top: 20px; text-align: center">
-    <button class="btn btn-primary" (click)="submit()">提交</button>
+    <button nz-button nzType="primary" (click)="submit()">提交</button>
   </div>
 
 </form>
