@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Params, ActivatedRoute, Router} from '@angular/router';
+import { Location } from '@angular/common';
 import {PaperDetail} from '../../classes/paper';
 import {ApiService} from '../../services/api.service';
 import {NzMessageService} from 'ng-zorro-antd';
@@ -15,6 +16,7 @@ export class PaperEditComponent implements OnInit {
   createMode:boolean = true;
 
   constructor(
+    public location: Location,
     private route: ActivatedRoute,
     private router: Router,
     private apiSvc: ApiService,
