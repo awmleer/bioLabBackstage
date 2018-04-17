@@ -1,7 +1,7 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" class="btn btn-primary">返回</button>
+  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
   <h2>{{reagent?.englishName}}</h2>
-  <a *ngIf="reagent" id="btn-edit" class="btn btn-primary" [routerLink]="['/reagent',reagent.id,'edit']">修改</a>
+  <a *ngIf="reagent" id="btn-edit" nz-button nzType="primary" [routerLink]="['/reagent',reagent.id,'edit']">修改</a>
 </div>
 
 <div *ngIf="reagent">
@@ -32,15 +32,15 @@
       </a>
       <div class="right">
         <p>{{picture.description}}</p>
-        <button class="btn btn-primary" (click)="editPictureDescription(picture.id)">修改图片描述</button><br>
-        <button class="btn btn-primary" (click)="removePicture(picture.id)">删除</button><br>
-        <button class="btn btn-primary" [disabled]="i==0" (click)="movePicture(picture.id,'up')">↑上移</button>
-        <button class="btn btn-primary" [disabled]="i==reagent.pictures.length-1" (click)="movePicture(picture.id,'down')">↓下移</button>
+        <button nz-button (click)="editPictureDescription(picture.id)">修改图片描述</button><br>
+        <button nz-button (click)="removePicture(picture.id)">删除</button><br>
+        <button nz-button [disabled]="i==0" (click)="movePicture(picture.id,'up')">↑上移</button>
+        <button nz-button [disabled]="i==reagent.pictures.length-1" (click)="movePicture(picture.id,'down')">↓下移</button>
       </div>
     </div>
     <div *ngIf="uploader" class="uploader">
       <input type="file" ng2FileSelect [uploader]="uploader"/>
-      <button class="btn btn-primary" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+      <button nz-button (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
         上传
       </button>
       <span *ngIf="uploader.queue.length>0">
