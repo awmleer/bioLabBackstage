@@ -13,7 +13,6 @@ import {Router} from './app.router';
 // import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
 import {FileUploadModule} from 'ng2-file-upload';
-import {PaperAddComponent} from '../pages/paper-add/paper-add.component';
 import { ReagentsComponent } from '../pages/reagents/reagents.component';
 import {ApiService} from '../services/api.service';
 import { ReagentAddComponent } from '../pages/reagent-add/reagent-add.component';
@@ -35,7 +34,6 @@ import {ReagentService} from '../services/reagent.service';
     LabelsComponent,
     PaperDetailComponent,
     PaperEditComponent,
-    PaperAddComponent,
     ReagentsComponent,
     ReagentAddComponent,
     ReagentDetailComponent,

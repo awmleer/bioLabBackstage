@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Params, ActivatedRoute} from "@angular/router";
+import {Params, ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
-import {PaperDetail} from "../../classes/paper";
-import {ApiService} from "../../services/api.service";
+import {PaperDetail} from '../../classes/paper';
+import {ApiService} from '../../services/api.service';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-paper-edit',
@@ -10,50 +11,76 @@ import {ApiService} from "../../services/api.service";
   styleUrls: ['./paper-edit.component.scss']
 })
 export class PaperEditComponent implements OnInit {
-  paper:PaperDetail=null;
-  teachersText:string='';
-
+  paper:PaperDetail = null;
+  teachersText:string = '';
+  createMode:boolean = true;
 
   constructor(
     public location: Location,
     private route: ActivatedRoute,
-    private api: ApiService,
+    private router: Router,
+    private apiSvc: ApiService,
+    private messageSvc: NzMessageService,
   ) {}
 
   ngOnInit() {
     this.route.params
       .subscribe((params: Params)=>{
-        this.api.get(`/paper/${params['id']}/detail/`).then(data=>{
-          this.paper=data;
+        if(params['id']){
+          this.createMode = false;
+          this.apiSvc.get(`/paper/${params['id']}/detail/`).then(data=>{
+            this.paper=data;
+            this.teachersText='';
+            for (const paper of this.paper.teachers) {
+              this.teachersText+=paper.name+' ';
+            }
+          });
+        }else{
+          this.paper = new PaperDetail();
           this.teachersText='';
-          for (let i in this.paper.teachers) {
-            this.teachersText+=this.paper.teachers[i].name+' ';
-          }
-        });
+          this.createMode = true;
+        }
       });
   }
 
   submit(){
-    let teachers = this.teachersText.split(' ');
+    const teachers = this.teachersText.split(' ');
     for (let i = 0; i < teachers.length; i++) {
-      if(teachers[i]==''){
+      if(teachers[i]===''){
         teachers.splice(i,1);
         i--;
       }
     }
-    this.api.post(`/paper/${this.paper.id}/edit/`,{
-      title:this.paper.title,
-      subject:this.paper.subject,
-      keyword:this.paper.keyword,
-      publishYear:this.paper.publishYear,
-      abstract:this.paper.abstract,
-      author:this.paper.author,
-      major:this.paper.major,
-      teachers: teachers
-    }).then(()=>{
-      alert('修改成功');
-      this.location.back();
-    });
+    if(this.createMode){
+      this.apiSvc.post('/paper/add/',{
+        title:this.paper.title,
+        subject:this.paper.subject,
+        keyword:this.paper.keyword,
+        publishYear:this.paper.publishYear,
+        abstract:this.paper.abstract,
+        author:this.paper.author,
+        major:this.paper.major,
+        teachers:teachers
+      }).then(data=>{
+        this.messageSvc.success('创建成功');
+        this.router.navigate(['/paper',data['payload'].paperId]);
+      });
+    }else{
+      this.apiSvc.post(`/paper/${this.paper.id}/edit/`,{
+        title:this.paper.title,
+        subject:this.paper.subject,
+        keyword:this.paper.keyword,
+        publishYear:this.paper.publishYear,
+        abstract:this.paper.abstract,
+        author:this.paper.author,
+        major:this.paper.major,
+        teachers: teachers
+      }).then(()=>{
+        this.messageSvc.success('修改成功');
+        this.router.navigate(['/paper',this.paper.id]);
+      });
+    }
+
   }
 
 }
