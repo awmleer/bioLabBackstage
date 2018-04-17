@@ -4,7 +4,6 @@ import {LabelsComponent} from '../pages/labels/labels.component';
 import {PaperDetailComponent} from '../pages/paper-detail/paper-detail.component';
 import {PaperEditComponent} from '../pages/paper-edit/paper-edit.component';
 import {ReagentsComponent} from '../pages/reagents/reagents.component';
-import {ReagentAddComponent} from '../pages/reagent-add/reagent-add.component';
 import {ReagentDetailComponent} from '../pages/reagent-detail/reagent-detail.component';
 import {ReagentEditComponent} from '../pages/reagent-edit/reagent-edit.component';
 
@@ -34,6 +33,12 @@ export const Router=RouterModule.forRoot([
       title: '试剂搜索'
     }
   },{
+    path: 'paper/:id',
+    component: PaperDetailComponent,
+    data: {
+      title: '论文详情'
+    }
+  },{
     path: 'paper/:id/edit',
     component: PaperEditComponent,
     data: {
@@ -46,28 +51,10 @@ export const Router=RouterModule.forRoot([
       title: '添加论文'
     }
   },{
-    path: 'reagent/add',
-    component: ReagentAddComponent,
-    data: {
-      title: '添加试剂'
-    }
-  },{
     path: 'reagent/:id',
     component: ReagentDetailComponent,
     data: {
       title: '试剂详情'
-    }
-  },{
-    path: 'labels/:type',
-    component: LabelsComponent,
-    data: {
-      title: '标签'
-    }
-  },{
-    path: 'paper/:id',
-    component: PaperDetailComponent,
-    data: {
-      title: '论文详情'
     }
   },{
     path: 'reagent/:id/edit',
@@ -75,7 +62,19 @@ export const Router=RouterModule.forRoot([
     data: {
       title: '编辑试剂'
     }
-  }
+  },{
+    path: 'reagent/add',
+    component: ReagentEditComponent,
+    data: {
+      title: '添加试剂'
+    }
+  },{
+    path: 'labels/:type',
+    component: LabelsComponent,
+    data: {
+      title: '标签'
+    }
+  },
 ],{
   useHash: true
 });

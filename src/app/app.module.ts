@@ -15,7 +15,6 @@ import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import { ReagentsComponent } from '../pages/reagents/reagents.component';
 import {ApiService} from '../services/api.service';
-import { ReagentAddComponent } from '../pages/reagent-add/reagent-add.component';
 import { ReagentDetailComponent } from '../pages/reagent-detail/reagent-detail.component';
 import { ReagentEditComponent } from '../pages/reagent-edit/reagent-edit.component';
 import { LabelParentPipe } from '../pipes/label-parent.pipe';
@@ -35,7 +34,6 @@ import {ReagentService} from '../services/reagent.service';
     PaperDetailComponent,
     PaperEditComponent,
     ReagentsComponent,
-    ReagentAddComponent,
     ReagentDetailComponent,
     ReagentEditComponent,
     LabelParentPipe,

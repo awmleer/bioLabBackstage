@@ -1,33 +1,55 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" class="btn btn-primary">返回</button>
+  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
   <h2>{{reagent?.englishName}}</h2>
 </div>
 
 
 <form *ngIf="reagent" class="form-group">
-  <label for="chineseNameField">中文名</label>
-  <input class="form-control" type="text" id="chineseNameField" [(ngModel)]="reagent.chineseName" name="chineseName">
-
-  <label for="englishNameField">英文名</label>
-  <input class="form-control" type="text" id="englishNameField" [(ngModel)]="reagent.englishName" name="englishName">
-
-  <label for="aliasField">别名（多个别名请用空格分隔）</label>
-  <input class="form-control" type="text" id="aliasField" [(ngModel)]="reagent.alias" name="alias">
-
-  <label for="molecularFormulaField">分子式</label>
-  <input class="form-control" type="text" id="molecularFormulaField" [(ngModel)]="reagent.molecularFormula" name="molecularFormula">
-
-  <label for="molecularWeightField">分子量</label>
-  <input class="form-control" type="text" id="molecularWeightField" [(ngModel)]="reagent.molecularWeight" name="molecularWeight">
-
-  <label for="dangerousField">危化品类型（如果不是危化品请留空）</label>
-  <input class="form-control" type="text" id="dangerousField" [(ngModel)]="reagent.dangerous" name="dangerous">
-
-  <label for="descriptionField">简介</label>
-  <textarea class="form-control" id="descriptionField" [(ngModel)]="reagent.description" style="height: 15em;" name="description"></textarea>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="chineseNameField">中文名</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="chineseNameField" [(ngModel)]="reagent.chineseName" name="chineseName">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="englishNameField">英文名</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="englishNameField" [(ngModel)]="reagent.englishName" name="englishName">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="aliasField">别名（多个别名请用空格分隔）</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="aliasField" [(ngModel)]="reagent.alias" name="alias">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="molecularFormulaField">分子式</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="molecularFormulaField" [(ngModel)]="reagent.molecularFormula" name="molecularFormula">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="molecularWeightField">分子量</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="molecularWeightField" [(ngModel)]="reagent.molecularWeight" name="molecularWeight">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="dangerousField">危化品类型（如果不是危化品请留空）</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <input nz-input type="text" id="dangerousField" [(ngModel)]="reagent.dangerous" name="dangerous">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="descriptionField">简介</nz-form-label>
+    <nz-form-control [nzSpan]="16">
+      <textarea nz-input id="descriptionField" [(ngModel)]="reagent.description" style="height: 15em;" name="description"></textarea>
+    </nz-form-control>
+  </nz-form-item>
 
   <div style="padding-top: 20px; text-align: center">
-    <button class="btn btn-primary" (click)="submit()">提交</button>
+    <button nz-button nzType="primary" (click)="submit()">提交</button>
   </div>
 
 </form>
