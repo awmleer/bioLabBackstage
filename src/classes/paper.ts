@@ -1,19 +1,14 @@
-import {Label} from "./types";
+import {Label, LabeledItem} from './label';
 
 export interface PaperLabel extends Label{}
 
-export class PaperEntry {
+export class PaperEntry implements LabeledItem {
   title:string;
   id:number;
-  label:{
-    id:number;
-    name:string;
-  }[];
+  labels:PaperLabel[];
 }
 
-export class PaperBrief {
-  id:number;
-  title:string;
+export class PaperBrief extends PaperEntry {
   author:string;
   major:string;
   teachers:{
@@ -27,10 +22,6 @@ export class PaperBrief {
 }
 
 export class PaperDetail extends PaperBrief{
-  labels:{
-    id:number;
-    name:string;
-  }[];
   subject:string;
 }
 

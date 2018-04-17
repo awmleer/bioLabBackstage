@@ -1,6 +1,7 @@
-import {html, Label, url} from "./types";
+import {html, url} from './types';
+import {Label, LabeledItem} from './label';
 
-export class ReagentEntry {
+export class ReagentEntry implements LabeledItem {
   id: number;
   chineseName: string='';
   englishName: string='';

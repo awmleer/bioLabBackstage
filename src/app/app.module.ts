@@ -23,6 +23,9 @@ import { LabelParentPipe } from '../pipes/label-parent.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
+import { LabelManagementComponent } from '../components/label-management/label-management.component';
+import {PaperService} from '../services/paper.service';
+import {ReagentService} from '../services/reagent.service';
 
 
 @NgModule({
@@ -37,7 +40,8 @@ import {NgZorroAntdModule} from 'ng-zorro-antd';
     ReagentAddComponent,
     ReagentDetailComponent,
     ReagentEditComponent,
-    LabelParentPipe
+    LabelParentPipe,
+    LabelManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +54,10 @@ import {NgZorroAntdModule} from 'ng-zorro-antd';
     Router
   ],
   providers: [
+    ApiService,
     LabelService,
-    ApiService
+    PaperService,
+    ReagentService,
   ],
   bootstrap: [AppComponent]
 })

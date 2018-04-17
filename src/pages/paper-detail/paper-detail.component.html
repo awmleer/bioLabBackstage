@@ -1,7 +1,7 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" class="btn btn-primary">返回</button>
+  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
   <h2>{{paper?.title}}</h2>
-  <a *ngIf="paper" id="btn-edit" class="btn btn-primary" [routerLink]="['/paper',paper.id,'edit']">修改</a>
+  <a *ngIf="paper" id="btn-edit" nz-button nzType="primary" [routerLink]="['/paper',paper.id,'edit']">修改</a>
 </div>
 
 <div *ngIf="paper">
@@ -26,7 +26,7 @@
     <input type="file" ng2FileSelect [uploader]="uploader"/>
     <!--<input type="file" name="paperFile" ng2FileSelect [uploader]="uploader" />-->
     <!--<button type="submit" class="button">-->
-    <button class="btn btn-primary" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+    <button nz-button (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
       上传
     </button>
     <span *ngIf="uploader.queue.length>0">
@@ -37,23 +37,13 @@
     <!--</form>-->
   </div>
   <div style="margin: 10px 0 20px;">
-    <button class="btn btn-primary" (click)="openModal(modalContent)">更新PDF内容文字</button>
+    <button nz-button (click)="openModal(modalContent)">更新PDF内容文字</button>
   </div>
 </div>
 
 <div *ngIf="paper" class="labels">
   <h3>标签管理</h3>
-  <div style="border-bottom: solid 1px #d1d1d1;margin-bottom: 10px;padding-bottom: 5px">
-    <button *ngFor="let label of paper.labels" (click)="removeLabel(label.id)" class="btn btn-sm btn-primary" style="margin-right: 10px">{{label.name}}</button>
-    <span *ngIf="paper.labels.length==0">暂无标签</span>
-  </div>
-  <div>
-    <input class="form-control" type="text" placeholder="搜索标签…" style="margin-bottom: 0.3rem" [ngModel]="labelSearchText" (ngModelChange)="labelSearchTextChanged($event)">
-    <div *ngFor="let label of filteredLabels" class="filteredLabel">
-      <span><span style="font-weight: bold">{{label.name}}</span><span style="color: gray;">{{label | labelParent: labelService.labels}}</span></span>
-      <button (click)="addLabel(label)" class="btn btn-sm btn-primary">添加</button>
-    </div>
-  </div>
+  <label-management [item]="paper" itemType="paper"></label-management>
 </div>
 
 

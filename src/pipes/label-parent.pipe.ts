@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Label} from "../classes/types";
-import * as _ from "lodash"
+import {Label} from '../classes/label';
+import * as _ from 'lodash';
 
 
 @Pipe({
@@ -17,14 +17,11 @@ export class LabelParentPipe implements PipeTransform {
     let result:string='';
     let l:Label = label;
     while (l.parentId!=null){
-      console.log(l.parentId);
       result+='<-';
       l=_.find(labelList,{
         'id': l.parentId
       });
       result+=l.name;
-      console.log(result);
-      console.log(l);
     }
     return result;
   }
