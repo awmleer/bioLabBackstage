@@ -38,9 +38,6 @@ export class ReagentEditComponent implements OnInit {
   }
 
   submit(){
-    if (this.reagent.dangerous === '') {
-      this.reagent.dangerous=null;
-    }
     if (this.createMode) {
       this.apiSvc.post('/reagent/add/',this.reagent).then((data)=>{
         this.messageSvc.success('添加成功');
