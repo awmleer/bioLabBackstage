@@ -16,7 +16,7 @@
       简介：{{reagent.description}}<br>
       分子式：<span [innerHtml]="reagent.molecularFormulaParsed"></span><br>
       分子量：{{reagent.molecularWeight}}<br>
-      危化品：{{reagent.dangerous}}<br>
+      危化品：{{reagent.dangerous?'是':'否'}}<br>
     </p>
   </div>
 

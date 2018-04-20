@@ -36,9 +36,9 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="dangerousField">危化品类型（如果不是危化品请留空）</nz-form-label>
+    <nz-form-label [nzSpan]="6">危化品</nz-form-label>
     <nz-form-control [nzSpan]="16">
-      <input nz-input type="text" id="dangerousField" [(ngModel)]="reagent.dangerous" name="dangerous">
+      <label nz-checkbox [(ngModel)]="reagent.dangerous"></label>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
