@@ -1,0 +1,33 @@
+<div class="header">
+  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
+  <h2>{{instrument?.title}}</h2>
+</div>
+
+<div *ngIf="instrument">
+  <form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="3" nzFor="chineseNameField">中文名</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input type="text" id="chineseNameField" [(ngModel)]="instrument.chineseName" name="chineseName">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="3" nzFor="englishNameField">英文名</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input type="text" id="englishNameField" [(ngModel)]="instrument.englishName" name="englishName">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="3" nzFor="modelNumberField">型号</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input type="text" id="modelNumberField" [(ngModel)]="instrument.modelNumber" name="modelNumber">
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <quill-editor [style]="{height: '80vh'}"></quill-editor>
+  <div style="padding-top: 20px; text-align: center">
+    <button nz-button nzType="primary" (click)="submit()">提交</button>
+  </div>
+</div>
+
+

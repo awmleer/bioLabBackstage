@@ -6,6 +6,7 @@ import {PaperEditComponent} from '../pages/paper-edit/paper-edit.component';
 import {ReagentsComponent} from '../pages/reagents/reagents.component';
 import {ReagentDetailComponent} from '../pages/reagent-detail/reagent-detail.component';
 import {ReagentEditComponent} from '../pages/reagent-edit/reagent-edit.component';
+import {InstrumentEditComponent} from '../pages/instrument-edit/instrument-edit.component';
 
 export const Router=RouterModule.forRoot([
   {
@@ -67,6 +68,18 @@ export const Router=RouterModule.forRoot([
     component: ReagentEditComponent,
     data: {
       title: '添加试剂'
+    }
+  },{
+    path: 'instrument/add',
+    component: InstrumentEditComponent,
+    data: {
+      title: '添加仪器'
+    }
+  },{
+    path: 'instrument/:id/edit',
+    component: InstrumentEditComponent,
+    data: {
+      title: '编辑仪器'
     }
   },{
     path: 'labels/:type',

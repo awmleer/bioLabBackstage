@@ -24,7 +24,8 @@ import {NgZorroAntdModule} from 'ng-zorro-antd';
 import { LabelManagementComponent } from '../components/label-management/label-management.component';
 import {PaperService} from '../services/paper.service';
 import {ReagentService} from '../services/reagent.service';
-
+import { InstrumentEditComponent } from '../pages/instrument-edit/instrument-edit.component';
+import {QuillModule} from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {ReagentService} from '../services/reagent.service';
     ReagentDetailComponent,
     ReagentEditComponent,
     LabelParentPipe,
-    LabelManagementComponent
+    LabelManagementComponent,
+    InstrumentEditComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import {ReagentService} from '../services/reagent.service';
     TreeModule,
     FileUploadModule,
     NgZorroAntdModule.forRoot(),
-    Router
+    Router,
+    QuillModule,
   ],
   providers: [
     ApiService,
