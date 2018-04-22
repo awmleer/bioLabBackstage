@@ -6,7 +6,7 @@ export class ReagentEntry implements LabeledItem {
   chineseName: string='';
   englishName: string='';
   alias: string='';
-  labels: ReagentLabel[];
+  labels: Label[];
 }
 
 export class ReagentBrief extends ReagentEntry {
@@ -25,10 +25,4 @@ export interface ReagentPicture {
   id: number;
   description: string;
   url: url;
-}
-
-export interface ReagentLabel extends Label{}
-
-export interface ReagentLabelTreeNode extends ReagentLabel {
-  children: ReagentLabelTreeNode[];
 }

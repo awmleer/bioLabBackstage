@@ -1,5 +1,3 @@
-import {ReagentDetail, ReagentLabel} from './reagent';
-
 export interface Label {
   id: number;
   name: string;
@@ -14,4 +12,8 @@ export interface LabeledItem {
 export interface LabeledItemService {
   addLabel:(item:LabeledItem, label:Label)=>Promise<void>;
   removeLabel:(item:LabeledItem, label:Label)=>Promise<void>;
+}
+
+export interface LabelTreeNode extends Label {
+  children: LabelTreeNode[];
 }

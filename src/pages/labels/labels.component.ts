@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../services/api.service';
+import {LabelTreeNode} from '../../classes/label';
 
 @Component({
   selector: 'app-labels',
@@ -11,7 +12,7 @@ import {ApiService} from '../../services/api.service';
 })
 export class LabelsComponent implements OnInit {
   type:'paper'|'reagent';
-  labelTree;
+  labelTree: LabelTreeNode[] = null;
 
   constructor(
     private api: ApiService,
