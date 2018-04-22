@@ -24,7 +24,14 @@
       </nz-form-control>
     </nz-form-item>
   </form>
-  <quill-editor [style]="{height: '80vh'}"></quill-editor>
+  <h2>外部部件</h2>
+  <quill-editor [style]="{height: '70vh'}" [(ngModel)]="instrument.content.outer"></quill-editor>
+  <h2>内部部件</h2>
+  <quill-editor [style]="{height: '70vh'}" [(ngModel)]="instrument.content.inner"></quill-editor>
+  <h2>使用说明书</h2>
+  <quill-editor [style]="{height: '70vh'}" [(ngModel)]="instrument.content.instructions"></quill-editor>
+  <h2>注意事项</h2>
+  <quill-editor [style]="{height: '70vh'}" [(ngModel)]="instrument.content.attentions"></quill-editor>
   <div style="padding-top: 20px; text-align: center">
     <button nz-button nzType="primary" (click)="submit()">提交</button>
   </div>
