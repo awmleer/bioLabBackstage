@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import {PaperService} from '../services/paper.service';
 import {ReagentService} from '../services/reagent.service';
 import { InstrumentEditComponent } from '../pages/instrument-edit/instrument-edit.component';
 import {QuillModule} from 'ngx-quill';
+import {BiolabErrorHandler} from './error-handler';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {QuillModule} from 'ngx-quill';
     LabelService,
     PaperService,
     ReagentService,
+    {provide: ErrorHandler, useClass: BiolabErrorHandler},
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ import {CONST} from '../app/const';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {NzMessageService} from 'ng-zorro-antd';
 import {Observable} from 'rxjs/Observable';
+import {ApiError} from '../classes/error';
 
 @Injectable()
 export class ApiService {
@@ -13,26 +14,20 @@ export class ApiService {
     private messageSvc: NzMessageService,
   ) {}
 
-  private handleHttp(request:Observable<Object>,messageOnError:boolean){
+  private handleHttp(request:Observable<Object>){
     return request.toPromise().catch((error:HttpErrorResponse) => {
-      if (messageOnError) {
-        let messageText;
-        if (error.status === 403) {
-          messageText='您没有权限进行该操作';
-        }else{
-          messageText='出错了';
-        }
-        this.messageSvc.create('error', messageText);
+      let messageText;
+      if (error.status === 403) {
+        messageText='您没有权限进行该操作';
+      }else{
+        messageText='出错了';
       }
-      throw new Error('出错了');
+      throw new ApiError(messageText);
     }).then((data)=>{
       if (data['status']==='success') {
         return data['payload'];
       }else{
-        if (messageOnError) {
-          this.messageSvc.create('error', data['payload']);
-        }
-        throw new Error(data['payload']);
+        throw new ApiError(data['payload']);
       }
     });
   }
@@ -48,14 +43,14 @@ export class ApiService {
       params:params,
       withCredentials:true
     });
-    return this.handleHttp(request,messageOnError);
+    return this.handleHttp(request);
   }
 
   post(url:string, body:any=null, messageOnError:boolean=true):Promise<any>{
     const request=this.http.post(CONST.apiUrl+url, body,{
       withCredentials:true
     });
-    return this.handleHttp(request,messageOnError);
+    return this.handleHttp(request);
   }
 
 }
