@@ -34,8 +34,8 @@ export class LabelsComponent implements OnInit {
   }
 
   addLabelNode(parentLabelId){
-    console.log(parentLabelId);
     const name = prompt('请输入新标签的名字');
+    if (name == null) return;
     this.api.post(`/${this.type}/label/add/`,{
       parentId: parentLabelId,
       name: name
@@ -45,7 +45,8 @@ export class LabelsComponent implements OnInit {
   }
 
   removeLabel(label){
-    if(!confirm('确定要删除这个标签吗？')) {return; }
+    if(!confirm('确定要删除这个标签吗？')) return;
+    if (name == null) return;
     this.api.post(`/${this.type}/label/remove/`,{
       id: label.id
     }).then(response=>{
@@ -55,6 +56,7 @@ export class LabelsComponent implements OnInit {
 
   editLabel(label){
     const name = prompt('请输入新的标签名');
+    if (name == null) return;
     this.api.post(`/${this.type}/label/edit/`,{
       id: label.id,
       name: name
