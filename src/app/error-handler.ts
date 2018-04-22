@@ -15,15 +15,14 @@ export class BiolabErrorHandler implements ErrorHandler {
 
   handleError(error) {
     this.ngZone.run(() => {
+      if (!environment.production) {
+        console.error(error);
+      }
       if(error.rejection){
         error = error.rejection;
       }
       if(error instanceof ApiError){
         this.messageSvc.create('error', error.message);
-      }else{
-        if (!environment.production) {
-          console.error(error);
-        }
       }
     });
   }

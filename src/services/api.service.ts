@@ -36,8 +36,7 @@ export class ApiService {
     url:string,
     params:{
       [param: string]: any;
-    }=null,
-    messageOnError:boolean=true
+    }=null
   ):Promise<any>{
     const request=this.http.get(CONST.apiUrl+url,{
       params:params,
@@ -46,7 +45,7 @@ export class ApiService {
     return this.handleHttp(request);
   }
 
-  post(url:string, body:any=null, messageOnError:boolean=true):Promise<any>{
+  post(url:string, body:any=null):Promise<any>{
     const request=this.http.post(CONST.apiUrl+url, body,{
       withCredentials:true
     });
