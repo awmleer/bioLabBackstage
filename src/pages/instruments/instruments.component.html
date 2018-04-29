@@ -1,0 +1,18 @@
+<a nz-button nzType="primary" [routerLink]="['/instrument/add']">增加论文</a>
+
+<div class="search-box" style="float: right">
+  <input nz-input [(ngModel)]="searchTextInputed" type="text" title="搜索" placeholder="搜索">
+  <button nz-button nzType="primary" (click)="search()">搜索</button>
+</div>
+
+<div class="instrument-list">
+  <div class="instrument" *ngFor="let instrument of instruments">
+    <h3><a [routerLink]="['/instrument',instrument.id]">{{instrument.englishName}} {{instrument.chineseName}}</a></h3>
+    <p *ngIf="instrument.labels">
+      <nz-tag *ngFor="let label of instrument.labels">{{label.name}}</nz-tag>
+      <nz-tag *ngIf="instrument?.labels.length==0">暂无标签</nz-tag>
+    </p>
+  </div>
+</div>
+
+<nz-pagination [nzPageSize]="1" [nzTotal]="totalPageCount" [nzPageIndex]="pageNumber" (nzPageIndexChange)="pageChange($event)"></nz-pagination>

@@ -28,6 +28,7 @@ import { InstrumentEditComponent } from '../pages/instrument-edit/instrument-edi
 import {QuillModule} from 'ngx-quill';
 import {BiolabErrorHandler} from './error-handler';
 import {InstrumentService} from '../services/instrument.service';
+import {InstrumentsComponent} from '../pages/instruments/instruments.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {InstrumentService} from '../services/instrument.service';
     ReagentEditComponent,
     LabelParentPipe,
     LabelManagementComponent,
-    InstrumentEditComponent
+    InstrumentsComponent,
+    InstrumentEditComponent,
   ],
   imports: [
     BrowserModule,

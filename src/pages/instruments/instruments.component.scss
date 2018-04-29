@@ -1,0 +1,24 @@
+div.instrument-list{
+  div.instrument{
+    padding:10px 0 5px;
+    h3{
+      margin-bottom: 5px;
+      font-size: 22px;
+    }
+    p{
+      margin-bottom: 5px;
+    }
+    //border-top:solid 1px #d1d1d1;
+    border-bottom:solid 1px #d1d1d1;
+    border-collapse: collapse;
+  }
+  div:last-of-type{
+    border-bottom: none!important;
+  }
+}
+
+nz-pagination{
+  display: block;
+  margin-top: 16px;
+}
+
