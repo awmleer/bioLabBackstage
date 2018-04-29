@@ -41,22 +41,18 @@ export class PapersComponent implements OnInit {
     this.router.navigate([`../${pageNumber}`], {relativeTo: this.route});
   }
 
-  fetchList(){
+  async fetchList(){
+    let data;
     if (this.searchText) {
-      this.api.post(`/paper/search/${this.pageNumber}/`,[{
+      data = await this.api.post(`/paper/search/${this.pageNumber}/`,[{
         'field': 'title',
         'value': this.searchText
-      }]).then(data=>{
-        this.papers=data['papers'];
-        console.log(this.papers);
-        this.totalPageCount=data['totalPageCount'];
-      });
+      }]);
     }else{
-      this.api.get(`/paper/list/${this.pageNumber}/`).then(data=>{
-        this.papers=data['papers'];
-        this.totalPageCount=data['totalPageCount'];
-      });
+      data = await this.api.get(`/paper/list/${this.pageNumber}/`);
     }
+    this.papers=data['papers'];
+    this.totalPageCount=data['totalPageCount'];
   }
 
   search(){
