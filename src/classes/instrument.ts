@@ -1,7 +1,10 @@
-export class InstrumentEntry {
+import {Label, LabeledItem} from './label';
+
+export class InstrumentEntry implements LabeledItem {
   id: number;
   chineseName: string;
   englishName: string;
+  labels: Label[];
 }
 
 export class InstrumentBrief extends InstrumentEntry {

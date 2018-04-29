@@ -27,6 +27,7 @@ import {ReagentService} from '../services/reagent.service';
 import { InstrumentEditComponent } from '../pages/instrument-edit/instrument-edit.component';
 import {QuillModule} from 'ngx-quill';
 import {BiolabErrorHandler} from './error-handler';
+import {InstrumentService} from '../services/instrument.service';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import {BiolabErrorHandler} from './error-handler';
     LabelService,
     PaperService,
     ReagentService,
+    InstrumentService,
     {provide: ErrorHandler, useClass: BiolabErrorHandler},
   ],
   bootstrap: [AppComponent]
