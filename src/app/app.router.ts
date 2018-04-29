@@ -8,6 +8,7 @@ import {ReagentDetailComponent} from '../pages/reagent-detail/reagent-detail.com
 import {ReagentEditComponent} from '../pages/reagent-edit/reagent-edit.component';
 import {InstrumentEditComponent} from '../pages/instrument-edit/instrument-edit.component';
 import {InstrumentsComponent} from '../pages/instruments/instruments.component';
+import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-detail.component';
 
 export const Router=RouterModule.forRoot([
   {
@@ -93,6 +94,12 @@ export const Router=RouterModule.forRoot([
     component: InstrumentEditComponent,
     data: {
       title: '编辑仪器'
+    }
+  },{
+    path: 'instrument/:id',
+    component: InstrumentDetailComponent,
+    data: {
+      title: '仪器详情'
     }
   },{
     path: 'labels/:type',

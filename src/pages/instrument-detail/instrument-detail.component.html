@@ -1,0 +1,31 @@
+<div class="header">
+  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
+  <h2>{{instrument?.chineseName}}</h2>
+  <a *ngIf="instrument" id="btn-edit" nz-button nzType="primary" [routerLink]="['/instrument',instrument.id,'edit']">修改</a>
+</div>
+
+<div *ngIf="instrument">
+  <h3>基本信息</h3>
+  <p>
+    id：{{instrument.id}}<br>
+    中文名：{{instrument.chineseName}}<br>
+    英文名：{{instrument.englishName}}<br>
+    标签：<span *ngFor="let label of instrument.labels">{{label}}</span><br>
+    封面图片：<img [src]="instrument.coverImg"><br>
+    型号：{{instrument.modelNumber}}<br>
+  </p>
+  <h3>外部</h3>
+  <div [innerHtml]="instrument.content.outer | sanitizeHtml"></div>
+  <h3>内部</h3>
+  <div [innerHtml]="instrument.content.inner | sanitizeHtml"></div>
+  <h3>说明书</h3>
+  <div [innerHtml]="instrument.content.instructions | sanitizeHtml"></div>
+  <h3>注意事项</h3>
+  <div [innerHtml]="instrument.content.attentions | sanitizeHtml"></div>
+</div>
+
+<div *ngIf="instrument" class="labels">
+  <h3>标签管理</h3>
+  <label-management [item]="instrument" itemType="instrument"></label-management>
+</div>
+

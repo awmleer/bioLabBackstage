@@ -10,7 +10,6 @@ import {LabelService} from '../services/label.service';
 import {TreeModule} from 'angular-tree-component';
 import {Router} from './app.router';
 
-// import { FileSelectDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { PaperEditComponent } from '../pages/paper-edit/paper-edit.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import { ReagentsComponent } from '../pages/reagents/reagents.component';
@@ -29,6 +28,8 @@ import {QuillModule} from 'ngx-quill';
 import {BiolabErrorHandler} from './error-handler';
 import {InstrumentService} from '../services/instrument.service';
 import {InstrumentsComponent} from '../pages/instruments/instruments.component';
+import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-detail.component';
+import { SanitizeHtmlPipe } from '../pipes/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import {InstrumentsComponent} from '../pages/instruments/instruments.component';
     LabelParentPipe,
     LabelManagementComponent,
     InstrumentsComponent,
+    InstrumentDetailComponent,
     InstrumentEditComponent,
+    SanitizeHtmlPipe,
   ],
   imports: [
     BrowserModule,
