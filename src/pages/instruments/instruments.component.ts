@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import {ApiService} from '../../services/api.service';
-import {InstrumentEntry} from '../../classes/instrument';
+import {InstrumentBrief, InstrumentEntry} from '../../classes/instrument';
 import {ActivatedRoute, Router} from '@angular/router';
 import {InstrumentService} from '../../services/instrument.service';
+import {Page} from '../../classes/page';
 
 
 @Component({
@@ -12,12 +13,15 @@ import {InstrumentService} from '../../services/instrument.service';
   styleUrls: ['./instruments.component.scss']
 })
 export class InstrumentsComponent implements OnInit {
-
-  instruments:InstrumentEntry[];
   searchText:string;
   searchTextInputed:string='';
   pageNumber:number;
-  totalPageCount:number=1;
+
+  page:Page<InstrumentBrief>;
+
+  get instruments():InstrumentBrief[]{
+    return this.page.items;
+  }
 
   constructor(
     private api:ApiService,
@@ -44,17 +48,14 @@ export class InstrumentsComponent implements OnInit {
   }
 
   async fetchList(){
-    let data;
     if (this.searchText) {
-      data = await this.api.post(`/instrument/search/${this.pageNumber}/`,[{
+      this.page = await this.api.post(`/instrument/search/${this.pageNumber}/`,[{
         'field': 'title',
         'value': this.searchText
       }]);
     }else{
-      data = await this.instrumentSvc.instrumentList(this.pageNumber);
+      this.page = await this.instrumentSvc.instrumentList(this.pageNumber);
     }
-    this.instruments=data['instruments'];
-    this.totalPageCount=data['totalPageCount'];
   }
 
   search(){

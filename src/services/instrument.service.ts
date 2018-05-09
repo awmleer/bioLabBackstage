@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ApiService} from './api.service';
-import {InstrumentDetail, InstrumentEntry} from '../classes/instrument';
+import {InstrumentBrief, InstrumentDetail, InstrumentEntry} from '../classes/instrument';
 import * as _ from 'lodash';
 import {Label, LabeledItemService} from '../classes/label';
+import {Page} from '../classes/page';
 
 
 @Injectable()
@@ -15,7 +16,7 @@ export class InstrumentService implements LabeledItemService {
     private apiSvc: ApiService,
   ) {}
 
-  instrumentList(pageNumber:number):Promise<InstrumentEntry[]>{
+  instrumentList(pageNumber:number):Promise<Page<InstrumentBrief>>{
     return this.apiSvc.get(`/instrument/list/${pageNumber}`);
   }
 
