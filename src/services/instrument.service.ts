@@ -15,8 +15,16 @@ export class InstrumentService implements LabeledItemService {
     private apiSvc: ApiService,
   ) {}
 
-  async instrumentList(pageNumber:number):Promise<InstrumentEntry[]>{
-    return await this.apiSvc.get(`/instrument/list/${pageNumber}`);
+  instrumentList(pageNumber:number):Promise<InstrumentEntry[]>{
+    return this.apiSvc.get(`/instrument/list/${pageNumber}`);
+  }
+
+  addInstrument(data):Promise<number>{
+    return this.apiSvc.post('/instrument/add/', data);
+  }
+
+  editInstrument(instrumentId:number, data):Promise<void>{
+    return this.apiSvc.post(`/instrument/${instrumentId}/edit/`, data);
   }
 
   instrumentDetail(id:number):Promise<InstrumentDetail>{

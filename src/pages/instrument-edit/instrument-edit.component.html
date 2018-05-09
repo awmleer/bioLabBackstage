@@ -1,6 +1,7 @@
 <div class="header">
   <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
-  <h2>{{instrument?.chineseName}}</h2>
+  <h2 *ngIf="!createMode">{{instrument?.chineseName}}</h2>
+  <h2 *ngIf="createMode">添加仪器</h2>
 </div>
 
 <div *ngIf="instrument">
