@@ -17,7 +17,7 @@ export class InstrumentService implements LabeledItemService {
   ) {}
 
   instrumentList(pageNumber:number):Promise<Page<InstrumentBrief>>{
-    return this.apiSvc.get(`/instrument/list/${pageNumber}`);
+    return this.apiSvc.get(`/instrument/list/${pageNumber}/`);
   }
 
   addInstrument(data):Promise<number>{
