@@ -5,14 +5,18 @@
   <button nz-button nzType="primary" (click)="search()">搜索</button>
 </div>
 
-<div class="instrument-list">
-  <div class="instrument" *ngFor="let instrument of instruments">
-    <h3><a [routerLink]="['/instrument',instrument.id]">{{instrument.englishName}} {{instrument.chineseName}}</a></h3>
-    <p *ngIf="instrument.labels">
-      <nz-tag *ngFor="let label of instrument.labels">{{label.name}}</nz-tag>
-      <nz-tag *ngIf="instrument?.labels.length==0">暂无标签</nz-tag>
-    </p>
+
+<div *ngIf="page">
+  <div class="instrument-list">
+    <div class="instrument" *ngFor="let instrument of instruments">
+      <h3><a [routerLink]="['/instrument',instrument.id]">{{instrument.englishName}} {{instrument.chineseName}}</a></h3>
+      <p *ngIf="instrument.labels">
+        <nz-tag *ngFor="let label of instrument.labels">{{label.name}}</nz-tag>
+        <nz-tag *ngIf="instrument?.labels.length==0">暂无标签</nz-tag>
+      </p>
+    </div>
   </div>
+
+  <nz-pagination [nzPageSize]="1" [nzTotal]="page.totalPageCount" [nzPageIndex]="pageNumber" (nzPageIndexChange)="pageChange($event)"></nz-pagination>
 </div>
 
-<nz-pagination [nzPageSize]="1" [nzTotal]="page.totalPageCount" [nzPageIndex]="pageNumber" (nzPageIndexChange)="pageChange($event)"></nz-pagination>

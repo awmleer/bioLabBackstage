@@ -20,7 +20,11 @@ export class InstrumentsComponent implements OnInit {
   page:Page<InstrumentBrief>;
 
   get instruments():InstrumentBrief[]{
-    return this.page.items;
+    if (this.page) {
+      return this.page.items;
+    }else{
+      return null;
+    }
   }
 
   constructor(
