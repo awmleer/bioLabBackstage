@@ -1,10 +1,10 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
+  <a id="btn-go-back" [routerLink]="['/instrument/list/1']" nz-button>返回</a>
   <h2>{{instrument?.chineseName}}</h2>
   <a *ngIf="instrument" id="btn-edit" nz-button nzType="primary" [routerLink]="['/instrument',instrument.id,'edit']">修改</a>
 </div>
 
-<div *ngIf="instrument">
+<div *ngIf="instrument" class="instrument-detail">
   <h3>基本信息</h3>
   <p>
     id：{{instrument.id}}<br>

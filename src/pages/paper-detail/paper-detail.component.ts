@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import { Location } from '@angular/common';
 import { FileUploader } from 'ng2-file-upload';
 
 import 'rxjs/add/operator/debounceTime';
@@ -24,7 +23,6 @@ export class PaperDetailComponent implements OnInit {
   constructor(
     private apiSvc: ApiService,
     private route: ActivatedRoute,
-    public location: Location,
     private modalSvc: NzModalService,
     public paperSvc: PaperService,
   ) {}

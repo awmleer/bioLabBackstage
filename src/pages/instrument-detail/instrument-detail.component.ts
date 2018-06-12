@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import { Location } from '@angular/common';
 
 import 'rxjs/add/operator/debounceTime';
 import {ApiService} from '../../services/api.service';
@@ -19,7 +18,6 @@ export class InstrumentDetailComponent implements OnInit {
   constructor(
     private apiSvc: ApiService,
     private route: ActivatedRoute,
-    public location: Location,
     public instrumentSvc: InstrumentService,
   ) {}
 

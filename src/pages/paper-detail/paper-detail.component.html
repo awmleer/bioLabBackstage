@@ -1,5 +1,5 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
+  <a id="btn-go-back" [routerLink]="['/paper/list/1']" nz-button>返回</a>
   <h2>{{paper?.title}}</h2>
   <a *ngIf="paper" id="btn-edit" nz-button nzType="primary" [routerLink]="['/paper',paper.id,'edit']">修改</a>
 </div>

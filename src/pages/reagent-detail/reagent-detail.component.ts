@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../services/api.service';
 import {ReagentDetail} from '../../classes/reagent';
-import {Location} from '@angular/common';
 import { FileUploader } from 'ng2-file-upload';
 import 'rxjs/add/operator/debounceTime';
 import {CONST} from '../../app/const';
@@ -19,7 +18,6 @@ export class ReagentDetailComponent implements OnInit {
   reagent: ReagentDetail;
 
   constructor(
-    public location: Location,
     private route: ActivatedRoute,
     private api: ApiService
   ) {}
