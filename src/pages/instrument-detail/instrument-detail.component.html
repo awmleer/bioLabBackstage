@@ -10,9 +10,9 @@
     id：{{instrument.id}}<br>
     中文名：{{instrument.chineseName}}<br>
     英文名：{{instrument.englishName}}<br>
-    标签：<span *ngFor="let label of instrument.labels">{{label}}</span><br>
-    封面图片：<img [src]="instrument.coverImg"><br>
     型号：{{instrument.modelNumber}}<br>
+    标签：<span *ngFor="let label of instrument.labels">{{label}}</span><br>
+    正面图：<img [src]="instrument.coverImg"><br>
   </p>
   <h3>外部</h3>
   <div [innerHtml]="instrument.content.outer | sanitizeHtml"></div>

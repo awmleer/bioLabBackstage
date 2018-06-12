@@ -14,7 +14,7 @@ import {ReagentService} from '../../services/reagent.service';
 export class LabelManagementComponent implements OnInit {
 
   @Input() item: LabeledItem;
-  @Input() itemType: 'paper'|'reagent';
+  @Input() itemType: 'paper'|'reagent'|'instrument';
 
   labelSearchText:string = '';
   labelSearchTextSubject: Subject<string> = new Subject<string>();
@@ -43,11 +43,7 @@ export class LabelManagementComponent implements OnInit {
   }
 
   get labels():Label[]{
-    if(this.itemType === 'paper'){
-      return this.labelSvc.paperLabels;
-    }else if(this.itemType === 'reagent'){
-      return this.labelSvc.reagentLabels;
-    }
+    return this.labelSvc.getLabels(this.itemType);
   }
 
   labelSearchTextChanged(newValue){

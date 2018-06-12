@@ -8,25 +8,29 @@ import {Label} from '../classes/label';
 @Injectable()
 export class LabelService {
 
-  paperLabels=[];//TODO 需要重构成paperLabels
+  paperLabels=[];
   reagentLabels=[];
+  instrumentLabels=[];
 
   constructor(
     private api: ApiService,
   ) {
-    this.api.get(`/paper/label/list/`).then(data=>{
-      this.paperLabels=data;
-    });
-    this.api.get(`/reagent/label/list/`).then(data=>{
-      this.reagentLabels=data;
-    });
+    this.initLabels();
   }
 
-  getLabels(which:'paper'|'reagent'):Label[]{
+  async initLabels(){
+    this.paperLabels = await this.api.get('/paper/label/list/');
+    this.reagentLabels = await this.api.get('/reagent/label/list/');
+    this.instrumentLabels = await this.api.get('/instrument/label/list/');
+  }
+
+  getLabels(which:'paper'|'reagent'|'instrument'):Label[]{
     if(which==='paper'){
       return this.paperLabels;
     }else if(which==='reagent'){
       return this.reagentLabels;
+    }else if(which === 'instrument'){
+      return this.instrumentLabels;
     }else{
       return null;
     }
