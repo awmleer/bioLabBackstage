@@ -75,13 +75,13 @@ export const Router=RouterModule.forRoot([
     path: 'instrument/list/:pageNumber',
     component: InstrumentsComponent,
     data: {
-      title: '试剂列表'
+      title: '仪器列表'
     }
   },{
     path: 'instrument/search/:searchText/:pageNumber',
     component: InstrumentsComponent,
     data: {
-      title: '试剂搜索'
+      title: '仪器搜索'
     }
   },{
     path: 'instrument/add',

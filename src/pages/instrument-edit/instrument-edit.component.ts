@@ -40,6 +40,11 @@ export class InstrumentEditComponent implements OnInit {
   }
 
   async submit(){
+    for(const key of Object.keys(this.instrument.content)){
+      if(this.instrument.content[key]===null){
+        this.instrument.content[key]='';
+      }
+    }
     if(this.createMode){
       const newId = await this.instrumentSvc.addInstrument(this.instrument);
       this.messageSvc.success('创建成功');
