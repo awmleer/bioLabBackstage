@@ -5,6 +5,7 @@ import {Subject} from 'rxjs/Subject';
 import {Label, LabeledItem, LabeledItemService} from '../../classes/label';
 import {PaperService} from '../../services/paper.service';
 import {ReagentService} from '../../services/reagent.service';
+import {InstrumentService} from '../../services/instrument.service';
 
 @Component({
   selector: 'label-management',
@@ -25,6 +26,7 @@ export class LabelManagementComponent implements OnInit {
     public labelSvc: LabelService,
     private paperSvc: PaperService,
     private reagentSvc: ReagentService,
+    private instrumentSvc: InstrumentService,
   ) {}
 
   ngOnInit() {
@@ -68,6 +70,8 @@ export class LabelManagementComponent implements OnInit {
       return this.paperSvc;
     }else if(this.itemType === 'reagent'){
       return this.reagentSvc;
+    }else if(this.itemType === 'instrument'){
+      return this.instrumentSvc;
     }
   }
 
