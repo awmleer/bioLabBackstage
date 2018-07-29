@@ -54,14 +54,13 @@ export class LabelManagementComponent implements OnInit {
 
 
   removeLabel(label:Label){
-    this.labeledItemSvc.removeLabel(this.item, label).then(() => {
-      this.labelSearchText='';
-    });
+    this.labeledItemSvc.removeLabel(this.item, label);
   }
 
   addLabel(label:Label){
     this.labeledItemSvc.addLabel(this.item, label).then(() => {
       this.labelSearchText='';
+      this.filteredLabels = [];
     });
   }
 
