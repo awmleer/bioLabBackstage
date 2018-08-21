@@ -14,13 +14,13 @@
     正面图：<img [src]="instrument.coverImg"><br>
   </p>
   <h3>外部</h3>
-  <div [innerHtml]="instrument.content.outer | sanitizeHtml"></div>
+  <div [innerHtml]="instrument.content.outer | sanitizeHtml" class="html-document"></div>
   <h3>内部</h3>
-  <div [innerHtml]="instrument.content.inner | sanitizeHtml"></div>
+  <div [innerHtml]="instrument.content.inner | sanitizeHtml" class="html-document"></div>
   <h3>说明书</h3>
-  <div [innerHtml]="instrument.content.instructions | sanitizeHtml"></div>
+  <div [innerHtml]="instrument.content.instructions | sanitizeHtml" class="html-document"></div>
   <h3>注意事项</h3>
-  <div [innerHtml]="instrument.content.attentions | sanitizeHtml"></div>
+  <div [innerHtml]="instrument.content.attentions | sanitizeHtml" class="html-document"></div>
 </div>
 
 <div *ngIf="instrument" class="labels">
