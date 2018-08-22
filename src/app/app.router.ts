@@ -9,6 +9,7 @@ import {ReagentEditComponent} from '../pages/reagent-edit/reagent-edit.component
 import {InstrumentEditComponent} from '../pages/instrument-edit/instrument-edit.component';
 import {InstrumentsComponent} from '../pages/instruments/instruments.component';
 import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-detail.component';
+import {NoticesComponent} from '../pages/notice/notices/notices.component';
 
 export const Router=RouterModule.forRoot([
   {
@@ -106,6 +107,24 @@ export const Router=RouterModule.forRoot([
     component: LabelsComponent,
     data: {
       title: '标签'
+    }
+  },{
+    path: 'notice/list/:pageNumber',
+    component: NoticesComponent,
+    data: {
+      title: '公告列表'
+    }
+  },{
+    path: 'notice/:id',
+    component: PaperDetailComponent,
+    data: {
+      title: '公告详情'
+    }
+  },{
+    path: 'notice/:id/edit',
+    component: PaperEditComponent,
+    data: {
+      title: '编辑公告'
     }
   },
 ],{

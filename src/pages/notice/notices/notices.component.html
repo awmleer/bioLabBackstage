@@ -1,0 +1,17 @@
+<a nz-button nzType="primary" [routerLink]="['/notice/add']">发公告</a>
+
+<!--<div class="search-box" style="float: right">-->
+  <!--<input nz-input [(ngModel)]="searchTextInputed" type="text" title="搜索" placeholder="搜索">-->
+  <!--<button nz-button nzType="primary" (click)="search()">搜索</button>-->
+<!--</div>-->
+
+
+<div *ngIf="page">
+  <div class="notice-list">
+    <div class="notice" *ngFor="let notice of notices">
+      <h3><a [routerLink]="['/notice',notice.id]">{{notice.title}}</a></h3>
+    </div>
+  </div>
+
+  <nz-pagination [nzPageSize]="1" [nzTotal]="page.totalPageCount" [nzPageIndex]="pageNumber" (nzPageIndexChange)="pageChange($event)"></nz-pagination>
+</div>

@@ -30,6 +30,8 @@ import {InstrumentService} from '../services/instrument.service';
 import {InstrumentsComponent} from '../pages/instruments/instruments.component';
 import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-detail.component';
 import { SanitizeHtmlPipe } from '../pipes/sanitize-html.pipe';
+import { NoticesComponent } from '../pages/notice/notices/notices.component';
+import {NoticeService} from '../services/notice.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { SanitizeHtmlPipe } from '../pipes/sanitize-html.pipe';
     InstrumentDetailComponent,
     InstrumentEditComponent,
     SanitizeHtmlPipe,
+    NoticesComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,7 @@ import { SanitizeHtmlPipe } from '../pipes/sanitize-html.pipe';
     PaperService,
     ReagentService,
     InstrumentService,
+    NoticeService,
     {provide: ErrorHandler, useClass: BiolabErrorHandler},
   ],
   bootstrap: [AppComponent]
