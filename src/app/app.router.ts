@@ -10,6 +10,7 @@ import {InstrumentEditComponent} from '../pages/instrument-edit/instrument-edit.
 import {InstrumentsComponent} from '../pages/instruments/instruments.component';
 import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-detail.component';
 import {NoticesComponent} from '../pages/notice/notices/notices.component';
+import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.component';
 
 export const Router=RouterModule.forRoot([
   {
@@ -115,16 +116,22 @@ export const Router=RouterModule.forRoot([
       title: '公告列表'
     }
   },{
+    path: 'notice/:id/edit',
+    component: NoticeEditComponent,
+    data: {
+      title: '编辑公告'
+    }
+  },{
+    path: 'notice/add',
+    component: NoticeEditComponent,
+    data: {
+      title: '发布公告'
+    }
+  },{
     path: 'notice/:id',
     component: PaperDetailComponent,
     data: {
       title: '公告详情'
-    }
-  },{
-    path: 'notice/:id/edit',
-    component: PaperEditComponent,
-    data: {
-      title: '编辑公告'
     }
   },
 ],{

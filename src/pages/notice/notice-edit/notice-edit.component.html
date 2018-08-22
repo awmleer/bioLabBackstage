@@ -1,0 +1,22 @@
+<div class="header">
+  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
+  <h2>{{createMode ? '发布公告' : '编辑公告'}}</h2>
+</div>
+
+<div *ngIf="notice">
+  <form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="3" nzFor="titleField">标题</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input type="text" id="titleField" [(ngModel)]="notice.title" name="title">
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <h2>内容</h2>
+  <quill-editor [style]="{height: '70vh'}" class="html-document" [(ngModel)]="notice.content"></quill-editor>
+  <div style="padding-top: 20px; text-align: center">
+    <button nz-button nzType="primary" (click)="submit()">提交</button>
+  </div>
+</div>
+
+

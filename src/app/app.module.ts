@@ -32,6 +32,7 @@ import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-d
 import { SanitizeHtmlPipe } from '../pipes/sanitize-html.pipe';
 import { NoticesComponent } from '../pages/notice/notices/notices.component';
 import {NoticeService} from '../services/notice.service';
+import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {NoticeService} from '../services/notice.service';
     InstrumentEditComponent,
     SanitizeHtmlPipe,
     NoticesComponent,
+    NoticeEditComponent,
   ],
   imports: [
     BrowserModule,

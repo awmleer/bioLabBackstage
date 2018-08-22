@@ -1,4 +1,5 @@
 export class NoticeBrief {
+  id: number;
   time: string;
   title: string;
 }
