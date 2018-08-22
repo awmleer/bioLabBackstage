@@ -33,6 +33,7 @@ import { SanitizeHtmlPipe } from '../pipes/sanitize-html.pipe';
 import { NoticesComponent } from '../pages/notice/notices/notices.component';
 import {NoticeService} from '../services/notice.service';
 import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.component';
+import {NoticeDetailComponent} from '../pages/notice/notice-detail/notice-detail.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.compo
     SanitizeHtmlPipe,
     NoticesComponent,
     NoticeEditComponent,
+    NoticeDetailComponent,
   ],
   imports: [
     BrowserModule,

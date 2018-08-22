@@ -1,0 +1,15 @@
+<div class="header">
+  <a id="btn-go-back" [routerLink]="['/notice/list/1']" nz-button>返回</a>
+  <h2>{{notice?.title}}</h2>
+  <a *ngIf="notice" id="btn-edit" nz-button nzType="primary" [routerLink]="['/notice',notice.id,'edit']">修改</a>
+</div>
+
+<div *ngIf="notice" class="notice-detail">
+  <h3>基本信息</h3>
+  <p>
+    id：{{notice.id}}<br>
+    标题：{{notice.title}}<br>
+  </p>
+  <h3>内容</h3>
+  <div [innerHtml]="notice.content | sanitizeHtml" class="html-document"></div>
+</div>

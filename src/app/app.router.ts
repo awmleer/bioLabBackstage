@@ -11,6 +11,7 @@ import {InstrumentsComponent} from '../pages/instruments/instruments.component';
 import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-detail.component';
 import {NoticesComponent} from '../pages/notice/notices/notices.component';
 import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.component';
+import {NoticeDetailComponent} from '../pages/notice/notice-detail/notice-detail.component';
 
 export const Router=RouterModule.forRoot([
   {
@@ -129,7 +130,7 @@ export const Router=RouterModule.forRoot([
     }
   },{
     path: 'notice/:id',
-    component: PaperDetailComponent,
+    component: NoticeDetailComponent,
     data: {
       title: '公告详情'
     }
