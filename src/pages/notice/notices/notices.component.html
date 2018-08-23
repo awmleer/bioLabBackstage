@@ -9,7 +9,10 @@
 <div *ngIf="page">
   <div class="notice-list">
     <div class="notice" *ngFor="let notice of notices">
-      <h3><a [routerLink]="['/notice',notice.id]">{{notice.title}}</a></h3>
+      <h3>
+        <a [routerLink]="['/notice',notice.id]">{{notice.title}}</a>
+      </h3>
+      <span>{{notice.time}}</span>
     </div>
   </div>
 
