@@ -12,6 +12,8 @@ import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-d
 import {NoticesComponent} from '../pages/notice/notices/notices.component';
 import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.component';
 import {NoticeDetailComponent} from '../pages/notice/notice-detail/notice-detail.component';
+import {BbsListComponent} from '../pages/bbs/bbs-list/bbs-list.component';
+import {BbsGroupComponent} from '../pages/bbs/bbs-group/bbs-group.component';
 
 export const Router=RouterModule.forRoot([
   {
@@ -133,6 +135,18 @@ export const Router=RouterModule.forRoot([
     component: NoticeDetailComponent,
     data: {
       title: '公告详情'
+    }
+  },{
+    path: 'bbs/list/:pageNumber',
+    component: BbsListComponent,
+    data: {
+      title: '讨论列表'
+    }
+  },{
+    path: 'bbs/group',
+    component: BbsGroupComponent,
+    data: {
+      title: '讨论分组管理'
     }
   },
 ],{

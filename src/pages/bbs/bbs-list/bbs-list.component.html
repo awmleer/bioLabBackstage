@@ -1,0 +1,18 @@
+<!--<div class="search-box" style="float: right">-->
+<!--<input nz-input [(ngModel)]="searchTextInputed" type="text" title="搜索" placeholder="搜索">-->
+<!--<button nz-button nzType="primary" (click)="search()">搜索</button>-->
+<!--</div>-->
+
+
+<div *ngIf="page">
+  <div class="post-list">
+    <div class="post" *ngFor="let post of posts">
+      <h3>
+        <a [routerLink]="['/post',post.id]">{{post.title}}</a>
+      </h3>
+      <span>{{post.time}}</span>
+    </div>
+  </div>
+
+  <nz-pagination [nzPageSize]="1" [nzTotal]="page.totalPageCount" [nzPageIndex]="pageNumber" (nzPageIndexChange)="pageChange($event)"></nz-pagination>
+</div>

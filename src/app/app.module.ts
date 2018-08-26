@@ -34,6 +34,9 @@ import { NoticesComponent } from '../pages/notice/notices/notices.component';
 import {NoticeService} from '../services/notice.service';
 import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.component';
 import {NoticeDetailComponent} from '../pages/notice/notice-detail/notice-detail.component';
+import { BbsListComponent } from '../pages/bbs/bbs-list/bbs-list.component';
+import { BbsGroupComponent } from '../pages/bbs/bbs-group/bbs-group.component';
+import {BbsService} from '../services/bbs.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,8 @@ import {NoticeDetailComponent} from '../pages/notice/notice-detail/notice-detail
     NoticesComponent,
     NoticeEditComponent,
     NoticeDetailComponent,
+    BbsListComponent,
+    BbsGroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +78,7 @@ import {NoticeDetailComponent} from '../pages/notice/notice-detail/notice-detail
     ReagentService,
     InstrumentService,
     NoticeService,
+    BbsService,
     {provide: ErrorHandler, useClass: BiolabErrorHandler},
   ],
   bootstrap: [AppComponent]
