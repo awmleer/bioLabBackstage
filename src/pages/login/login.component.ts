@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AccountService} from '../../services/account.service';
 import {Location} from '@angular/common';
 import {NzMessageService} from 'ng-zorro-antd';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private accountSvc: AccountService,
-    private location: Location,
+    private router: Router,
     private messageSvc: NzMessageService,
   ) { }
 
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   submitForm() {
     this.accountSvc.login(this.username, this.password).then(() => {
       this.messageSvc.success('登录成功');
-      this.location.go('/account/profile');
+      this.router.navigate(['/account/profile']);
     });
   }
 

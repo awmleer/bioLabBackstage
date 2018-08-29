@@ -5,6 +5,7 @@ import {NzMessageService} from 'ng-zorro-antd';
 import {Observable} from 'rxjs';
 import {ApiError} from '../classes/error';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class ApiService {
@@ -12,7 +13,7 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private messageSvc: NzMessageService,
-    private location: Location,
+    private router: Router,
   ) {}
 
   private handleHttp(request:Observable<Object>){
@@ -22,7 +23,7 @@ export class ApiService {
         messageText='您没有权限进行该操作';
       } else if (error.status === 401) {
         messageText='请先登录';
-        this.location.go('/login');
+        this.router.navigate(['/login']);
       } else {
         messageText='出错了';
       }
