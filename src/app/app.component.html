@@ -4,6 +4,12 @@
     </div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'">
       <li nz-submenu>
+        <span title><i class="anticon anticon-team"></i><span class="nav-text">账号</span></span>
+        <ul>
+          <li nz-menu-item routerLink="/account/profile">账号信息</li>
+        </ul>
+      </li>
+      <li nz-submenu>
         <span title><i class="anticon anticon-database"></i><span class="nav-text">论文</span></span>
         <ul>
           <li nz-menu-item routerLink="/paper/list/1">论文管理</li>

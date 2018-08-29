@@ -14,9 +14,23 @@ import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.compo
 import {NoticeDetailComponent} from '../pages/notice/notice-detail/notice-detail.component';
 import {BbsListComponent} from '../pages/bbs/bbs-list/bbs-list.component';
 import {BbsGroupComponent} from '../pages/bbs/bbs-group/bbs-group.component';
+import {UserProfileComponent} from '../pages/user-profile/user-profile.component';
+import {LoginComponent} from '../pages/login/login.component';
 
 export const Router=RouterModule.forRoot([
   {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: '登录'
+    }
+  },{
+    path: 'account/profile',
+    component: UserProfileComponent,
+    data: {
+      title: '账号信息'
+    }
+  },{
     path: 'paper/list/:pageNumber',
     component: PapersComponent,
     data: {

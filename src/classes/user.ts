@@ -6,6 +6,6 @@ export class UserItem {
 }
 
 
-export class UserInfo {
+export class UserInfo extends UserItem {
   joined_at: string;
 }
