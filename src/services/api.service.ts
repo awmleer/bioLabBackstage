@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import 'rxjs/add/operator/toPromise';
 import {CONST} from '../app/const';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {NzMessageService} from 'ng-zorro-antd';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {ApiError} from '../classes/error';
 import {Location} from '@angular/common';
 

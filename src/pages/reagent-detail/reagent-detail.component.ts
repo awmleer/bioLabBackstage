@@ -3,7 +3,6 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../services/api.service';
 import {ReagentDetail} from '../../classes/reagent';
 import { FileUploader } from 'ng2-file-upload';
-import 'rxjs/add/operator/debounceTime';
 import {CONST} from '../../app/const';
 
 

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 
-import 'rxjs/add/operator/debounceTime';
 import {ApiService} from '../../services/api.service';
 import {CONST} from '../../app/const';
 import {NzModalService} from 'ng-zorro-antd';

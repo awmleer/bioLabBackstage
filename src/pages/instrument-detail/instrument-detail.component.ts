@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 
-import 'rxjs/add/operator/debounceTime';
 import {ApiService} from '../../services/api.service';
 import {InstrumentService} from '../../services/instrument.service';
 import {InstrumentDetail} from '../../classes/instrument';

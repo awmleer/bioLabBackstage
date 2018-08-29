@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import 'rxjs/add/operator/toPromise';
 import {ApiService} from './api.service';
 import {Label} from '../classes/label';
 

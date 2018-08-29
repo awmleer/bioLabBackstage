@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 
-import 'rxjs/add/operator/toPromise';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../services/api.service';
 import {LabelTreeNode} from '../../classes/label';

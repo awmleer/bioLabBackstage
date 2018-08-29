@@ -1,11 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LabelService} from '../../services/label.service';
 import * as _ from 'lodash';
-import {Subject} from 'rxjs/Subject';
+import {Subject} from 'rxjs';
 import {Label, LabeledItem, LabeledItemService} from '../../classes/label';
 import {PaperService} from '../../services/paper.service';
 import {ReagentService} from '../../services/reagent.service';
 import {InstrumentService} from '../../services/instrument.service';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'label-management',
@@ -31,7 +32,7 @@ export class LabelManagementComponent implements OnInit {
 
   ngOnInit() {
     this.labelSearchTextSubject
-      .debounceTime(500) // wait 500ms after the last event before emitting last event
+      .pipe(debounceTime(500)) // wait 500ms after the last event before emitting last event
       .subscribe(val => {
         this.labelSearchText = val;
         if (this.labelSearchText === '') {
