@@ -151,7 +151,7 @@ export const Router=RouterModule.forRoot([
       title: '公告详情'
     }
   },{
-    path: 'bbs/list/:pageNumber',
+    path: 'bbs/post/list/:pageNumber',
     component: BbsListComponent,
     data: {
       title: '讨论列表'
@@ -160,7 +160,7 @@ export const Router=RouterModule.forRoot([
     path: 'bbs/group',
     component: BbsGroupComponent,
     data: {
-      title: '讨论分组管理'
+      title: '讨论版块管理'
     }
   },
 ],{

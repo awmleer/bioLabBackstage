@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from './api.service';
 import {Page} from '../classes/page';
-import {PostBrief, PostDetail} from '../classes/bbs';
+import {PostBrief, PostDetail, PostGroup} from '../classes/bbs';
 
 @Injectable()
 export class BbsService {
@@ -19,6 +19,20 @@ export class BbsService {
 
   postDetail(postId):Promise<PostDetail>{
     return this.apiSvc.get(`/bbs/post/${postId}/`);
+  }
+
+  postGroups(): Promise<PostGroup[]> {
+    return this.apiSvc.get('/bbs/group/all/');
+  }
+
+  removeGroup(groupId: number) {
+    return this.apiSvc.get(`/bbs/group/${groupId}/remove/`);
+  }
+
+  addGroup(name: string) {
+    return this.apiSvc.post('/bbs/group/add/', {
+      name
+    });
   }
 
 

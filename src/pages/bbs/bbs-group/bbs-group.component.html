@@ -1,3 +1,7 @@
-<p>
-  bbs-group works!
-</p>
+<button nz-button nzType="primary" (click)="addGroup()">增加</button>
+<div style="padding-top: 16px">
+  <div *ngFor="let group of groups">
+    {{group.name}}
+    <button nz-button (click)="removeGroup(group)">删除</button>
+  </div>
+</div>
