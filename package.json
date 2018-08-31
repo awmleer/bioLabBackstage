@@ -13,7 +13,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "6.1.x",
-    "@angular/cdk": "6.1.x",
+    "@angular/cdk": "6.4.x",
     "@angular/common": "6.1.x",
     "@angular/compiler": "6.1.x",
     "@angular/core": "6.1.x",

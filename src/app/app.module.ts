@@ -40,6 +40,7 @@ import {BbsService} from '../services/bbs.service';
 import {AccountService} from '../services/account.service';
 import { LoginComponent } from '../pages/login/login.component';
 import { UserProfileComponent } from '../pages/user-profile/user-profile.component';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { UserProfileComponent } from '../pages/user-profile/user-profile.compone
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    OverlayModule,
     BrowserAnimationsModule,
     TreeModule,
     FileUploadModule,
