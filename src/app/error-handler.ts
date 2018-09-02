@@ -15,7 +15,6 @@ export class BiolabErrorHandler implements ErrorHandler {
 
   handleError(error) {
     this.ngZone.run(() => {
-      console.error(error);
       if (!environment.production) {
         console.error(error);
       }

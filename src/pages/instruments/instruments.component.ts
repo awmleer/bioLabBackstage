@@ -54,7 +54,7 @@ export class InstrumentsComponent implements OnInit {
   async fetchList(){
     if (this.searchText) {
       this.page = await this.api.post(`/instrument/search/${this.pageNumber}/`,[{
-        'field': 'title',
+        'field': 'all',
         'value': this.searchText
       }]);
     }else{
