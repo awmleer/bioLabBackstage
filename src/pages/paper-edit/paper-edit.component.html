@@ -1,5 +1,5 @@
 <div class="header">
-  <button id="btn-go-back" (click)="location.back();" nz-button>返回</button>
+  <button (click)="location.back();" nz-button>返回</button>
   <h2 *ngIf="!createMode">{{paper?.title}}</h2>
   <h2 *ngIf="createMode">添加论文</h2>
 </div>

@@ -1,7 +1,7 @@
 <div class="header">
-  <a id="btn-go-back" [routerLink]="['/reagent/list/1']" nz-button>返回</a>
+  <a [routerLink]="['/reagent/list/1']" nz-button>返回</a>
   <h2>{{reagent?.englishName}}</h2>
-  <a *ngIf="reagent" id="btn-edit" nz-button nzType="primary" [routerLink]="['/reagent',reagent.id,'edit']">修改</a>
+  <a *ngIf="reagent" nz-button nzType="primary" [routerLink]="['/reagent',reagent.id,'edit']">修改</a>
 </div>
 
 <div *ngIf="reagent">

@@ -1,5 +1,5 @@
 <div class="header">
-  <a id="btn-go-back" [routerLink]="['/notice/list/1']" nz-button>返回</a>
+  <a [routerLink]="['/notice/list/1']" nz-button>返回</a>
   <ng-container *ngIf="notice">
     <h2>
       <i class="anticon anticon-star golden" *ngIf="notice.starred"></i>

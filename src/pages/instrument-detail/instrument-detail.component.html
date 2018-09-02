@@ -1,7 +1,7 @@
 <div class="header">
-  <a id="btn-go-back" [routerLink]="['/instrument/list/1']" nz-button>返回</a>
+  <a [routerLink]="['/instrument/list/1']" nz-button>返回</a>
   <h2>{{instrument?.chineseName}}</h2>
-  <a *ngIf="instrument" id="btn-edit" nz-button nzType="primary" [routerLink]="['/instrument',instrument.id,'edit']">修改</a>
+  <a *ngIf="instrument" nz-button nzType="primary" [routerLink]="['/instrument',instrument.id,'edit']">修改</a>
 </div>
 
 <div *ngIf="instrument" class="instrument-detail">
