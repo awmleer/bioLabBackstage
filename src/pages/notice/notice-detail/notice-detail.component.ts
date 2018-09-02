@@ -22,9 +22,23 @@ export class NoticeDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-      .subscribe(async (params: Params)=>{
-        this.notice = await this.noticeSvc.noticeDetail(params['id']);
+      .subscribe((params: Params)=>{
+        this.updateData(params['id']);
       });
+  }
+
+  async updateData(id: number = this.notice.id) {
+    this.notice = await this.noticeSvc.noticeDetail(id);
+  }
+
+  async star() {
+    await this.noticeSvc.star(this.notice.id);
+    await this.updateData();
+  }
+
+  async unstar() {
+    await this.noticeSvc.unstar(this.notice.id);
+    await this.updateData();
   }
 
 }

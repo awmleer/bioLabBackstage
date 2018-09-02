@@ -1,7 +1,14 @@
 <div class="header">
   <a id="btn-go-back" [routerLink]="['/notice/list/1']" nz-button>返回</a>
-  <h2>{{notice?.title}}</h2>
-  <a *ngIf="notice" id="btn-edit" nz-button nzType="primary" [routerLink]="['/notice',notice.id,'edit']">修改</a>
+  <ng-container *ngIf="notice">
+    <h2>
+      <i class="anticon anticon-star golden" *ngIf="notice.starred"></i>
+      {{notice.title}}
+    </h2>
+    <button *ngIf="notice.starred === true" nz-button nzType="primary" (click)="unstar()">取消标星</button>
+    <button *ngIf="notice.starred === false" nz-button (click)="star()">标星</button>
+    <a nz-button nzType="primary" [routerLink]="['/notice',notice.id,'edit']">修改</a>
+  </ng-container>
 </div>
 
 <div *ngIf="notice" class="notice-detail">
