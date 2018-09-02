@@ -1,19 +1,22 @@
 language: node_js
 node_js:
-    - "node"
+  - "node"
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y sshpass
 install:
-    - npm install
+  - npm install
 script:
-    - npm run build
+  - npm run build
 cache:
   directories:
-    - "node_modules"
+  - "node_modules"
 addons:
   ssh_known_hosts: 118.89.186.130
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -avz $TRAVIS_BUILD_DIR/dist/* root@118.89.186.130:/var/www/bioLab/backstage/
+  script:  sshpass -p "$SERVER_PWD" rsync -avz $TRAVIS_BUILD_DIR/dist/* root@118.89.186.130:/var/www/bioLab/backstage/
   on:
     branch: master
 notifications:

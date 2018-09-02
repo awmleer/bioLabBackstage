@@ -25,4 +25,12 @@ export class NoticeService {
   noticeDetail(id:number):Promise<NoticeDetail>{
     return this.apiSvc.get(`/notice/${id}/detail/`);
   }
+
+  star(id: number): Promise<void> {
+    return this.apiSvc.get(`/notice/${id}/star`);
+  }
+
+  unstar(id: number): Promise<void> {
+    return this.apiSvc.get(`/notice/${id}/unstar`);
+  }
 }
