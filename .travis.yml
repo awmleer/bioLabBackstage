@@ -3,11 +3,11 @@ node_js:
   - "node"
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y sshpass
+  - sudo apt-get install -y sshpass yarn
 install:
-  - npm install
+  - yarn install
 script:
-  - npm run build
+  - yarn run build
 cache:
   directories:
   - "node_modules"

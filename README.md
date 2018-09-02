@@ -1,5 +1,7 @@
 # BioLabBackstage
 
+[![Build Status](https://travis-ci.com/awmleer/biolab-backstage.svg?branch=master)](https://travis-ci.com/awmleer/biolab-backstage)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
 
 ## Development server
