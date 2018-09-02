@@ -3,14 +3,15 @@ node_js:
   - "node"
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y sshpass yarn
+  - sudo apt-get install -y sshpass
 install:
   - yarn install
 script:
   - yarn run build
 cache:
+  yarn: true
   directories:
-  - "node_modules"
+    - "node_modules"
 addons:
   ssh_known_hosts: 118.89.186.130
 deploy:
