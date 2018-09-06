@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import {ApiService} from '../../services/api.service';
 import {InstrumentService} from '../../services/instrument.service';
 import {InstrumentDetail} from '../../classes/instrument';
+import {NzMessageService} from 'ng-zorro-antd';
 
 
 @Component({
@@ -17,7 +18,9 @@ export class InstrumentDetailComponent implements OnInit {
   constructor(
     private apiSvc: ApiService,
     private route: ActivatedRoute,
+    private router: Router,
     public instrumentSvc: InstrumentService,
+    private messageSvc: NzMessageService,
   ) {}
 
   ngOnInit() {
@@ -25,6 +28,12 @@ export class InstrumentDetailComponent implements OnInit {
       .subscribe(async (params: Params)=>{
         this.instrument = await this.instrumentSvc.instrumentDetail(params['id']);
       });
+  }
+
+  async remove() {
+    await this.instrumentSvc.removeInstrument(this.instrument.id);
+    this.messageSvc.success('删除成功');
+    this.router.navigate(['/instrument', 'list', 1]);
   }
 
 }

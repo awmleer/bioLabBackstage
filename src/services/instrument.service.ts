@@ -27,6 +27,10 @@ export class InstrumentService implements LabeledItemService {
     return this.apiSvc.post(`/instrument/${instrumentId}/edit/`, data);
   }
 
+  removeInstrument(instrumentId: number): Promise<void> {
+    return this.apiSvc.post(`/instrument/${instrumentId}/remove/`);
+  }
+
   instrumentDetail(id:number):Promise<InstrumentDetail>{
     return this.apiSvc.get(`/instrument/${id}/detail/`);
   }

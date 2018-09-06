@@ -1,7 +1,10 @@
 <div class="header">
   <a [routerLink]="['/instrument/list/1']" nz-button>返回</a>
-  <h2>{{instrument?.chineseName}}</h2>
-  <a *ngIf="instrument" nz-button nzType="primary" [routerLink]="['/instrument',instrument.id,'edit']">修改</a>
+  <ng-container *ngIf="instrument">
+    <h2>{{instrument.chineseName}}</h2>
+    <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要删除吗？" (nzOnConfirm)="remove()">删除</a>
+    <a nz-button nzType="primary" [routerLink]="['/instrument',instrument.id,'edit']">修改</a>
+  </ng-container>
 </div>
 
 <div *ngIf="instrument" class="instrument-detail">
