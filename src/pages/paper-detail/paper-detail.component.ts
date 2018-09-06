@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 
 import {ApiService} from '../../services/api.service';
 import {CONST} from '../../app/const';
-import {NzModalService} from 'ng-zorro-antd';
+import {NzMessageService, NzModalService} from 'ng-zorro-antd';
 import {PaperService} from '../../services/paper.service';
 import {PaperDetail} from '../../classes/paper';
 
@@ -24,6 +24,8 @@ export class PaperDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private modalSvc: NzModalService,
     public paperSvc: PaperService,
+    private messageSvc: NzMessageService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -54,6 +56,12 @@ export class PaperDetailComponent implements OnInit {
     this.apiSvc.post(`/paper/${this.paper.id}/updatePDFContent/`, this.newPdfContent).then(() => {
       //TODO toast 提交成功
     });
+  }
+
+  async remove() {
+    await this.paperSvc.removePaper(this.paper.id);
+    this.messageSvc.success('删除成功');
+    this.router.navigate(['/instrument', 'list', 1]);
   }
 
 }

@@ -34,4 +34,8 @@ export class PaperService implements LabeledItemService {
     });
   }
 
+  removePaper(paperId: number): Promise<void> {
+    return this.apiSvc.post(`/paper/${paperId}/remove/`);
+  }
+
 }
