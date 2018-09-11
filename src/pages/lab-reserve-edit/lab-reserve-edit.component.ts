@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Lab} from '../../classes/Lab';
+import {Lab} from '../../classes/lab';
 import {NzMessageService} from 'ng-zorro-antd';
 import {ApiService} from '../../services/api.service';
 import {Location} from '@angular/common';
