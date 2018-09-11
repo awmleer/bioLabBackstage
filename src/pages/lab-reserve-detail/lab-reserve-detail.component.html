@@ -1,0 +1,33 @@
+<div class="header">
+  <a [routerLink]="['/lab-reserve/labs']" nz-button>返回</a>
+  <ng-container *ngIf="instrument">
+    <h2>{{instrument.chineseName}}</h2>
+    <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要删除吗？" (nzOnConfirm)="remove()">删除</a>
+    <a nz-button nzType="primary" [routerLink]="['/instrument',instrument.id,'edit']">修改</a>
+  </ng-container>
+</div>
+
+<div *ngIf="instrument" class="instrument-detail">
+  <h3>基本信息</h3>
+  <p>
+    id：{{instrument.id}}<br>
+    中文名：{{instrument.chineseName}}<br>
+    英文名：{{instrument.englishName}}<br>
+    型号：{{instrument.modelNumber}}<br>
+    正面图：<img [src]="instrument.coverImg"><br>
+  </p>
+  <h3>外部</h3>
+  <div [innerHtml]="instrument.content.outer | sanitizeHtml" class="html-document"></div>
+  <h3>内部</h3>
+  <div [innerHtml]="instrument.content.inner | sanitizeHtml" class="html-document"></div>
+  <h3>说明书</h3>
+  <div [innerHtml]="instrument.content.instructions | sanitizeHtml" class="html-document"></div>
+  <h3>注意事项</h3>
+  <div [innerHtml]="instrument.content.attentions | sanitizeHtml" class="html-document"></div>
+</div>
+
+<div *ngIf="instrument" class="labels">
+  <h3>标签管理</h3>
+  <label-management [item]="instrument" itemType="instrument"></label-management>
+</div>
+

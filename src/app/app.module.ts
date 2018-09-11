@@ -41,6 +41,9 @@ import {AccountService} from '../services/account.service';
 import { LoginComponent } from '../pages/login/login.component';
 import { UserProfileComponent } from '../pages/user-profile/user-profile.component';
 import {OverlayModule} from '@angular/cdk/overlay';
+import {LabReserveEditComponent} from '../pages/lab-reserve-edit/lab-reserve-edit.component';
+import {LabReserveComponent} from '../pages/lab-reserve/lab-reserve.component';
+import {LabReserveDetailComponent} from '../pages/lab-reserve-detail/lab-reserve-detail.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import {OverlayModule} from '@angular/cdk/overlay';
     InstrumentsComponent,
     InstrumentDetailComponent,
     InstrumentEditComponent,
+    LabReserveEditComponent,
+    LabReserveComponent,
+    LabReserveDetailComponent,
     SanitizeHtmlPipe,
     NoticesComponent,
     NoticeEditComponent,

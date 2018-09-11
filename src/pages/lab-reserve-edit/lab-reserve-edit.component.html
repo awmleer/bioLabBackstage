@@ -1,0 +1,33 @@
+<div class="header">
+  <button (click)="location.back();" nz-button>返回</button>
+  <h2 *ngIf="!createMode">{{lab?.chineseName}}</h2>
+  <h2 *ngIf="createMode">创建实验室</h2>
+</div>
+
+<div *ngIf="lab">
+  <form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="3" nzFor="chineseNameField">实验室代号</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input type="text" id="chineseNameField" [(ngModel)]="lab.code" name="chineseName">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="3" nzFor="englishNameField">容量</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input type="text" id="englishNameField" [(ngModel)]="lab.capacity" name="englishName">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="3" nzFor="modelNumberField">描述</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input type="text" id="modelNumberField" [(ngModel)]="lab.capacity" name="modelNumber">
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <div style="padding-top: 20px; text-align: center">
+    <button nz-button nzType="primary" (click)="submit()">提交</button>
+  </div>
+</div>
+
+

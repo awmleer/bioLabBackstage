@@ -9,6 +9,9 @@ import {ReagentEditComponent} from '../pages/reagent-edit/reagent-edit.component
 import {InstrumentEditComponent} from '../pages/instrument-edit/instrument-edit.component';
 import {InstrumentsComponent} from '../pages/instruments/instruments.component';
 import {InstrumentDetailComponent} from '../pages/instrument-detail/instrument-detail.component';
+import {LabReserveComponent} from '../pages/lab-reserve/lab-reserve.component';
+import {LabReserveDetailComponent} from '../pages/lab-reserve-detail/lab-reserve-detail.component';
+import {LabReserveEditComponent} from '../pages/lab-reserve-edit/lab-reserve-edit.component';
 import {NoticesComponent} from '../pages/notice/notices/notices.component';
 import {NoticeEditComponent} from '../pages/notice/notice-edit/notice-edit.component';
 import {NoticeDetailComponent} from '../pages/notice/notice-detail/notice-detail.component';
@@ -119,6 +122,30 @@ export const Router=RouterModule.forRoot([
     component: InstrumentDetailComponent,
     data: {
       title: '仪器详情'
+    }
+  },{
+    path: 'lab-reserve/labs',
+    component: LabReserveComponent,
+    data: {
+      title: '实验室列表'
+    }
+  },{
+    path: 'lab-reserve/labs/create',
+    component: LabReserveEditComponent,
+    data: {
+      title: '添加实验室'
+    }
+  },{
+    path: 'lab-reserve/labs/:id/edit',
+    component: LabReserveEditComponent,
+    data: {
+      title: '编辑实验室'
+    }
+  },{
+    path: 'lab=reserve/labs/:id/reservations',
+    component: LabReserveDetailComponent,
+    data: {
+      title: '实验室审批'
     }
   },{
     path: 'labels/:type',
