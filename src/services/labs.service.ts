@@ -3,10 +3,6 @@ import { Injectable } from '@angular/core';
 import {ApiService} from './api.service';
 import {Lab} from '../classes/lab';
 import {Reservation} from '../classes/lab';
-import {injectArgs} from '@angular/core/src/di/injector';
-import {Page} from '../classes/page';
-import {url} from '../classes/types';
-import {url} from 'inspector';
 
 @Injectable()
 export class LabsService{
