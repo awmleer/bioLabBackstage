@@ -1,3 +1,5 @@
+import {UserItem} from './user';
+
 export class Lab {
   id: number;
   code: string;
