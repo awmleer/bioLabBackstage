@@ -26,7 +26,7 @@
     "core-js": "^2.5.1",
     "lodash": "^4.17.4",
     "moment": "2.x",
-    "ng-zorro-antd": "1.4.x",
+    "ng-zorro-antd": "1.5.x",
     "ng2-file-upload": "^1.2.1",
     "ngx-quill": "3.x",
     "rxjs": "^6.2.2",

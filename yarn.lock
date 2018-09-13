@@ -3551,9 +3551,9 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "http://registry.npm.taobao.org/neo-async/download/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
-ng-zorro-antd@1.4.x:
-  version "1.4.0"
-  resolved "http://registry.npm.taobao.org/ng-zorro-antd/download/ng-zorro-antd-1.4.0.tgz#c618542c2922a35b2b14801743949b3c92d85fca"
+ng-zorro-antd@1.5.x:
+  version "1.5.0"
+  resolved "http://registry.npm.taobao.org/ng-zorro-antd/download/ng-zorro-antd-1.5.0.tgz#aed3dbf5a2f93e9c439d8340ef0a258788c3c6c0"
   dependencies:
     "@angular/cdk" "^6.0.0"
     date-fns "^1.29.0"
