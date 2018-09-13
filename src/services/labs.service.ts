@@ -34,4 +34,12 @@ export class LabsService{
   ReservationList(labId:number):Promise<Reservation[]>{
     return this.apiSvc.get(`/lab-reserve/lab/${labId}/reservation/all/`);
   }
+
+  R_approve (Rid: number): Promise<void> {
+    return this.apiSvc.get(`/lab-reserve/reservation/${Rid}/approve/`);
+  }
+
+  R_reject (Rid: number): Promise<void> {
+    return this.apiSvc.get(`/lab-reserve/reservation/${Rid}/reject/`);
+  }
 }

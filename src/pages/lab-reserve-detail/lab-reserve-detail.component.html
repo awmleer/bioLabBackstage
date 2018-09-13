@@ -1,33 +1,33 @@
 <div class="header">
   <a [routerLink]="['/lab-reserve/labs']" nz-button>返回</a>
-  <ng-container *ngIf="instrument">
-    <h2>{{instrument.chineseName}}</h2>
+  <ng-container *ngIf="lab">
+    <h2>{{lab.code}}</h2>
     <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要删除吗？" (nzOnConfirm)="remove()">删除</a>
-    <a nz-button nzType="primary" [routerLink]="['/instrument',instrument.id,'edit']">修改</a>
+    <a nz-button nzType="primary" [routerLink]="['/lab-reserve',lab.id,'edit']">修改</a>
   </ng-container>
 </div>
 
-<div *ngIf="instrument" class="instrument-detail">
+<div *ngIf="lab" class="instrument-detail">
   <h3>基本信息</h3>
   <p>
-    id：{{instrument.id}}<br>
-    中文名：{{instrument.chineseName}}<br>
-    英文名：{{instrument.englishName}}<br>
-    型号：{{instrument.modelNumber}}<br>
-    正面图：<img [src]="instrument.coverImg"><br>
+    id：{{lab.id}}<br>
+    实验室代号：{{lab.code}}<br>
+    容量：{{lab.capacity}}<br>
+    描述：{{lab.description}}<br>
   </p>
-  <h3>外部</h3>
-  <div [innerHtml]="instrument.content.outer | sanitizeHtml" class="html-document"></div>
-  <h3>内部</h3>
-  <div [innerHtml]="instrument.content.inner | sanitizeHtml" class="html-document"></div>
-  <h3>说明书</h3>
-  <div [innerHtml]="instrument.content.instructions | sanitizeHtml" class="html-document"></div>
-  <h3>注意事项</h3>
-  <div [innerHtml]="instrument.content.attentions | sanitizeHtml" class="html-document"></div>
+  <h3>预约情况</h3>
+  <div *ngIf="lab_reservations">
+    <p *ngFor="let reservation of lab_reservations">
+      id：{{reservation.id}}<br>
+      申请人：{{reservation.applier}}<br>
+      开始时间：{{reservation.startTime}}<br>
+      结束时间：{{reservation.endTime}}<br>
+      状态：{{reservation.status}}<br>
+      描述：{{reservation.description}}<br>
+      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="R_approve(reservation.id)">同意此申请</a>
+      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要抨击此申请吗？" (nzOnConfirm)="R_reject(reservation.id)">抨击此申请</a>
+    </p>
+  </div>
 </div>
 
-<div *ngIf="instrument" class="labels">
-  <h3>标签管理</h3>
-  <label-management [item]="instrument" itemType="instrument"></label-management>
-</div>
 

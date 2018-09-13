@@ -5,6 +5,7 @@
     <div class="instrument" *ngFor="let lab of lablist">
       <h3><a [routerLink]="['/lab-reserve/labs/',instrument.id, '/reservations']">{{lab.code}} {{lab.capacity}}</a></h3>
       <a nz-button nzType="primary" [routerLink]="['/lab-reserve/labs/',instrument.id, '/edit']">编辑</a>
+      <!--<a nz-button nzType="primary" ">删除</a>-->
       <p *ngIf="lab.description">
         {{lab.description}}
       </p>
