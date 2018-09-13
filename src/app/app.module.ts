@@ -44,6 +44,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {LabReserveEditComponent} from '../pages/lab-reserve-edit/lab-reserve-edit.component';
 import {LabReserveComponent} from '../pages/lab-reserve/lab-reserve.component';
 import {LabReserveDetailComponent} from '../pages/lab-reserve-detail/lab-reserve-detail.component';
+import {LabsService} from '../services/labs.service';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import {LabReserveDetailComponent} from '../pages/lab-reserve-detail/lab-reserve
     NoticeService,
     BbsService,
     AccountService,
+    LabsService,
     {provide: ErrorHandler, useClass: BiolabErrorHandler},
   ],
   bootstrap: [AppComponent]
