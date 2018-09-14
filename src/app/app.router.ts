@@ -124,25 +124,25 @@ export const Router=RouterModule.forRoot([
       title: '仪器详情'
     }
   },{
-    path: 'CurrentLaboratory-reserve/labs',
+    path: 'lab-reserve/labs',
     component: LabReserveComponent,
     data: {
       title: '实验室列表'
     }
   },{
-    path: 'CurrentLaboratory-reserve/labs/create',
+    path: 'lab-reserve/labs/create',
     component: LabReserveEditComponent,
     data: {
       title: '添加实验室'
     }
   },{
-    path: 'CurrentLaboratory-reserve/labs/:id/edit',
+    path: 'lab-reserve/labs/:id/edit',
     component: LabReserveEditComponent,
     data: {
       title: '编辑实验室'
     }
   },{
-    path: 'CurrentLaboratory-reserve/labs/:id',
+    path: 'lab-reserve/labs/:id',
     component: LabReserveDetailComponent,
     data: {
       title: '实验室审批'
