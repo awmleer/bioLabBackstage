@@ -14,7 +14,7 @@ import {Lab} from '../../classes/lab';
 })
 export class LabReserveComponent implements OnInit {
 
-  LaboratoryList:Lab[];
+  labList:Lab[];
 
 
   constructor(
@@ -26,13 +26,13 @@ export class LabReserveComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.fetchLaboratoryList();
+      this.fetchLabList();
     });
   }
 
 
-  async fetchLaboratoryList(){
-      this.LaboratoryList = await this.LabsSvc.getLaboratoryList();
+  async fetchLabList(){
+      this.labList = await this.LabsSvc.getLabList();
   }
 
 }

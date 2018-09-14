@@ -1,27 +1,27 @@
 <div class="header">
   <button (click)="location.back();" nz-button>返回</button>
-  <h2 *ngIf="!createMode">{{CurrentLaboratory?.chineseName}}</h2>
+  <h2 *ngIf="!createMode">{{currLab?.chineseName}}</h2>
   <h2 *ngIf="createMode">创建实验室</h2>
 </div>
 
-<div *ngIf="CurrentLaboratory">
+<div *ngIf="currLab">
   <form>
     <nz-form-item>
       <nz-form-label [nzSpan]="3" nzFor="chineseNameField">实验室代号</nz-form-label>
       <nz-form-control [nzSpan]="8">
-        <input nz-input type="text" id="chineseNameField" [(ngModel)]="CurrentLaboratory.code" name="chineseName">
+        <input nz-input type="text" id="chineseNameField" [(ngModel)]="currLab.code" name="chineseName">
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSpan]="3" nzFor="englishNameField">容量</nz-form-label>
       <nz-form-control [nzSpan]="8">
-        <input nz-input type="text" id="englishNameField" [(ngModel)]="CurrentLaboratory.capacity" name="englishName">
+        <input nz-input type="text" id="englishNameField" [(ngModel)]="currLab.capacity" name="englishName">
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSpan]="3" nzFor="modelNumberField">描述</nz-form-label>
       <nz-form-control [nzSpan]="8">
-        <input nz-input type="text" id="modelNumberField" [(ngModel)]="CurrentLaboratory.description" name="modelNumber">
+        <input nz-input type="text" id="modelNumberField" [(ngModel)]="currLab.description" name="modelNumber">
       </nz-form-control>
     </nz-form-item>
   </form>

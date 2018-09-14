@@ -1,32 +1,32 @@
 <div class="header">
   <a [routerLink]="['/lab-reserve/labs']" nz-button>返回</a>
-  <ng-container *ngIf="CurrentLaboratory">
-    <h2>{{CurrentLaboratory.code}}</h2>
+  <ng-container *ngIf="currLab">
+    <h2>{{currLab.code}}</h2>
     <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要删除吗？" (nzOnConfirm)="DoLaboratoryRemoving()">删除</a>
-    <a nz-button nzType="primary" [routerLink]="['/lab-reserve', 'labs',CurrentLaboratory.id,'edit']">修改</a>
+    <a nz-button nzType="primary" [routerLink]="['/lab-reserve', 'labs',currLab.id,'edit']">修改</a>
   </ng-container>
 </div>
 
-<div *ngIf="CurrentLaboratory" class="instrument-detail">
+<div *ngIf="currLab" class="instrument-detail">
   <h3>基本信息</h3>
   <p>
-    id：{{CurrentLaboratory.id}}<br>
-    实验室代号：{{CurrentLaboratory.code}}<br>
-    容量：{{CurrentLaboratory.capacity}}<br>
-    描述：{{CurrentLaboratory.description}}<br>
+    id：{{currLab.id}}<br>
+    实验室代号：{{currLab.code}}<br>
+    容量：{{currLab.capacity}}<br>
+    描述：{{currLab.description}}<br>
   </p>
   <h3>预约情况</h3>
-  <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow"></nz-date-picker>
-  <div *ngIf="ReservationsForCurrentLaboratory">
-    <p *ngFor="let reservation of ReservationsForCurrentLaboratory">
+  <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startDate"></nz-date-picker>
+  <div *ngIf="ReservationsForCurrLab">
+    <p *ngFor="let reservation of ReservationsForCurrLab">
       <span>id：{{reservation.id}}</span>
       申请人：{{reservation.applier.name}}<br>
-      开始时间：{{TranslatingTimeStampToString(reservation.startTime)}}<br>
-      结束时间：{{TranslatingTimeStampToString(reservation.endTime)}}<br>
-      <span>状态：{{TranslatingStatusFromEnglishEnumerationToChineseDescription(reservation.status)}}</span>
+      开始时间：{{TimestampToStr(reservation.startTime)}}<br>
+      结束时间：{{TimestampToStr(reservation.endTime)}}<br>
+      <span>状态：{{TranslateDescription(reservation.status)}}</span>
       描述：{{reservation.description}}<br>
       <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="ApprovingReservation(reservation.id)">同意此申请</a>
-      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要抨击此申请吗？" (nzOnConfirm)="RejectingReservation(reservation.id)">抨击此申请</a>
+      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="RejectingReservation(reservation.id)">拒绝此申请</a>
     </p>
   </div>
 </div>

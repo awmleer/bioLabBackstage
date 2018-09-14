@@ -11,23 +11,23 @@ export class LabsService{
     private apiSvc: ApiService
   ) {}
 
-  getLaboratoryList():Promise<Lab[]>{
+  getLabList():Promise<Lab[]>{
     return this.apiSvc.get(`/lab-reserve/lab/all/`);
   }
 
-  getLaboratory(labId:number):Promise<Lab>{
+  getLab(labId:number):Promise<Lab>{
     return this.apiSvc.get(`/lab-reserve/lab/${labId}`);
   }
 
-  createLaboratory(data):Promise<number>{
-    return this.apiSvc.post('/CurrentLaboratory-reserve/CurrentLaboratory/create/', data);
+  createLab(data):Promise<number>{
+    return this.apiSvc.post('/currLab-reserve/currLab/create/', data);
   }
 
-  editLaboratory(labId:number, data):Promise<void>{
+  editLab(labId:number, data):Promise<void>{
     return this.apiSvc.post(`/lab-reserve/lab/${labId}/edit/`, data);
   }
 
-  removeLaboratory(labId: number): Promise<void> {
+  removeLab(labId: number): Promise<void> {
     return this.apiSvc.post(`/lab-reserve/lab/${labId}/remove/`);
   }
 
@@ -35,11 +35,11 @@ export class LabsService{
     return this.apiSvc.get(`/lab-reserve/lab/${labId}/reservation/all/`, {'date': date});
   }
 
-  PerformanceRequestForApprovingReservation (Rid: number): Promise<void> {
+  ApprovingReservation (Rid: number): Promise<void> {
     return this.apiSvc.get(`/lab-reserve/reservation/${Rid}/approve/`);
   }
 
-  PerformanceRequestForRejectingReservation (Rid: number): Promise<void> {
+  RejectingReservation (Rid: number): Promise<void> {
     return this.apiSvc.get(`/lab-reserve/reservation/${Rid}/reject/`);
   }
 }
