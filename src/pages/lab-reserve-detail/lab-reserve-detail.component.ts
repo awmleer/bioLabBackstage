@@ -69,7 +69,7 @@ export class LabReserveDetailComponent implements OnInit, DoCheck {
   }
 
   async RListUpd() {
-    this.rstr = [this.startdate.getFullYear().toString(), this.pad(this.startdate.getMonth(), 2), this.pad(this.startdate.getDay(), 2)].join('-');
+    this.rstr = [this.startdate.getFullYear().toString(), this.startdate.getMonth() + 1, this.startdate.getDate()].join('-');
     this.lab_reservations = await this.labSvc.ReservationList(this.lab.id, this.rstr);
     this.oldstartdate = this.startdate;
   }
