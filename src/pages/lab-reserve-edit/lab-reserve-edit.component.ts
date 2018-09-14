@@ -31,7 +31,7 @@ export class LabReserveEditComponent implements OnInit {
       .subscribe(async (params: Params)=>{
         if(params['id']){
           this.createMode = false;
-          this.lab = await this.LabsSvc.getLab(params['id']);
+          this.lab = await this.LabsSvc.getLaboratory(params['id']);
         }else{
           this.lab = new Lab();
           this.createMode = true;
@@ -41,11 +41,11 @@ export class LabReserveEditComponent implements OnInit {
 
   async submit(){
     if(this.createMode){
-      const newId = await this.LabsSvc.createLab(this.lab);
+      const newId = await this.LabsSvc.createLaboratory(this.lab);
       this.messageSvc.success('创建成功');
       this.router.navigate(['/lab-reserve', newId]);
     }else{
-      await this.LabsSvc.editLab(this.lab.id, this.lab);
+      await this.LabsSvc.editLaboratory(this.lab.id, this.lab);
       this.messageSvc.success('修改成功');
       this.router.navigate(['/lab-reserve',this.lab.id]);
     }

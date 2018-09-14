@@ -37,51 +37,51 @@ export class LabReserveDetailComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.route.params
       .subscribe(async (params: Params)=>{
-        this.lab = await this.labSvc.getLab(params['id']);
-        // this.lab_reservations = await this.labSvc.ReservationList(params['id'], this.startdate);
+        this.lab = await this.labSvc.getLaboratory(params['id']);
+        if (this.startdate) {this.lab_reservations = await this.labSvc.getReservationList(params['id'], [this.startdate.getFullYear().toString(), this.pad(this.startdate.getMonth() + 1, 2), this.pad(this.startdate.getDate(), 2)].join('-'));}
       });
   }
 
-  async remove() {
-    await this.labSvc.removeLab(this.lab.id);
+  async DoLaboratoryRemoving() {
+    await this.labSvc.removeLaboratory(this.lab.id);
     this.messageSvc.success('删除成功');
     this.router.navigate(['/lab-reserve', 'labs']);
   }
 
-  async R_approve(reservationid: number) {
-    await this.labSvc.R_approve(reservationid);
+  async ApprovingReservation(reservationid: number) {
+    await this.labSvc.PerformanceRequestForApprovingReservation(reservationid);
     this.messageSvc.success('已同意该请求');
     this.router.navigate(['lab-reserve', 'labs', this.lab.id]);
-    this.RListUpd();
+    this.ReservationListUpdate();
   }
 
-  async R_reject(reservationid: number) {
-    await this.labSvc.R_reject(reservationid);
+  async RejectingReservation(reservationid: number) {
+    await this.labSvc.PerformanceRequestForRejectingReservation(reservationid);
     this.messageSvc.success('已抨击该请求');
     this.router.navigate(['lab-reserve', 'labs', this.lab.id]);
-    this.RListUpd();
+    this.ReservationListUpdate();
   }
 
   ngDoCheck() {
     if (this.startdate !== this.oldstartdate) {
-      this.RListUpd();
+      this.ReservationListUpdate();
     }
   }
 
-  async RListUpd() {
+  async ReservationListUpdate() {
     this.rstr = [this.startdate.getFullYear().toString(), this.pad(this.startdate.getMonth() + 1, 2), this.pad(this.startdate.getDate(), 2)].join('-');
-    this.lab_reservations = await this.labSvc.ReservationList(this.lab.id, this.rstr);
+    this.lab_reservations = await this.labSvc.getReservationList(this.lab.id, this.rstr);
     this.oldstartdate = this.startdate;
   }
 
-  TStoStr(ts:number) {
+  TranslatingTimeStampToString(ts:number) {
     const d = new Date();
     d.setTime(ts);
     return d.toLocaleString();
   }
 
 
-  StatusTranslate(status: 'init' | 'approved' | 'rejected') {
+  TranslatingStatusFromEnglishEnumerationToChineseDescription(status: 'init' | 'approved' | 'rejected') {
     const dict = {'approved': '受到同意的', 'rejected': '受到抨击的', 'init': '等待受刑的'};
     return dict[status];
   }
