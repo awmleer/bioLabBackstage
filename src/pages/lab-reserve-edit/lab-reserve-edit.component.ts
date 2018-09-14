@@ -23,7 +23,7 @@ export class LabReserveEditComponent implements OnInit {
     private router: Router,
     private apiSvc: ApiService,
     private messageSvc: NzMessageService,
-    private LabsSvc: LabsService,
+    private labSvc: LabsService,
   ) { }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class LabReserveEditComponent implements OnInit {
       .subscribe(async (params: Params)=>{
         if(params['id']){
           this.createMode = false;
-          this.currLab = await this.LabsSvc.getLab(params['id']);
+          this.currLab = await this.labSvc.getLab(params['id']);
         }else{
           this.currLab = new Lab();
           this.createMode = true;
@@ -41,11 +41,11 @@ export class LabReserveEditComponent implements OnInit {
 
   async submit(){
     if(this.createMode){
-      const newId = await this.LabsSvc.createLab(this.currLab);
+      const newId = await this.labSvc.createLab(this.currLab);
       this.messageSvc.success('创建成功');
       this.router.navigate(['/currLab-reserve', newId]);
     }else{
-      await this.LabsSvc.editLab(this.currLab.id, this.currLab);
+      await this.labSvc.editLab(this.currLab.id, this.currLab);
       this.messageSvc.success('修改成功');
       this.router.navigate(['/currLab-reserve',this.currLab.id]);
     }

@@ -19,7 +19,7 @@ export class LabReserveComponent implements OnInit {
 
   constructor(
     private api:ApiService,
-    private LabsSvc: LabsService,
+    private labSvc: LabsService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -32,7 +32,7 @@ export class LabReserveComponent implements OnInit {
 
 
   async fetchLabList(){
-      this.labList = await this.LabsSvc.getLabList();
+      this.labList = await this.labSvc.getLabList();
   }
 
 }
