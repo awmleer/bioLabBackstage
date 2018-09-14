@@ -142,7 +142,7 @@ export const Router=RouterModule.forRoot([
       title: '编辑实验室'
     }
   },{
-    path: 'lab=reserve/labs/:id',
+    path: 'lab-reserve/labs/:id',
     component: LabReserveDetailComponent,
     data: {
       title: '实验室审批'

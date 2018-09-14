@@ -45,6 +45,9 @@ import {LabReserveEditComponent} from '../pages/lab-reserve-edit/lab-reserve-edi
 import {LabReserveComponent} from '../pages/lab-reserve/lab-reserve.component';
 import {LabReserveDetailComponent} from '../pages/lab-reserve-detail/lab-reserve-detail.component';
 import {LabsService} from '../services/labs.service';
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+registerLocaleData(zh);
 
 @NgModule({
   declarations: [

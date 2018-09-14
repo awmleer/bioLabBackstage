@@ -16,7 +16,7 @@ export class LabsService{
   }
 
   getLab(labId:number):Promise<Lab>{
-    return this.apiSvc.get(`/lab/reserve/${labId}`);
+    return this.apiSvc.get(`/lab-reserve/lab/${labId}`);
   }
 
   createLab(data):Promise<number>{
@@ -31,8 +31,8 @@ export class LabsService{
     return this.apiSvc.post(`/lab-reserve/lab/${labId}/remove/`);
   }
 
-  ReservationList(labId:number):Promise<Reservation[]>{
-    return this.apiSvc.get(`/lab-reserve/lab/${labId}/reservation/all/`);
+  ReservationList(labId:number, date: string):Promise<Reservation[]>{
+    return this.apiSvc.get(`/lab-reserve/lab/${labId}/reservation/all/`, {'date': date});
   }
 
   R_approve (Rid: number): Promise<void> {
