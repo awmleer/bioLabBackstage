@@ -1,24 +1,24 @@
 <div class="header">
   <a [routerLink]="['/lab-reserve/labs']" nz-button>返回</a>
-  <ng-container *ngIf="lab">
-    <h2>{{lab.code}}</h2>
+  <ng-container *ngIf="CurrentLaboratory">
+    <h2>{{CurrentLaboratory.code}}</h2>
     <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要删除吗？" (nzOnConfirm)="DoLaboratoryRemoving()">删除</a>
-    <a nz-button nzType="primary" [routerLink]="['/lab-reserve', 'labs',lab.id,'edit']">修改</a>
+    <a nz-button nzType="primary" [routerLink]="['/lab-reserve', 'labs',CurrentLaboratory.id,'edit']">修改</a>
   </ng-container>
 </div>
 
-<div *ngIf="lab" class="instrument-detail">
+<div *ngIf="CurrentLaboratory" class="instrument-detail">
   <h3>基本信息</h3>
   <p>
-    id：{{lab.id}}<br>
-    实验室代号：{{lab.code}}<br>
-    容量：{{lab.capacity}}<br>
-    描述：{{lab.description}}<br>
+    id：{{CurrentLaboratory.id}}<br>
+    实验室代号：{{CurrentLaboratory.code}}<br>
+    容量：{{CurrentLaboratory.capacity}}<br>
+    描述：{{CurrentLaboratory.description}}<br>
   </p>
   <h3>预约情况</h3>
-  <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startdate"></nz-date-picker>
-  <div *ngIf="lab_reservations">
-    <p *ngFor="let reservation of lab_reservations">
+  <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow"></nz-date-picker>
+  <div *ngIf="ReservationsForCurrentLaboratory">
+    <p *ngFor="let reservation of ReservationsForCurrentLaboratory">
       <span>id：{{reservation.id}}</span>
       申请人：{{reservation.applier.name}}<br>
       开始时间：{{TranslatingTimeStampToString(reservation.startTime)}}<br>

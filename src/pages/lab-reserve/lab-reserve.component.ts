@@ -14,7 +14,7 @@ import {Lab} from '../../classes/lab';
 })
 export class LabReserveComponent implements OnInit {
 
-  lablist:Lab[];
+  LaboratoryList:Lab[];
 
 
   constructor(
@@ -32,7 +32,7 @@ export class LabReserveComponent implements OnInit {
 
 
   async fetchLaboratoryList(){
-      this.lablist = await this.LabsSvc.getLaboratoryList();
+      this.LaboratoryList = await this.LabsSvc.getLaboratoryList();
   }
 
 }

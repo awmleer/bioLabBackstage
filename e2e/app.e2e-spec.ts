@@ -1,6 +1,6 @@
 import { BioLabBackstagePage } from './app.po';
 
-describe('bio-lab-backstage App', () => {
+describe('bio-CurrentLaboratory-backstage App', () => {
   let page: BioLabBackstagePage;
 
   beforeEach(() => {

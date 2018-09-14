@@ -14,11 +14,11 @@ import {NzMessageService} from 'ng-zorro-antd';
   styleUrls: ['./lab-reserve-detail.component.scss']
 })
 export class LabReserveDetailComponent implements OnInit, DoCheck {
-  lab:Lab;
-  lab_reservations: Reservation[];
-  startdate: Date;
-  oldstartdate: Date;
-  rstr: string;
+  CurrentLaboratory:Lab;
+  ReservationsForCurrentLaboratory: Reservation[];
+  TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow: Date;
+  TheOldDateWeUsedToCheckIfTheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNowIsChanged: Date;
+  TheParameterStringWeUsedToFeedBackendToRepresentTheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow: string;
 
   pad = function(tbl) {
     return function(num, n) {
@@ -37,41 +37,41 @@ export class LabReserveDetailComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.route.params
       .subscribe(async (params: Params)=>{
-        this.lab = await this.labSvc.getLaboratory(params['id']);
-        if (this.startdate) {this.lab_reservations = await this.labSvc.getReservationList(params['id'], [this.startdate.getFullYear().toString(), this.pad(this.startdate.getMonth() + 1, 2), this.pad(this.startdate.getDate(), 2)].join('-'));}
+        this.CurrentLaboratory = await this.labSvc.getLaboratory(params['id']);
+        if (this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow) {this.ReservationsForCurrentLaboratory = await this.labSvc.getReservationList(params['id'], [this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow.getFullYear().toString(), this.pad(this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow.getMonth() + 1, 2), this.pad(this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow.getDate(), 2)].join('-'));}
       });
   }
 
   async DoLaboratoryRemoving() {
-    await this.labSvc.removeLaboratory(this.lab.id);
+    await this.labSvc.removeLaboratory(this.CurrentLaboratory.id);
     this.messageSvc.success('删除成功');
-    this.router.navigate(['/lab-reserve', 'labs']);
+    this.router.navigate(['/CurrentLaboratory-reserve', 'labs']);
   }
 
   async ApprovingReservation(reservationid: number) {
     await this.labSvc.PerformanceRequestForApprovingReservation(reservationid);
     this.messageSvc.success('已同意该请求');
-    this.router.navigate(['lab-reserve', 'labs', this.lab.id]);
+    this.router.navigate(['CurrentLaboratory-reserve', 'labs', this.CurrentLaboratory.id]);
     this.ReservationListUpdate();
   }
 
   async RejectingReservation(reservationid: number) {
     await this.labSvc.PerformanceRequestForRejectingReservation(reservationid);
     this.messageSvc.success('已抨击该请求');
-    this.router.navigate(['lab-reserve', 'labs', this.lab.id]);
+    this.router.navigate(['CurrentLaboratory-reserve', 'labs', this.CurrentLaboratory.id]);
     this.ReservationListUpdate();
   }
 
   ngDoCheck() {
-    if (this.startdate !== this.oldstartdate) {
+    if (this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow !== this.TheOldDateWeUsedToCheckIfTheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNowIsChanged) {
       this.ReservationListUpdate();
     }
   }
 
   async ReservationListUpdate() {
-    this.rstr = [this.startdate.getFullYear().toString(), this.pad(this.startdate.getMonth() + 1, 2), this.pad(this.startdate.getDate(), 2)].join('-');
-    this.lab_reservations = await this.labSvc.getReservationList(this.lab.id, this.rstr);
-    this.oldstartdate = this.startdate;
+    this.TheParameterStringWeUsedToFeedBackendToRepresentTheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow = [this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow.getFullYear().toString(), this.pad(this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow.getMonth() + 1, 2), this.pad(this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow.getDate(), 2)].join('-');
+    this.ReservationsForCurrentLaboratory = await this.labSvc.getReservationList(this.CurrentLaboratory.id, this.TheParameterStringWeUsedToFeedBackendToRepresentTheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow);
+    this.TheOldDateWeUsedToCheckIfTheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNowIsChanged = this.TheDateWeUsedToGetReservationsForCurrentLaboratoryFromWhichUpToNow;
   }
 
   TranslatingTimeStampToString(ts:number) {

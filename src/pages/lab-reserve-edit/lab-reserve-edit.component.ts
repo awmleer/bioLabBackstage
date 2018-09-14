@@ -12,7 +12,7 @@ import {LabsService} from '../../services/labs.service';
   styleUrls: ['./lab-reserve-edit.component.scss']
 })
 export class LabReserveEditComponent implements OnInit {
-  lab:Lab = null;
+  CurrentLaboratory:Lab = null;
   createMode:boolean = true;
 
   editorOptions = null;
@@ -31,9 +31,9 @@ export class LabReserveEditComponent implements OnInit {
       .subscribe(async (params: Params)=>{
         if(params['id']){
           this.createMode = false;
-          this.lab = await this.LabsSvc.getLaboratory(params['id']);
+          this.CurrentLaboratory = await this.LabsSvc.getLaboratory(params['id']);
         }else{
-          this.lab = new Lab();
+          this.CurrentLaboratory = new Lab();
           this.createMode = true;
         }
       });
@@ -41,13 +41,13 @@ export class LabReserveEditComponent implements OnInit {
 
   async submit(){
     if(this.createMode){
-      const newId = await this.LabsSvc.createLaboratory(this.lab);
+      const newId = await this.LabsSvc.createLaboratory(this.CurrentLaboratory);
       this.messageSvc.success('创建成功');
-      this.router.navigate(['/lab-reserve', newId]);
+      this.router.navigate(['/CurrentLaboratory-reserve', newId]);
     }else{
-      await this.LabsSvc.editLaboratory(this.lab.id, this.lab);
+      await this.LabsSvc.editLaboratory(this.CurrentLaboratory.id, this.CurrentLaboratory);
       this.messageSvc.success('修改成功');
-      this.router.navigate(['/lab-reserve',this.lab.id]);
+      this.router.navigate(['/CurrentLaboratory-reserve',this.CurrentLaboratory.id]);
     }
   }
 
