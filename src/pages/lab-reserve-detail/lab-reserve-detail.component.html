@@ -25,8 +25,8 @@
       结束时间：{{TimestampToStr(reservation.endTime)}}<br>
       <span>状态：{{TranslateDescription(reservation.status)}}</span>
       描述：{{reservation.description}}<br>
-      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="ApprovingReservation(reservation.id)">同意此申请</a>
-      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="RejectingReservation(reservation.id)">拒绝此申请</a>
+      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="ApprovingReservation(reservation.id)">同意使用实验室</a>
+      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="RejectingReservation(reservation.id)">拒绝使用实验室</a>
     </p>
   </div>
 </div>
