@@ -74,4 +74,15 @@ export class LabReserveDetailComponent implements OnInit, DoCheck {
     this.oldstartdate = this.startdate;
   }
 
+  TStoStr(ts:number) {
+    const d = new Date();
+    d.setTime(ts);
+    return d.toLocaleString();
+  }
+
+
+  StatusTranslate(status: 'init' | 'approved' | 'rejected') {
+    const dict = {'approved': '受到同意的', 'rejected': '受到抨击的', 'init': '等待受刑的'};
+    return dict[status];
+  }
 }

@@ -19,11 +19,11 @@
   <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startdate"></nz-date-picker>
   <div *ngIf="lab_reservations">
     <p *ngFor="let reservation of lab_reservations">
-      id：{{reservation.id}}<br>
+      <span>id：{{reservation.id}}</span>
       申请人：{{reservation.applier.name}}<br>
-      开始时间：{{reservation.startTime}}<br>
-      结束时间：{{reservation.endTime}}<br>
-      状态：{{reservation.status}}<br>
+      开始时间：{{TStoStr(reservation.startTime)}}<br>
+      结束时间：{{TStoStr(reservation.endTime)}}<br>
+      <span>状态：{{StatusTranslate(reservation.status)}}</span>
       描述：{{reservation.description}}<br>
       <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="R_approve(reservation.id)">同意此申请</a>
       <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要抨击此申请吗？" (nzOnConfirm)="R_reject(reservation.id)">抨击此申请</a>
