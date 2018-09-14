@@ -35,11 +35,11 @@ export class LabsService{
     return this.apiSvc.get(`/lab-reserve/lab/${labId}/reservation/all/`, {'date': date});
   }
 
-  ApprovingReservation (Rid: number): Promise<void> {
+  approvingReservation (Rid: number): Promise<void> {
     return this.apiSvc.get(`/lab-reserve/reservation/${Rid}/approve/`);
   }
 
-  RejectingReservation (Rid: number): Promise<void> {
+  rejectingReservation (Rid: number): Promise<void> {
     return this.apiSvc.get(`/lab-reserve/reservation/${Rid}/reject/`);
   }
 }

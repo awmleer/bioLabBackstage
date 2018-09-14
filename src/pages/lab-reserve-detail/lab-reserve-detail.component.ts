@@ -42,33 +42,33 @@ export class LabReserveDetailComponent implements OnInit, DoCheck {
       });
   }
 
-  async DoLaboratoryRemoving() {
+  async removeLab() {
     await this.labSvc.removeLab(this.currLab.id);
     this.messageSvc.success('删除成功');
     this.router.navigate(['/currLab-reserve', 'labs']);
   }
 
-  async ApprovingReservation(reservationid: number) {
-    await this.labSvc.ApprovingReservation(reservationid);
+  async approvingReservation(reservationid: number) {
+    await this.labSvc.approvingReservation(reservationid);
     this.messageSvc.success('已同意该请求');
     this.router.navigate(['currLab-reserve', 'labs', this.currLab.id]);
-    this.ReservationListUpdate();
+    this.reservationListUpdate();
   }
 
-  async RejectingReservation(reservationid: number) {
-    await this.labSvc.RejectingReservation(reservationid);
+  async rejectingReservation(reservationid: number) {
+    await this.labSvc.rejectingReservation(reservationid);
     this.messageSvc.success('已抨击该请求');
     this.router.navigate(['currLab-reserve', 'labs', this.currLab.id]);
-    this.ReservationListUpdate();
+    this.reservationListUpdate();
   }
 
   ngDoCheck() {
     if (this.startDate !== this.oldstartDate) {
-      this.ReservationListUpdate();
+      this.reservationListUpdate();
     }
   }
 
-  async ReservationListUpdate() {
+  async reservationListUpdate() {
     this.strBuff = [this.startDate.getFullYear().toString(), this.pad(this.startDate.getMonth() + 1, 2), this.pad(this.startDate.getDate(), 2)].join('-');
     this.ReservationsForCurrLab = await this.labSvc.getReservationList(this.currLab.id, this.strBuff);
     this.oldstartDate = this.startDate;

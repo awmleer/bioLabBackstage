@@ -2,7 +2,7 @@
   <a [routerLink]="['/lab-reserve/labs']" nz-button>返回</a>
   <ng-container *ngIf="currLab">
     <h2>{{currLab.code}}</h2>
-    <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要删除吗？" (nzOnConfirm)="DoLaboratoryRemoving()">删除</a>
+    <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要删除吗？" (nzOnConfirm)="removeLab()">删除</a>
     <a nz-button nzType="primary" [routerLink]="['/lab-reserve', 'labs',currLab.id,'edit']">修改</a>
   </ng-container>
 </div>
@@ -25,8 +25,8 @@
       结束时间：{{TimestampToStr(reservation.endTime)}}<br>
       <span>状态：{{TranslateDescription(reservation.status)}}</span>
       描述：{{reservation.description}}<br>
-      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="ApprovingReservation(reservation.id)">同意使用实验室</a>
-      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="RejectingReservation(reservation.id)">拒绝使用实验室</a>
+      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="approvingReservation(reservation.id)">同意使用实验室</a>
+      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="rejectingReservation(reservation.id)">拒绝使用实验室</a>
     </p>
   </div>
 </div>
