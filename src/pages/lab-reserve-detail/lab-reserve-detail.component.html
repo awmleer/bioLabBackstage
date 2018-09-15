@@ -16,7 +16,7 @@
     描述：{{currLab.description}}<br>
   </p>
   <h3>预约情况</h3>
-  <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startDate"></nz-date-picker>
+  <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startDate" (ngModelChange)="reservationListUpdate()"></nz-date-picker>
   <div *ngIf="ReservationsForCurrLab">
     <p *ngFor="let reservation of ReservationsForCurrLab">
       <span>id：{{reservation.id}}</span>

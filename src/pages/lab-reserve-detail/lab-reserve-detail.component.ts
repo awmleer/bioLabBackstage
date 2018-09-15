@@ -13,7 +13,7 @@ import {NzMessageService} from 'ng-zorro-antd';
   templateUrl: './lab-reserve-detail.component.html',
   styleUrls: ['./lab-reserve-detail.component.scss']
 })
-export class LabReserveDetailComponent implements OnInit, DoCheck {
+export class LabReserveDetailComponent implements OnInit {
   currLab:Lab;
   ReservationsForCurrLab: Reservation[];
   startDate: Date;
@@ -45,27 +45,21 @@ export class LabReserveDetailComponent implements OnInit, DoCheck {
   async removeLab() {
     await this.labSvc.removeLab(this.currLab.id);
     this.messageSvc.success('删除成功');
-    this.router.navigate(['/currLab-reserve', 'labs']);
+    this.router.navigate(['/lab-reserve', 'labs']);
   }
 
   async approvingReservation(reservationid: number) {
     await this.labSvc.approvingReservation(reservationid);
     this.messageSvc.success('已同意该请求');
-    this.router.navigate(['currLab-reserve', 'labs', this.currLab.id]);
+    this.router.navigate(['lab-reserve', 'labs', this.currLab.id]);
     this.reservationListUpdate();
   }
 
   async rejectingReservation(reservationid: number) {
     await this.labSvc.rejectingReservation(reservationid);
     this.messageSvc.success('已抨击该请求');
-    this.router.navigate(['currLab-reserve', 'labs', this.currLab.id]);
+    this.router.navigate(['lab-reserve', 'labs', this.currLab.id]);
     this.reservationListUpdate();
-  }
-
-  ngDoCheck() {
-    if (this.startDate !== this.oldstartDate) {
-      this.reservationListUpdate();
-    }
   }
 
   async reservationListUpdate() {
