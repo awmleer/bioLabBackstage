@@ -1,4 +1,4 @@
-import {Component, OnInit, DoCheck} from '@angular/core';
+import {Component, OnInit, DoCheck, SimpleChange} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import {ApiService} from '../../services/api.service';
@@ -17,7 +17,6 @@ export class LabReserveDetailComponent implements OnInit {
   currLab:Lab;
   ReservationsForCurrLab: Reservation[];
   startDate: Date;
-  oldstartDate: Date;
   strBuff: string;
 
   pad = function(tbl) {
@@ -65,7 +64,11 @@ export class LabReserveDetailComponent implements OnInit {
   async reservationListUpdate() {
     this.strBuff = [this.startDate.getFullYear().toString(), this.pad(this.startDate.getMonth() + 1, 2), this.pad(this.startDate.getDate(), 2)].join('-');
     this.ReservationsForCurrLab = await this.labSvc.getReservationList(this.currLab.id, this.strBuff);
-    this.oldstartDate = this.startDate;
+  }
+
+  onDateChange(event: any) {
+    this.startDate = event.target.value;
+    this.reservationListUpdate();
   }
 
   TranslateDescription(status: 'init' | 'approved' | 'rejected') {
