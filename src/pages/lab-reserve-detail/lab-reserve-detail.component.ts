@@ -57,7 +57,7 @@ export class LabReserveDetailComponent implements OnInit {
 
   async rejectingReservation(reservationid: number) {
     await this.labSvc.rejectingReservation(reservationid);
-    this.messageSvc.success('已抨击该请求');
+    this.messageSvc.success('已拒绝该请求');
     this.router.navigate(['lab-reserve', 'labs', this.currLab.id]);
     this.reservationListUpdate();
   }
