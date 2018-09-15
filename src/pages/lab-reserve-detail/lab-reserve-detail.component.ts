@@ -68,13 +68,6 @@ export class LabReserveDetailComponent implements OnInit {
     this.oldstartDate = this.startDate;
   }
 
-  TimestampToStr(ts:number) {
-    const d = new Date();
-    d.setTime(ts);
-    return d.toLocaleString();
-  }
-
-
   TranslateDescription(status: 'init' | 'approved' | 'rejected') {
     const dict = {'approved': '已同意', 'rejected': '已拒绝', 'init': '未处理'};
     return dict[status];

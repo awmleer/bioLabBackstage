@@ -21,8 +21,8 @@
     <p *ngFor="let reservation of ReservationsForCurrLab">
       <span>id：{{reservation.id}}</span>
       申请人：{{reservation.applier.name}}<br>
-      开始时间：{{TimestampToStr(reservation.startTime)}}<br>
-      结束时间：{{TimestampToStr(reservation.endTime)}}<br>
+      开始时间：{{reservation.startTime | date: 'yyyy-MM-dd HH:mm'}}<br>
+      结束时间：{{reservation.endTime | date: 'yyyy-MM-dd HH:mm'}}<br>
       <span>状态：{{TranslateDescription(reservation.status)}}</span>
       描述：{{reservation.description}}<br>
       <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="approvingReservation(reservation.id)">同意使用实验室</a>
