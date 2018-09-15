@@ -1,8 +1,8 @@
 <a nz-button nzType="primary" [routerLink]="['/lab-reserve/labs/create']">创建实验室</a>
 
 <div *ngIf="labList">
-  <div class="instrument-list">
-    <div class="instrument" *ngFor="let lab of labList">
+  <div class="lab-list">
+    <div class="lab" *ngFor="let lab of labList">
       <h3><a [routerLink]="['/lab-reserve/labs/',lab.id]">{{lab.code}}</a></h3>
       容量：{{lab.capacity}}
       <!--&lt;!&ndash;<a nz-button nzType="primary" ">删除</a>&ndash;&gt;<a nz-button nzType="primary" [routerLink]="['/currLab-reserve/labs/',currLab.id, '/edit']">编辑</a>-->
