@@ -18,8 +18,7 @@
       <span>上传</span>
     </button>
   </nz-upload>
-
-  <button nz-button nzType="primary">新建文件夹</button>
+  <button nz-button nzType="primary" (click)="mkdir()">新建文件夹</button>
 </div>
 
 <ng-container *ngIf="files">

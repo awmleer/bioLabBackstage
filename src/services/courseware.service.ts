@@ -8,10 +8,10 @@ export class CoursewareService {
     private apiSvc: ApiService,
   ) {}
 
-  mkdir(parent: BioFile, name: string): Promise<number> {
+  mkdir(parentId: number, name: string): Promise<number> {
     return this.apiSvc.post(`/courseware/mkdir/`, {
       name,
-      parentId: parent.id
+      parentId
     });
   }
 

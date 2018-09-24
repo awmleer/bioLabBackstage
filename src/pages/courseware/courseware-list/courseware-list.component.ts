@@ -74,4 +74,11 @@ export class CoursewareListComponent implements OnInit {
     return `${CONST.apiUrl}/courseware/${file.id}/download/`;
   }
 
+  async mkdir() {
+    const name = prompt('请输入新文件夹的名字');
+    await this.coursewareSvc.mkdir(this.folderId, name);
+    this.messageSvc.success('创建成功');
+    await this.fetchList();
+  }
+
 }
