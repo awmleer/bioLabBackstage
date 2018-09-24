@@ -1,3 +1,24 @@
-<p>
-  courseware-list works!
-</p>
+<nz-breadcrumb *ngIf="path">
+  <nz-breadcrumb-item *ngFor="let folder of path">
+    <a (click)="goFolder(folder)">
+      {{folder.name}}
+    </a>
+  </nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div class="control-group">
+  <button nz-button nzType="primary">上传</button>
+  <button nz-button nzType="primary">新建文件夹</button>
+</div>
+
+<ng-container *ngIf="files">
+  <div *ngFor="let file of files">
+    <i class="anticon anticon-file" *ngIf="!file.isFolder"></i>
+    <i class="anticon anticon-folder" *ngIf="file.isFolder"></i>
+    {{file.name}}
+    <button nz-button *ngIf="file.isFolder" (click)="goFolder(file)">打开</button>
+  </div>
+  <div *ngIf="files.length === 0">
+    文件夹为空
+  </div>
+</ng-container>

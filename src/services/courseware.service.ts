@@ -15,10 +15,10 @@ export class CoursewareService {
     });
   }
 
-  ls(folderId: number = null): Promise<BioFile[]> {
-    return this.apiSvc.get(`/courseware/ls/`, {
-      folderId
-    });
+  ls(folderId: number = null): Promise<{path: BioFile[]; files: BioFile[];}> {
+    const data:any = {};
+    if (folderId !== null) data.folderId = folderId;
+    return this.apiSvc.get(`/courseware/ls/`, data);
   }
 
 }
