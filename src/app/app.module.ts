@@ -48,6 +48,7 @@ import {LabsService} from '../services/labs.service';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import {CoursewareService} from '../services/courseware.service';
+import { CoursewareListComponent } from '../pages/courseware/courseware-list/courseware-list.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -76,6 +77,7 @@ registerLocaleData(zh);
     BbsGroupComponent,
     LoginComponent,
     UserProfileComponent,
+    CoursewareListComponent,
   ],
   imports: [
     BrowserModule,
