@@ -29,7 +29,13 @@ export class CoursewareListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      if (params.folderId) this.folderId = params.folderId;
+      if (params.folderId) {
+        if (params.folderId === 'null') {
+          this.folderId = null;
+        } else {
+          this.folderId = params.folderId;
+        }
+      }
       this.fetchList();
     });
   }
@@ -41,7 +47,9 @@ export class CoursewareListComponent implements OnInit {
   }
 
   goFolder(folder: BioFile) {
-    this.router.navigate(['./', {folderId: folder.id}], {
+    this.router.navigate(['./', {
+      folderId: folder ? folder.id : 'null'
+    }], {
       relativeTo: this.route
     });
   }
@@ -60,6 +68,10 @@ export class CoursewareListComponent implements OnInit {
     await this.coursewareSvc.deleteFile(file.id);
     this.messageSvc.success('删除成功');
     await this.fetchList();
+  }
+
+  getDownloadLink(file: BioFile) {
+    return `${CONST.apiUrl}/courseware/${file.id}/download/`;
   }
 
 }

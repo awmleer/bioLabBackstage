@@ -1,5 +1,10 @@
 <nz-breadcrumb *ngIf="path">
   <nz-breadcrumb-item *ngFor="let folder of path">
+    <a (click)="goFolder(null)">
+      课件资料
+    </a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item *ngFor="let folder of path">
     <a (click)="goFolder(folder)">
       {{folder.name}}
     </a>
@@ -25,6 +30,7 @@
       {{file.name}}
     </span>
     <button nz-button *ngIf="file.isFolder" (click)="goFolder(file)">打开</button>
+    <a nz-button *ngIf="!file.isFolder" [href]="getDownloadLink(file)" target="_blank">下载</a>
     <button nz-button nz-popconfirm nzTitle="确定要删除吗？" nzType="danger" (nzOnConfirm)="deleteFile(file)">删除</button>
   </div>
   <div *ngIf="files.length === 0">
