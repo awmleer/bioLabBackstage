@@ -25,4 +25,10 @@ export class CoursewareService {
     return this.apiSvc.get(`/courseware/${fileId}/delete/`);
   }
 
+  rename(fileId: number, name): Promise<void> {
+    return this.apiSvc.post(`/courseware/${fileId}/rename/`, {
+      name
+    });
+  }
+
 }

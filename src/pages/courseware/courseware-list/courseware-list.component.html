@@ -28,6 +28,7 @@
       <i class="anticon anticon-folder" *ngIf="file.isFolder"></i>
       {{file.name}}
     </span>
+    <button nz-button (click)="rename(file)">重命名</button>
     <button nz-button *ngIf="file.isFolder" (click)="goFolder(file)">打开</button>
     <a nz-button *ngIf="!file.isFolder" [href]="getDownloadLink(file)" target="_blank">下载</a>
     <button nz-button nz-popconfirm nzTitle="确定要删除吗？" nzType="danger" (nzOnConfirm)="deleteFile(file)">删除</button>
