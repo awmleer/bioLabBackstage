@@ -56,4 +56,10 @@ export class CoursewareListComponent implements OnInit {
     }
   }
 
+  async deleteFile(file: BioFile) {
+    await this.coursewareSvc.deleteFile(file.id);
+    this.messageSvc.success('删除成功');
+    await this.fetchList();
+  }
+
 }

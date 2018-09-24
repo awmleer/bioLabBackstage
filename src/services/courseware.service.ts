@@ -21,4 +21,8 @@ export class CoursewareService {
     return this.apiSvc.get(`/courseware/ls/`, data);
   }
 
+  deleteFile(fileId: number): Promise<void> {
+    return this.apiSvc.get(`/courseware/${fileId}/delete/`);
+  }
+
 }

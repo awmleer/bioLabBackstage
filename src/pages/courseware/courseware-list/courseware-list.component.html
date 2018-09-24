@@ -18,11 +18,14 @@
 </div>
 
 <ng-container *ngIf="files">
-  <div *ngFor="let file of files">
-    <i class="anticon anticon-file" *ngIf="!file.isFolder"></i>
-    <i class="anticon anticon-folder" *ngIf="file.isFolder"></i>
-    {{file.name}}
+  <div *ngFor="let file of files" class="file">
+    <span>
+      <i class="anticon anticon-file" *ngIf="!file.isFolder"></i>
+      <i class="anticon anticon-folder" *ngIf="file.isFolder"></i>
+      {{file.name}}
+    </span>
     <button nz-button *ngIf="file.isFolder" (click)="goFolder(file)">打开</button>
+    <button nz-button nz-popconfirm nzTitle="确定要删除吗？" nzType="danger" (nzOnConfirm)="deleteFile(file)">删除</button>
   </div>
   <div *ngIf="files.length === 0">
     文件夹为空

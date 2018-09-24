@@ -4,3 +4,16 @@
     margin-right: 10px;
   }
 }
+
+div.file {
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+  span {
+    flex: auto;
+  }
+  button {
+    flex: none;
+    margin-left: 10px;
+  }
+}
