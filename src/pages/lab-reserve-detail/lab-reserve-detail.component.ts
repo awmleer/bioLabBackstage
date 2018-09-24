@@ -1,4 +1,4 @@
-import {Component, OnInit, DoCheck} from '@angular/core';
+import {Component, OnInit, DoCheck, SimpleChange} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import {ApiService} from '../../services/api.service';
@@ -13,11 +13,10 @@ import {NzMessageService} from 'ng-zorro-antd';
   templateUrl: './lab-reserve-detail.component.html',
   styleUrls: ['./lab-reserve-detail.component.scss']
 })
-export class LabReserveDetailComponent implements OnInit, DoCheck {
+export class LabReserveDetailComponent implements OnInit {
   currLab:Lab;
   ReservationsForCurrLab: Reservation[];
   startDate: Date;
-  oldstartDate: Date;
   strBuff: string;
 
   pad = function(tbl) {
@@ -45,41 +44,32 @@ export class LabReserveDetailComponent implements OnInit, DoCheck {
   async removeLab() {
     await this.labSvc.removeLab(this.currLab.id);
     this.messageSvc.success('删除成功');
-    this.router.navigate(['/currLab-reserve', 'labs']);
+    this.router.navigate(['/lab-reserve', 'labs']);
   }
 
   async approvingReservation(reservationid: number) {
     await this.labSvc.approvingReservation(reservationid);
     this.messageSvc.success('已同意该请求');
-    this.router.navigate(['currLab-reserve', 'labs', this.currLab.id]);
+    this.router.navigate(['lab-reserve', 'labs', this.currLab.id]);
     this.reservationListUpdate();
   }
 
   async rejectingReservation(reservationid: number) {
     await this.labSvc.rejectingReservation(reservationid);
-    this.messageSvc.success('已抨击该请求');
-    this.router.navigate(['currLab-reserve', 'labs', this.currLab.id]);
+    this.messageSvc.success('已拒绝该请求');
+    this.router.navigate(['lab-reserve', 'labs', this.currLab.id]);
     this.reservationListUpdate();
-  }
-
-  ngDoCheck() {
-    if (this.startDate !== this.oldstartDate) {
-      this.reservationListUpdate();
-    }
   }
 
   async reservationListUpdate() {
     this.strBuff = [this.startDate.getFullYear().toString(), this.pad(this.startDate.getMonth() + 1, 2), this.pad(this.startDate.getDate(), 2)].join('-');
     this.ReservationsForCurrLab = await this.labSvc.getReservationList(this.currLab.id, this.strBuff);
-    this.oldstartDate = this.startDate;
   }
 
-  TimestampToStr(ts:number) {
-    const d = new Date();
-    d.setTime(ts);
-    return d.toLocaleString();
+  onDateChange(event: any) {
+    this.startDate = event.target.value;
+    this.reservationListUpdate();
   }
-
 
   TranslateDescription(status: 'init' | 'approved' | 'rejected') {
     const dict = {'approved': '已同意', 'rejected': '已拒绝', 'init': '未处理'};

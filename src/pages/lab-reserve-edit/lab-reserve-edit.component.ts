@@ -43,11 +43,11 @@ export class LabReserveEditComponent implements OnInit {
     if(this.createMode){
       const newId = await this.labSvc.createLab(this.currLab);
       this.messageSvc.success('创建成功');
-      this.router.navigate(['/currLab-reserve', newId]);
+      this.router.navigate(['/lab-reserve', newId]);
     }else{
       await this.labSvc.editLab(this.currLab.id, this.currLab);
       this.messageSvc.success('修改成功');
-      this.router.navigate(['/currLab-reserve',this.currLab.id]);
+      this.router.navigate(['/lab-reserve',this.currLab.id]);
     }
   }
 
