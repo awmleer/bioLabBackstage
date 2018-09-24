@@ -47,6 +47,7 @@ import {LabReserveDetailComponent} from '../pages/lab-reserve-detail/lab-reserve
 import {LabsService} from '../services/labs.service';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
+import {CoursewareService} from '../services/courseware.service';
 registerLocaleData(zh);
 
 @NgModule({
@@ -98,6 +99,7 @@ registerLocaleData(zh);
     BbsService,
     AccountService,
     LabsService,
+    CoursewareService,
     {provide: ErrorHandler, useClass: BiolabErrorHandler},
   ],
   bootstrap: [AppComponent]
