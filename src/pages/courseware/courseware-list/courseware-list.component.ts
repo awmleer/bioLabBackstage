@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {BioFile} from '../../../classes/courseware';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {CoursewareService} from '../../../services/courseware.service';
+import {CONST} from '../../../app/const';
+import {log} from 'util';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-courseware-list',
@@ -11,28 +14,46 @@ import {CoursewareService} from '../../../services/courseware.service';
 export class CoursewareListComponent implements OnInit {
   path: BioFile[];
   files: BioFile[];
+  folderId: number = null;
+
+  get uploadUrl() {
+    return `${CONST.apiUrl}/courseware/upload/` + (this.folderId ? `?folderId=${this.folderId}` : '');
+  }
 
   constructor(
     private route: ActivatedRoute,
     private coursewareSvc: CoursewareService,
     private router: Router,
-  ) { }
+    private messageSvc: NzMessageService,
+  ) {}
 
   ngOnInit() {
-    this.route.params.subscribe(async (params: Params) => {
-      console.log(params);
-      let folderId = null;
-      if (params.folderId) folderId = params.folderId;
-      const data = await this.coursewareSvc.ls(params.folderId);
-      this.path = data.path;
-      this.files = data.files;
+    this.route.params.subscribe((params: Params) => {
+      if (params.folderId) this.folderId = params.folderId;
+      this.fetchList();
     });
+  }
+
+  async fetchList() {
+    const data = await this.coursewareSvc.ls(this.folderId);
+    this.path = data.path;
+    this.files = data.files;
   }
 
   goFolder(folder: BioFile) {
     this.router.navigate(['./', {folderId: folder.id}], {
       relativeTo: this.route
     });
+  }
+
+  onUploadChange(e) {
+    console.log(e);
+    if (e.file.status === 'done') {
+      this.messageSvc.success('上传成功');
+      this.fetchList();
+    } else if (e.file.status === 'done') {
+      this.messageSvc.error('上传失败');
+    }
   }
 
 }

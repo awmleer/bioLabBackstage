@@ -7,7 +7,13 @@
 </nz-breadcrumb>
 
 <div class="control-group">
-  <button nz-button nzType="primary">上传</button>
+  <nz-upload [nzAction]="uploadUrl" [nzShowUploadList]="false" [nzWithCredentials]="true" (nzChange)="onUploadChange($event)">
+    <button nz-button nzType="primary">
+      <i class="anticon anticon-upload"></i>
+      <span>上传</span>
+    </button>
+  </nz-upload>
+
   <button nz-button nzType="primary">新建文件夹</button>
 </div>
 
