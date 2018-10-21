@@ -11,7 +11,7 @@
     <div class="notice" *ngFor="let notice of notices">
       <h3>
         <a [routerLink]="['/notice',notice.id]">
-          <i class="anticon anticon-star golden" *ngIf="notice.starred"></i>
+          <i class="anticon anticon-star orange" *ngIf="notice.starred"></i>
           {{notice.title}}
         </a>
       </h3>

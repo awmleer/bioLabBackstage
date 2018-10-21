@@ -2,7 +2,7 @@
   <a [routerLink]="['/notice/list/1']" nz-button>返回</a>
   <ng-container *ngIf="notice">
     <h2>
-      <i class="anticon anticon-star golden" *ngIf="notice.starred"></i>
+      <i class="anticon anticon-star orange" *ngIf="notice.starred"></i>
       {{notice.title}}
     </h2>
     <button *ngIf="notice.starred === true" nz-button nzType="primary" (click)="unstar()">取消标星</button>
