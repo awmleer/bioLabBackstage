@@ -67,7 +67,7 @@ export class LabReserveDetailComponent implements OnInit {
   }
 
   onDateChange(event: any) {
-    this.startDate = event.target.value;
+    // this.startDate = event.target.value;
     this.reservationListUpdate();
   }
 
