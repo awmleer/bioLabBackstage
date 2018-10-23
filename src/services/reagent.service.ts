@@ -30,4 +30,8 @@ export class ReagentService implements LabeledItemService {
     });
   }
 
+  removeReagent(reagentId: number) {
+    return this.apiSvc.post(`/instrument/${reagentId}/remove/`);
+  }
+
 }

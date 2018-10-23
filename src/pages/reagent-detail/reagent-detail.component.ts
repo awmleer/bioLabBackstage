@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ApiService} from '../../services/api.service';
 import {ReagentDetail} from '../../classes/reagent';
 import { FileUploader } from 'ng2-file-upload';
 import {CONST} from '../../app/const';
+import {ReagentService} from '../../services/reagent.service';
+import {NzMessageService} from 'ng-zorro-antd';
 
 
 
@@ -18,7 +20,10 @@ export class ReagentDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private api: ApiService
+    private api: ApiService,
+    private reagentService: ReagentService,
+    private messageSvc: NzMessageService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -61,6 +66,12 @@ export class ReagentDetailComponent implements OnInit {
     }).then(()=>{
       this.freshReagent();
     });
+  }
+
+  async remove() {
+    await this.reagentService.removeReagent(this.reagent.id);
+    this.messageSvc.success('删除成功');
+    await this.router.navigate(['/reagent', 'list', 1]);
   }
 
 }

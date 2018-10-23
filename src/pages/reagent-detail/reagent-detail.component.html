@@ -1,6 +1,7 @@
 <div class="header">
   <a [routerLink]="['/reagent/list/1']" nz-button>返回</a>
   <h2>{{reagent?.englishName}}</h2>
+  <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要删除吗？" (nzOnConfirm)="remove()">删除</a>
   <a *ngIf="reagent" nz-button nzType="primary" [routerLink]="['/reagent',reagent.id,'edit']">修改</a>
 </div>
 
