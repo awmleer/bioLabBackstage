@@ -20,7 +20,7 @@ export class LabsService{
   }
 
   createLab(data):Promise<number>{
-    return this.apiSvc.post('/lab-reserve/currLab/create/', data);
+    return this.apiSvc.post('/lab-reserve/lab/create/', data);
   }
 
   editLab(labId:number, data):Promise<void>{
