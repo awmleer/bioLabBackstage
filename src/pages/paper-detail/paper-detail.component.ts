@@ -49,19 +49,18 @@ export class PaperDetailComponent implements OnInit {
         this.updatePdfContent();
       }
     });
-    // this.modal=this.modalCtrl.open(content);
   }
 
   updatePdfContent(){
     this.apiSvc.post(`/paper/${this.paper.id}/updatePDFContent/`, this.newPdfContent).then(() => {
-      //TODO toast 提交成功
+      this.messageSvc.success('上传成功');
     });
   }
 
   async remove() {
     await this.paperSvc.removePaper(this.paper.id);
     this.messageSvc.success('删除成功');
-    this.router.navigate(['/instrument', 'list', 1]);
+    await this.router.navigate(['/paper', 'list', 1]);
   }
 
 }

@@ -33,7 +33,7 @@ export class InstrumentDetailComponent implements OnInit {
   async remove() {
     await this.instrumentSvc.removeInstrument(this.instrument.id);
     this.messageSvc.success('删除成功');
-    this.router.navigate(['/instrument', 'list', 1]);
+    await this.router.navigate(['/instrument', 'list', 1]);
   }
 
 }
