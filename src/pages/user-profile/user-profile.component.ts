@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AccountService} from '../../services/account.service';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,7 +13,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     public accountSvc: AccountService,
-    private location: Location,
+    private messageSvc: NzMessageService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -19,7 +22,8 @@ export class UserProfileComponent implements OnInit {
 
   logout() {
     this.accountSvc.logout().then(() => {
-      this.location.go('/login');
+      this.messageSvc.success('退出登录成功');
+      this.router.navigate(['/login']);
     });
   }
 
