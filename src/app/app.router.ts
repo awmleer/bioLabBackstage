@@ -59,6 +59,12 @@ export const Router=RouterModule.forRoot([
       title: '试剂搜索'
     }
   },{
+    path: 'paper/add',
+    component: PaperEditComponent,
+    data: {
+      title: '添加论文'
+    }
+  },{
     path: 'paper/:id',
     component: PaperDetailComponent,
     data: {
@@ -71,10 +77,10 @@ export const Router=RouterModule.forRoot([
       title: '编辑论文'
     }
   },{
-    path: 'paper/add',
-    component: PaperEditComponent,
+    path: 'reagent/add',
+    component: ReagentEditComponent,
     data: {
-      title: '添加论文'
+      title: '添加试剂'
     }
   },{
     path: 'reagent/:id',
@@ -87,12 +93,6 @@ export const Router=RouterModule.forRoot([
     component: ReagentEditComponent,
     data: {
       title: '编辑试剂'
-    }
-  },{
-    path: 'reagent/add',
-    component: ReagentEditComponent,
-    data: {
-      title: '添加试剂'
     }
   },{
     path: 'instrument/list/:pageNumber',
