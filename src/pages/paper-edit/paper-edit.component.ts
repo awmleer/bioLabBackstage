@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import {PaperDetail} from '../../classes/paper';
 import {ApiService} from '../../services/api.service';
 import {NzMessageService} from 'ng-zorro-antd';
+import {PaperService} from '../../services/paper.service';
 
 @Component({
   selector: 'app-paper-edit',
@@ -20,6 +21,7 @@ export class PaperEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private apiSvc: ApiService,
+    private paperSvc: PaperService,
     private messageSvc: NzMessageService,
   ) {}
 
@@ -43,7 +45,7 @@ export class PaperEditComponent implements OnInit {
       });
   }
 
-  submit(){
+  async submit(){
     const teachers = this.teachersText.split(' ');
     for (let i = 0; i < teachers.length; i++) {
       if(teachers[i]===''){
@@ -62,15 +64,13 @@ export class PaperEditComponent implements OnInit {
       teachers: teachers
     };
     if(this.createMode){
-      this.apiSvc.post('/paper/add/', postData).then(data=>{
-        this.messageSvc.success('创建成功');
-        this.router.navigate(['/paper',data['payload'].paperId]);
-      });
+      const paperId = await this.paperSvc.addPaper(postData);
+      this.messageSvc.success('创建成功');
+      this.router.navigate(['/paper', paperId]);
     }else{
-      this.apiSvc.post(`/paper/${this.paper.id}/edit/`, postData).then(()=>{
-        this.messageSvc.success('修改成功');
-        this.router.navigate(['/paper',this.paper.id]);
-      });
+      await this.apiSvc.post(`/paper/${this.paper.id}/edit/`, postData);
+      this.messageSvc.success('修改成功');
+      this.router.navigate(['/paper',this.paper.id]);
     }
 
   }

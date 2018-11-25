@@ -38,4 +38,9 @@ export class PaperService implements LabeledItemService {
     return this.apiSvc.post(`/paper/${paperId}/remove/`);
   }
 
+  async addPaper(data): Promise<number> {
+    const res = await this.apiSvc.post('/paper/add/', data);
+    return res.paperId;
+  }
+
 }
