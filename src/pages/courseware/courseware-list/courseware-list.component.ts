@@ -83,6 +83,7 @@ export class CoursewareListComponent implements OnInit {
 
   async rename(file: BioFile) {
     const name = prompt('请输入新名字');
+    if (name === null) return;
     await this.coursewareSvc.rename(file.id, name);
     await this.fetchList();
     this.messageSvc.success('修改成功');
