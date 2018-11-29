@@ -20,6 +20,7 @@ import {BbsGroupComponent} from '../pages/bbs/bbs-group/bbs-group.component';
 import {UserProfileComponent} from '../pages/user-profile/user-profile.component';
 import {LoginComponent} from '../pages/login/login.component';
 import {CoursewareListComponent} from '../pages/courseware/courseware-list/courseware-list.component';
+import {UserManagementComponent} from '../pages/user/user-management/user-management.component';
 
 export const Router=RouterModule.forRoot([
   {
@@ -29,10 +30,16 @@ export const Router=RouterModule.forRoot([
       title: '登录'
     }
   },{
-    path: 'account/profile',
+    path: 'user/profile',
     component: UserProfileComponent,
     data: {
       title: '账号信息'
+    }
+  },{
+    path: 'user/management',
+    component: UserManagementComponent,
+    data: {
+      title: '账号管理'
     }
   },{
     path: 'paper/list/:pageNumber',

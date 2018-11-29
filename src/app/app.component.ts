@@ -14,8 +14,6 @@ export class AppComponent implements OnInit {
   ){}
 
   ngOnInit(){
-    // console.log(this.router.routerState.root.data);
-    console.log(this.route);
     this.accountSvc.getUserInfo();
   }
 
