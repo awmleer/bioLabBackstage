@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {UserInfo} from '../classes/user';
+import {Page} from '../classes/page';
 
 @Injectable()
 export class AccountService {
@@ -35,6 +36,13 @@ export class AccountService {
       });
     }
     return p;
+  }
+
+  getUserList(pageNumber: number = 0, params: {
+    accountType?: 'student' | 'teacher';
+    search?: string;
+  } = {}): Promise<Page<UserInfo>> {
+    return this.apiSvc.get(`/user/list/${pageNumber}/`, params);
   }
 
 }
