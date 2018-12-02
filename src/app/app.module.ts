@@ -50,6 +50,7 @@ import zh from '@angular/common/locales/zh';
 import {CoursewareService} from '../services/courseware.service';
 import { CoursewareListComponent } from '../pages/courseware/courseware-list/courseware-list.component';
 import { UserManagementComponent } from '../pages/user/user-management/user-management.component';
+import { UserAddBulkComponent } from '../pages/user/user-add-bulk/user-add-bulk.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -80,6 +81,7 @@ registerLocaleData(zh);
     UserProfileComponent,
     CoursewareListComponent,
     UserManagementComponent,
+    UserAddBulkComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<div>
+  <p>
+    批量导入的账号类型默认是学生，默认密码是123456
+  </p>
+  <nz-upload
+    [nzAction]="apiUrl + '/user/batch-add/'"
+    [nzShowUploadList]="false"
+    [nzWithCredentials]="true"
+    (nzChange)="onUploadChange($event)"
+  >
+    <button nz-button>
+      <i nz-icon type="upload"></i><span>点击选择Excel文件上传</span>
+    </button>
+  </nz-upload>
+</div>

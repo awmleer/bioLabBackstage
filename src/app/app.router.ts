@@ -21,6 +21,7 @@ import {UserProfileComponent} from '../pages/user-profile/user-profile.component
 import {LoginComponent} from '../pages/login/login.component';
 import {CoursewareListComponent} from '../pages/courseware/courseware-list/courseware-list.component';
 import {UserManagementComponent} from '../pages/user/user-management/user-management.component';
+import {UserAddBulkComponent} from '../pages/user/user-add-bulk/user-add-bulk.component';
 
 export const Router=RouterModule.forRoot([
   {
@@ -40,6 +41,12 @@ export const Router=RouterModule.forRoot([
     component: UserManagementComponent,
     data: {
       title: '账号管理'
+    }
+  },{
+    path: 'user/add-bulk',
+    component: UserAddBulkComponent,
+    data: {
+      title: '批量账号导入'
     }
   },{
     path: 'paper/list/:pageNumber',
