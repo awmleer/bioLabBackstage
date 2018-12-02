@@ -11,14 +11,14 @@ import {AccountService} from '../../../services/account.service';
 export class UserManagementComponent implements OnInit {
   searchTextInputted = '';
   page: Page<UserInfo> = null;
-  pageNumber = 0;
+  pageNumber = 1;
 
   constructor(
     private accountSvc: AccountService
   ) { }
 
   ngOnInit() {
-    this.fetchPage()
+    this.fetchPage();
   }
 
   search() {
