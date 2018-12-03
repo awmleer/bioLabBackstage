@@ -37,6 +37,7 @@ export class LabReserveDetailComponent implements OnInit {
     this.route.params
       .subscribe(async (params: Params)=>{
         this.currLab = await this.labSvc.getLab(params['id']);
+        this.startDate = new Date();
         if (this.startDate) {this.ReservationsForCurrLab = await this.labSvc.getReservationList(params['id'], [this.startDate.getFullYear().toString(), this.pad(this.startDate.getMonth() + 1, 2), this.pad(this.startDate.getDate(), 2)].join('-'));}
       });
   }
