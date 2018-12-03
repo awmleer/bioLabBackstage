@@ -17,13 +17,14 @@
   </p>
   <h3>预约情况</h3>
   <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startDate" (ngModelChange)="onDateChange($event)"></nz-date-picker>
+  <span *ngIf="ReservationsForCurrLab">共{{ReservationsForCurrLab.length}}个申请</span>
   <div *ngIf="ReservationsForCurrLab">
     <p *ngFor="let reservation of ReservationsForCurrLab">
       <span>id：{{reservation.id}}</span>
       申请人：{{reservation.applier.name}}<br>
       开始时间：{{reservation.startTime | date: 'yyyy-MM-dd HH:mm'}}<br>
       结束时间：{{reservation.endTime | date: 'yyyy-MM-dd HH:mm'}}<br>
-      <span>状态：{{TranslateDescription(reservation.status)}}</span>
+      <span>状态：<b>{{TranslateDescription(reservation.status)}}</b></span><br>
       描述：{{reservation.description}}<br>
       <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="approvingReservation(reservation.id)">同意使用实验室</a>
       <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="rejectingReservation(reservation.id)">拒绝使用实验室</a>
