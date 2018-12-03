@@ -17,6 +17,7 @@
   </p>
   <h3>预约情况</h3>
   <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startDate" (ngModelChange)="onDateChange($event)"></nz-date-picker>
+  <span *ngIf="ReservationsForCurrLab">共{{ReservationsForCurrLab.length}}个申请</span>
   <div *ngIf="ReservationsForCurrLab">
     <p *ngFor="let reservation of ReservationsForCurrLab">
       <span>id：{{reservation.id}}</span>
