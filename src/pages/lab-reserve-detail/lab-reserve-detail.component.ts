@@ -67,6 +67,10 @@ export class LabReserveDetailComponent implements OnInit {
     this.ReservationsForCurrLab = await this.labSvc.getReservationList(this.currLab.id, this.strBuff);
   }
 
+  async getUnapprovedReservations() {
+    this.ReservationsForCurrLab = await this.labSvc.getUnapprovedReservationList(this.currLab.id);
+  }
+
   onDateChange(event: any) {
     // this.startDate = event.target.value;
     this.reservationListUpdate();
