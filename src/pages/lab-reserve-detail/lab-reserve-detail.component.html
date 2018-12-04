@@ -16,19 +16,27 @@
     描述：{{currLab.description}}<br>
   </p>
   <h3>预约情况</h3>
-  <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startDate" (ngModelChange)="onDateChange($event)"></nz-date-picker>&nbsp;
-  <span *ngIf="ReservationsForCurrLab">共{{ReservationsForCurrLab.length}}个申请</span>&nbsp;
-  <a nz-button (click)="getUnapprovedReservations()">显示本室所有未处理预约</a>
-  <div *ngIf="ReservationsForCurrLab">
-    <p *ngFor="let reservation of ReservationsForCurrLab">
-      <span>id：{{reservation.id}}</span>
+  <ng-container *ngIf="mode == 'unapproved'">
+    <a nz-button (click)="changeMode('date')">切换到按日期查询</a>
+  </ng-container>
+  <ng-container *ngIf="mode == 'date'">
+    <a nz-button (click)="changeMode('unapproved')" style="display: inline-block; margin-bottom: 14px">切换到本室所有未处理预约</a>
+    <br>
+    <nz-date-picker [(ngModel)]="startDate" (ngModelChange)="onDateChange($event)"></nz-date-picker>
+  </ng-container>
+  <p *ngIf="reservations" style="margin-top: 16px">
+    共 {{reservations.length}} 个申请
+  </p>
+  <div *ngIf="reservations">
+    <p *ngFor="let reservation of reservations">
+      id：{{reservation.id}}<br>
       申请人：{{reservation.applier.name}}<br>
       开始时间：{{reservation.startTime | date: 'yyyy-MM-dd HH:mm'}}<br>
       结束时间：{{reservation.endTime | date: 'yyyy-MM-dd HH:mm'}}<br>
-      <span>状态：<b>{{TranslateDescription(reservation.status)}}</b></span><br>
+      状态：<b>{{translateDescription(reservation.status)}}</b><br>
       描述：{{reservation.description}}<br>
-      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="approvingReservation(reservation.id)">同意使用实验室</a>
-      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="rejectingReservation(reservation.id)">拒绝使用实验室</a>
+      <a nz-popconfirm nz-button nzType="primary" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="approve(reservation.id)">同意</a>
+      <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="reject(reservation.id)">拒绝</a>
     </p>
   </div>
 </div>

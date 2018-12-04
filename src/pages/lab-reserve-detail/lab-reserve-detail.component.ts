@@ -15,9 +15,10 @@ import {NzMessageService} from 'ng-zorro-antd';
 })
 export class LabReserveDetailComponent implements OnInit {
   currLab:Lab;
-  ReservationsForCurrLab: Reservation[];
+  reservations: Reservation[];
   startDate: Date;
   strBuff: string;
+  mode: 'date' | 'unapproved' = 'unapproved';
 
   pad = function(tbl) {
     return function(num, n) {
@@ -38,7 +39,7 @@ export class LabReserveDetailComponent implements OnInit {
       .subscribe(async (params: Params)=>{
         this.currLab = await this.labSvc.getLab(params['id']);
         this.startDate = new Date();
-        if (this.startDate) {this.ReservationsForCurrLab = await this.labSvc.getReservationList(params['id'], [this.startDate.getFullYear().toString(), this.pad(this.startDate.getMonth() + 1, 2), this.pad(this.startDate.getDate(), 2)].join('-'));}
+        this.updateReservations();
       });
   }
 
@@ -48,35 +49,42 @@ export class LabReserveDetailComponent implements OnInit {
     this.router.navigate(['/lab-reserve', 'labs']);
   }
 
-  async approvingReservation(reservationid: number) {
+  async approve(reservationid: number) {
     await this.labSvc.approvingReservation(reservationid);
     this.messageSvc.success('已同意该请求');
     this.router.navigate(['lab-reserve', 'labs', this.currLab.id]);
-    this.reservationListUpdate();
+    this.updateReservations();
   }
 
-  async rejectingReservation(reservationid: number) {
+  async reject(reservationid: number) {
     await this.labSvc.rejectingReservation(reservationid);
     this.messageSvc.success('已拒绝该请求');
     this.router.navigate(['lab-reserve', 'labs', this.currLab.id]);
-    this.reservationListUpdate();
+    this.updateReservations();
   }
 
-  async reservationListUpdate() {
-    this.strBuff = [this.startDate.getFullYear().toString(), this.pad(this.startDate.getMonth() + 1, 2), this.pad(this.startDate.getDate(), 2)].join('-');
-    this.ReservationsForCurrLab = await this.labSvc.getReservationList(this.currLab.id, this.strBuff);
+  async updateReservations() {
+    this.reservations = null;
+    if (this.mode == 'date') {
+      if (!this.startDate) return;
+      this.strBuff = [this.startDate.getFullYear().toString(), this.pad(this.startDate.getMonth() + 1, 2), this.pad(this.startDate.getDate(), 2)].join('-');
+      this.reservations = await this.labSvc.getReservationList(this.currLab.id, this.strBuff);
+    } else {
+      this.reservations = await this.labSvc.getUnapprovedReservationList(this.currLab.id);
+    }
   }
 
-  async getUnapprovedReservations() {
-    this.ReservationsForCurrLab = await this.labSvc.getUnapprovedReservationList(this.currLab.id);
+  async changeMode(mode) {
+    this.mode = mode;
+    await this.updateReservations();
   }
 
   onDateChange(event: any) {
     // this.startDate = event.target.value;
-    this.reservationListUpdate();
+    this.updateReservations();
   }
 
-  TranslateDescription(status: 'init' | 'approved' | 'rejected') {
+  translateDescription(status: 'init' | 'approved' | 'rejected') {
     const dict = {'approved': '已同意', 'rejected': '已拒绝', 'init': '未处理'};
     return dict[status];
   }
