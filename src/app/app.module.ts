@@ -51,6 +51,7 @@ import {CoursewareService} from '../services/courseware.service';
 import { CoursewareListComponent } from '../pages/courseware/courseware-list/courseware-list.component';
 import { UserManagementComponent } from '../pages/user/user-management/user-management.component';
 import { UserAddBulkComponent } from '../pages/user/user-add-bulk/user-add-bulk.component';
+import { UserEditComponent } from '../pages/user/user-edit/user-edit.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -82,6 +83,7 @@ registerLocaleData(zh);
     CoursewareListComponent,
     UserManagementComponent,
     UserAddBulkComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
