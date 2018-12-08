@@ -39,7 +39,7 @@
   <nz-form-item>
     <nz-form-label [nzSpan]="6">危化品</nz-form-label>
     <nz-form-control [nzSpan]="16">
-      <label nz-checkbox [(ngModel)]="reagent.dangerous"></label>
+      <label nz-checkbox [(ngModel)]="reagent.dangerous" [ngModelOptions]="{standalone: true}"></label>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
