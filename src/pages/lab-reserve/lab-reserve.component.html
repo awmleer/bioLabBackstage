@@ -6,9 +6,6 @@
       <h3><a [routerLink]="['/lab-reserve/labs/',lab.id]">{{lab.code}}</a></h3>
       容量（人）：{{lab.capacity}}
       <!--&lt;!&ndash;<a nz-button nzType="primary" ">删除</a>&ndash;&gt;<a nz-button nzType="primary" [routerLink]="['/currLab-reserve/labs/',currLab.id, '/edit']">编辑</a>-->
-      <p *ngIf="lab.description">
-        {{lab.description}}
-      </p>
     </div>
   </div>
 </div>
