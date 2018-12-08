@@ -22,6 +22,10 @@ export class NoticeService {
     return this.apiSvc.post(`/notice/${noticeId}/edit/`, data);
   }
 
+  removeNotice(noticeId: number): Promise<void> {
+    return this.apiSvc.post(`/notice/${noticeId}/remove/`);
+  }
+
   noticeDetail(id:number):Promise<NoticeDetail>{
     return this.apiSvc.get(`/notice/${id}/detail/`);
   }

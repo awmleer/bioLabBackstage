@@ -8,6 +8,7 @@
     <button *ngIf="notice.starred === true" nz-button nzType="primary" (click)="unstar()">取消标星</button>
     <button *ngIf="notice.starred === false" nz-button (click)="star()">标星</button>
     <a nz-button nzType="primary" [routerLink]="['/notice',notice.id,'edit']">修改</a>
+    <button nz-button nz-popconfirm nzTitle="确定要删除吗？" nzType="danger" (nzOnConfirm)="deleteNotice()">删除</button>
   </ng-container>
 </div>
 

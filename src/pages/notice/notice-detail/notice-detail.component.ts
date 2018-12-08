@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import {ApiService} from '../../../services/api.service';
 import {NoticeService} from '../../../services/notice.service';
 import {NoticeDetail} from '../../../classes/notice';
+import {NzMessageService} from 'ng-zorro-antd';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class NoticeDetailComponent implements OnInit {
     private apiSvc: ApiService,
     private route: ActivatedRoute,
     public noticeSvc: NoticeService,
+    private messageSvc: NzMessageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,6 +42,14 @@ export class NoticeDetailComponent implements OnInit {
   async unstar() {
     await this.noticeSvc.unstar(this.notice.id);
     await this.updateData();
+  }
+
+  async deleteNotice() {
+    await this.noticeSvc.removeNotice(this.notice.id);
+    await this.messageSvc.success('删除成功');
+    this.router.navigate(['../list/1'], {
+      relativeTo: this.route
+    });
   }
 
 }
