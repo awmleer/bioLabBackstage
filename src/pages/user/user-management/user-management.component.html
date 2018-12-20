@@ -16,6 +16,7 @@
     [nzTotal]="page.totalItemCount"
     [nzPageSize]="page.pageSize"
     [nzPageIndex]="pageNumber"
+    [nzFrontPagination]="false"
     (nzPageIndexChange)="pageChange($event)"
   >
     <thead>
