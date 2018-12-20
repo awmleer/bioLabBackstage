@@ -1,3 +1,35 @@
-<p>
-  user-edit works!
-</p>
+<div class="header">
+  <button (click)="location.back();" nz-button>返回</button>
+  <h2 *ngIf="!createMode">{{user?.name}}</h2>
+  <h2 *ngIf="createMode">添加用户</h2>
+</div>
+
+<div *ngIf="user">
+  <form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="usernameField">学号/工号</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input nz-input type="text" id="usernameField" [(ngModel)]="user.username" [disabled]="!createMode" name="username">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="nameField">姓名</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input nz-input type="text" id="nameField" [(ngModel)]="user.name" name="name">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="nameField">姓名</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <nz-radio-group [(ngModel)]="user.accountType" [nzDisabled]="!createMode" name="accountType">
+          <label nz-radio nzValue="student">学生</label>
+          <label nz-radio nzValue="teacher">教师</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <div style="padding-top: 20px; text-align: center">
+    <button nz-button nzType="primary" (click)="submit()">提交</button>
+  </div>
+
+</div>

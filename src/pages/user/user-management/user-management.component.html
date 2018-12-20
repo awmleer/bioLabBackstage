@@ -34,7 +34,7 @@
       <td>{{user.accountType}}</td>
       <td>{{user.joined_at}}</td>
       <td>
-        <a>修改</a>
+        <a [routerLink]="['/user',user.id,'edit']">修改</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a>删除</a>
       </td>

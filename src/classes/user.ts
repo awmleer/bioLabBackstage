@@ -1,8 +1,8 @@
 export class UserItem {
-  id: string;
+  id: number;
   username: string;
   name: string;
-  accountType: 'student'|'teacher';
+  accountType: 'student'|'teacher' = 'student';
 }
 
 

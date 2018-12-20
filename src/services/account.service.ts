@@ -45,4 +45,12 @@ export class AccountService {
     return this.apiSvc.get(`/user/list/${pageNumber}/`, params);
   }
 
+  addUser(user: UserInfo) {
+    return this.apiSvc.post(`/user/add/`, user);
+  }
+
+  changeUserInfo(userId: number, user: UserInfo) {
+    return this.apiSvc.post(`/user/${userId}/change-info/`, user);
+  }
+
 }
