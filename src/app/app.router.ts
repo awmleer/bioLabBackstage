@@ -50,6 +50,12 @@ export const Router=RouterModule.forRoot([
       title: '批量账号导入'
     }
   },{
+    path: 'user/add',
+    component: UserEditComponent,
+    data: {
+      title: '添加用户'
+    }
+  },{
     path: 'user/:id/edit',
     component: UserEditComponent,
     data: {
