@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserInfo} from '../../../classes/user';
+import {UserInfo, UserItem} from '../../../classes/user';
 import {Page} from '../../../classes/page';
 import {AccountService} from '../../../services/account.service';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-user-management',
@@ -14,7 +15,8 @@ export class UserManagementComponent implements OnInit {
   pageNumber = 1;
 
   constructor(
-    private accountSvc: AccountService
+    private accountSvc: AccountService,
+    private messageSvc: NzMessageService,
   ) { }
 
   ngOnInit() {
@@ -22,7 +24,13 @@ export class UserManagementComponent implements OnInit {
   }
 
   search() {
+    //TODO
+  }
 
+  async remove(userId: number) {
+    await this.accountSvc.delete(userId);
+    this.messageSvc.success('删除成功');
+    await this.fetchPage();
   }
 
   pageChange(newPageNumber: number) {

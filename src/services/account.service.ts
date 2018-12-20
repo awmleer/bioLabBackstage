@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
-import {UserInfo} from '../classes/user';
+import {UserInfo, UserItem} from '../classes/user';
 import {Page} from '../classes/page';
 
 @Injectable()
@@ -51,6 +51,10 @@ export class AccountService {
 
   changeUserInfo(userId: number, user: UserInfo) {
     return this.apiSvc.post(`/user/${userId}/change-info/`, user);
+  }
+
+  delete(userId: number) {
+    return this.apiSvc.get(`/user/${userId}/delete/`);
   }
 
 }
