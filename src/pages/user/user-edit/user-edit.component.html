@@ -19,12 +19,45 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSpan]="6" nzFor="nameField">姓名</nz-form-label>
+      <nz-form-label [nzSpan]="6" nzFor="accountTypeField">账号类型</nz-form-label>
       <nz-form-control [nzSpan]="14">
         <nz-radio-group [(ngModel)]="user.accountType" [nzDisabled]="!createMode" name="accountType">
           <label nz-radio nzValue="student">学生</label>
           <label nz-radio nzValue="teacher">教师</label>
         </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="isAdminField">账号权限</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <nz-radio-group [(ngModel)]="user.isAdmin" name="isAdmin">
+          <label nz-radio nzValue="true">管理员</label>
+          <label nz-radio nzValue="false">普通</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="semesterField">学期</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input nz-input type="text" id="semesterField" [(ngModel)]="user.semester" name="semester">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="studentClassField">教学班</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input nz-input type="text" id="studentClassField" [(ngModel)]="user.studentClass" name="studentClass">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="teacherNameField">教师姓名</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input nz-input type="text" id="teacherNameField" [(ngModel)]="user.teacherName" name="teacherName">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="emailField">邮箱</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input nz-input type="text" id="emailField" [(ngModel)]="user.email" name="email">
       </nz-form-control>
     </nz-form-item>
   </form>
