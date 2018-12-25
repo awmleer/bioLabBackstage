@@ -30,10 +30,7 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="6" nzFor="isAdminField">账号权限</nz-form-label>
       <nz-form-control [nzSpan]="14">
-        <nz-radio-group [(ngModel)]="user.isAdmin" name="isAdmin">
-          <label nz-radio nzValue="true">管理员</label>
-          <label nz-radio nzValue="false">普通</label>
-        </nz-radio-group>
+        <label nz-checkbox [(ngModel)]="user.isAdmin" name="isAdmin">管理员</label>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
