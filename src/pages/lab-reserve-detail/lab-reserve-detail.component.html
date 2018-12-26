@@ -13,7 +13,11 @@
     id：{{currLab.id}}<br>
     房号：{{currLab.code}}<br>
     容量（人）：{{currLab.capacity}}<br>
-    描述：{{currLab.description}}<br>
+    描述：<br/>
+    <span style="white-space: pre-wrap">
+      {{currLab.description}}
+    </span>
+    <br/>
   </p>
   <h3>预约情况</h3>
   <ng-container *ngIf="mode == 'unapproved'">
@@ -34,7 +38,11 @@
       开始时间：{{reservation.startTime | date: 'yyyy-MM-dd HH:mm'}}<br>
       结束时间：{{reservation.endTime | date: 'yyyy-MM-dd HH:mm'}}<br>
       状态：<b>{{translateDescription(reservation.status)}}</b><br>
-      描述：{{reservation.description}}<br>
+      描述：<br/>
+      <span style="white-space: pre-wrap">
+        {{reservation.description}}
+      </span>
+      <br/>
       <a nz-popconfirm nz-button nzType="primary" nzTitle="确定要同意此申请吗？" (nzOnConfirm)="approve(reservation.id)">同意</a>
       <a nz-popconfirm nz-button nzType="danger" nzTitle="确定要拒绝此申请吗？" (nzOnConfirm)="reject(reservation.id)">拒绝</a>
     </p>
