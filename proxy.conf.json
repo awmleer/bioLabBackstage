@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://biochem.sparker.xyz/",
+    "target": "https://biochem.sparker.xyz/",
     "_target": "http://127.0.0.1:8000/",
     "pathRewrite": {"^/api" : ""},
     "secure": false
