@@ -1,0 +1,27 @@
+<div class="header">
+  <a [routerLink]="['/bbs/post/list/1']" nz-button>返回</a>
+  <ng-container *ngIf="bbs">
+    <h2>
+      {{bbs.title}}
+    </h2>
+    <button nz-button nz-popconfirm nzTitle="确定要删除吗？" nzType="danger" (nzOnConfirm)="deleteBbs()">删除</button>
+  </ng-container>
+</div>
+
+<div *ngIf="bbs" class="bbs-detail">
+  <h3>基本信息</h3>
+  <p>
+    id：{{bbs.id}}<br>
+    标题：{{bbs.title}}<br>
+  </p>
+  <h3>内容</h3>
+  <p [innerHtml]="bbs.content | sanitizeHtml" class="html-document"></p>
+  <h3>回复</h3>
+  <div *ngFor="let reply of bbs.replies" style="margin-bottom: 12px">
+    <div>
+      {{reply.user.name}} | {{reply.time}} | {{reply.voteCount}}点赞
+    </div>
+    <div *ngIf="reply.mode === 'text'" [innerHtml]="reply.content | sanitizeHtml" class="html-document"></div>
+    <img *ngIf="reply.mode === 'picture'" [src]="reply.content"/>
+  </div>
+</div>

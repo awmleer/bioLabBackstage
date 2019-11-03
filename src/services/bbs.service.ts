@@ -21,6 +21,12 @@ export class BbsService {
     return this.apiSvc.get(`/bbs/post/${postId}/`);
   }
 
+  deletePost(postId: number): Promise<void> {
+    return this.apiSvc.post(`/bbs/post/delete/`, {
+      postId
+    });
+  }
+
   postGroups(): Promise<PostGroup[]> {
     return this.apiSvc.get('/bbs/group/all/');
   }
