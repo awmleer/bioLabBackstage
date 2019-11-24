@@ -13,6 +13,7 @@ import {NzMessageService} from 'ng-zorro-antd';
 export class ReagentEditComponent implements OnInit {
   reagent:ReagentDetail;
   createMode:boolean = true;
+  loading: boolean = false;
 
   constructor(
     private apiSvc: ApiService,
@@ -37,17 +38,22 @@ export class ReagentEditComponent implements OnInit {
       });
   }
 
-  submit(){
-    if (this.createMode) {
-      this.apiSvc.post('/reagent/add/',this.reagent).then((data)=>{
+  async submit(){
+    this.loading = true;
+    try {
+      if (this.createMode) {
+        const data = await this.apiSvc.post('/reagent/add/',this.reagent);
         this.messageSvc.success('添加成功');
         this.router.navigate(['/reagent',data.reagentId]);
-      });
-    }else{
-      this.apiSvc.post(`/reagent/${this.reagent.id}/edit/`,this.reagent).then(()=>{
+      }else{
+        await this.apiSvc.post(`/reagent/${this.reagent.id}/edit/`,this.reagent);
         this.router.navigate(['/reagent',this.reagent.id]);
         this.messageSvc.success('修改成功');
-      });
+      }
+    } catch (e) {
+      this.messageSvc.error('操作失败');
+    } finally {
+      this.loading = false;
     }
   }
 

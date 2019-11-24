@@ -34,7 +34,7 @@
   <h2>注意事项</h2>
   <quill-editor [style]="{height: '70vh'}" class="html-document" [(ngModel)]="instrument.content.attentions"></quill-editor>
   <div style="padding-top: 20px; text-align: center">
-    <button nz-button nzType="primary" (click)="submit()">提交</button>
+    <button nz-button nzType="primary" (click)="submit()" [nzLoading]="loading">提交</button>
   </div>
 </div>
 
