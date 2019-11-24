@@ -10,6 +10,7 @@ import {NzMessageService} from 'ng-zorro-antd';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
+  searchText = '';
   searchTextInputted = '';
   page: Page<UserInfo> = null;
   pageNumber = 1;
@@ -24,7 +25,8 @@ export class UserManagementComponent implements OnInit {
   }
 
   search() {
-    //TODO
+    this.searchText = this.searchTextInputted;
+    this.fetchPage();
   }
 
   async remove(userId: number) {
@@ -39,7 +41,9 @@ export class UserManagementComponent implements OnInit {
   }
 
   async fetchPage() {
-    this.page = await this.accountSvc.getUserList(this.pageNumber);
+    this.page = await this.accountSvc.getUserList(this.pageNumber, {
+      search: this.searchText
+    });
   }
 
 }
