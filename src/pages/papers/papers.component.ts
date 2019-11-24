@@ -56,7 +56,11 @@ export class PapersComponent implements OnInit {
   }
 
   search(){
-    this.router.navigateByUrl(`/paper/search/${this.searchTextInputed}/${this.pageNumber}`);
+    if (this.searchTextInputed) {
+      this.router.navigateByUrl(`/paper/search/${this.searchTextInputed}/1`);
+    } else {
+      this.router.navigateByUrl(`/paper/list/1`);
+    }
   }
 
 }

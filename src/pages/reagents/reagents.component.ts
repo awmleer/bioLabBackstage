@@ -56,7 +56,11 @@ export class ReagentsComponent implements OnInit {
   }
 
   search(){
-    this.router.navigateByUrl(`/reagent/search/${this.searchTextInputed}/${this.pageNumber}`);
+    if (this.searchTextInputed) {
+      this.router.navigateByUrl(`/reagent/search/${this.searchTextInputed}/1`);
+    } else {
+      this.router.navigateByUrl(`/reagent/list/1`);
+    }
   }
 
 }

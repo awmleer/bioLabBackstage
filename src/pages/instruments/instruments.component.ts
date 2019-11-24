@@ -63,7 +63,11 @@ export class InstrumentsComponent implements OnInit {
   }
 
   search(){
-    this.router.navigateByUrl(`/instrument/search/${this.searchTextInputed}/${this.pageNumber}`);
+    if (this.searchTextInputed) {
+      this.router.navigateByUrl(`/instrument/search/${this.searchTextInputed}/${this.pageNumber}`);
+    } else {
+      this.router.navigateByUrl(`/instrument/list/1`);
+    }
   }
 
 }
