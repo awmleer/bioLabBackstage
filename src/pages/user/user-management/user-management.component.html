@@ -40,8 +40,9 @@
     <tr>
       <th>账号</th>
       <th>姓名</th>
+      <th>学期</th>
+      <th>班级</th>
       <th>账号类型</th>
-      <th>注册时间</th>
       <th>操作</th>
     </tr>
     </thead>
@@ -49,8 +50,9 @@
     <tr *ngFor="let user of basicTable.data">
       <td>{{user.username}}</td>
       <td>{{user.name}}</td>
+      <td>{{user.semester}}</td>
+      <td>{{user.studentClass}}</td>
       <td>{{user.accountType}}</td>
-      <td>{{user.joined_at}}</td>
       <td>
         <a [routerLink]="['/user',user.id,'edit']">修改</a>
         <nz-divider nzType="vertical"></nz-divider>
