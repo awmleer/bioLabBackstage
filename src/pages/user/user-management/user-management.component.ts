@@ -46,4 +46,26 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
+  async deleteAll() {
+    if (!this.page) return;
+    const loadingMessage = this.messageSvc.loading('删除中', {
+      nzDuration: 0,
+    });
+    let success = true;
+    try {
+      for (const item of this.page.items) {
+        await this.accountSvc.delete(item.id);
+      }
+    } catch (e) {
+      success = false
+    }
+    this.messageSvc.remove(loadingMessage.messageId);
+    this.fetchPage();
+    if (success) {
+      this.messageSvc.success('删除完成');
+    } else {
+      this.messageSvc.error('删除失败');
+    }
+  }
+
 }
