@@ -1,5 +1,5 @@
 {
-  "scope": "biochem",
+  "scope": "biochem-backstage",
   "builds": [
     {
       "src": "package.json",
