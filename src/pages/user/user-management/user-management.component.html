@@ -2,6 +2,22 @@
   <a nz-button nzType="primary" [routerLink]="['/user/add']">添加用户</a>
   <a nz-button nzType="primary" [routerLink]="['/user/add-bulk']">批量导入</a>
   <button nz-button nz-popconfirm nzTitle="确定要删除吗？" nzType="danger" (nzOnConfirm)="deleteAll()">删除整页</button>
+  <nz-select [(ngModel)]="sort" nzPlaceHolder="排序方式" style="width: 160px" (ngModelChange)="fetchPage()">
+    <nz-option nzValue="username" nzLabel="账号-正序"></nz-option>
+    <nz-option nzValue="-username" nzLabel="账号-倒序"></nz-option>
+    <nz-option nzValue="name" nzLabel="姓名-正序"></nz-option>
+    <nz-option nzValue="-name" nzLabel="姓名-倒序"></nz-option>
+    <nz-option nzValue="joined_at" nzLabel="注册时间-正序"></nz-option>
+    <nz-option nzValue="-joined_at" nzLabel="注册时间-倒序"></nz-option>
+    <nz-option nzValue="semester" nzLabel="学期-正序"></nz-option>
+    <nz-option nzValue="-semester" nzLabel="学期-倒序"></nz-option>
+    <nz-option nzValue="studentClass" nzLabel="教学班-正序"></nz-option>
+    <nz-option nzValue="-studentClass" nzLabel="教学班-倒序"></nz-option>
+    <nz-option nzValue="teacherName" nzLabel="教师姓名-正序"></nz-option>
+    <nz-option nzValue="-teacherName" nzLabel="教师姓名-倒序"></nz-option>
+    <nz-option nzValue="accountType" nzLabel="账号类型-正序"></nz-option>
+    <nz-option nzValue="-accountType" nzLabel="账号类型-倒序"></nz-option>
+  </nz-select>
 
   <div class="search-box" style="float: right">
     <input nz-input [(ngModel)]="searchTextInputted" type="text" title="搜索" placeholder="搜索">

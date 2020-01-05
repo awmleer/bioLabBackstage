@@ -41,6 +41,7 @@ export class AccountService {
   getUserList(pageNumber: number = 0, params: {
     accountType?: 'student' | 'teacher';
     search?: string;
+    sort?: string;
   } = {}): Promise<Page<UserInfo>> {
     return this.apiSvc.get(`/user/list/${pageNumber}/`, params);
   }

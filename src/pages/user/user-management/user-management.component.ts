@@ -14,6 +14,7 @@ export class UserManagementComponent implements OnInit {
   searchTextInputted = '';
   page: Page<UserInfo> = null;
   pageNumber = 1;
+  sort = null;
 
   constructor(
     private accountSvc: AccountService,
@@ -42,7 +43,8 @@ export class UserManagementComponent implements OnInit {
 
   async fetchPage() {
     this.page = await this.accountSvc.getUserList(this.pageNumber, {
-      search: this.searchText
+      search: this.searchText,
+      sort: this.sort,
     });
   }
 
