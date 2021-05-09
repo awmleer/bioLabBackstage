@@ -24,7 +24,7 @@
     "@angular/router": "6.1.x",
     "angular-tree-component": "7.x",
     "core-js": "^2.5.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "moment": "2.x",
     "ng-zorro-antd": "1.5.x",
     "ng2-file-upload": "^1.2.1",
